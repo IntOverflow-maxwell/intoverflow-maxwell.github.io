@@ -1,6 +1,7 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
   <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <a href="./scuffed_battleship/index.html">Worst Chatroom Ever</a>
 </template>
 
 <script>
