@@ -1,7 +1,7 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
   <HelloWorld msg="Welcome to Your Vue.js App"/>
-  <a href="./scuffed_battleship/index.html">Worst Chatroom Ever</a>
+  <a href="./scuffed_battleship/index.html">Scuffed 2 player+ online battleship implementation</a>
 </template>
 
 <script>
