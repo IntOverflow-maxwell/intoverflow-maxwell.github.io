@@ -1,18 +1,18 @@
 <template>
   <div class="topBar">
-    <TopBarTerm>Home</TopBarTerm>
-    <TopBarTerm>Jackson</TopBarTerm>
-    <TopBarTerm>Jackson</TopBarTerm>
-    <TopBarTerm>Jackson</TopBarTerm>
-    <TopBarTerm>Jackson</TopBarTerm>
-    <TopBarTerm>Jackson</TopBarTerm>
-    <TopBarTerm>Jackson</TopBarTerm>
+    <TopBarTerm href="#para1">Home</TopBarTerm>
+    <TopBarTerm href="#box4">Taisei</TopBarTerm>
+    <TopBarTerm href="#box5">Maxwell</TopBarTerm>
+    <TopBarTerm href="#box7">Jackson</TopBarTerm>
+    <TopBarTerm href="#box9">Bradley</TopBarTerm>
+    <TopBarTerm href="#box10">Ethan</TopBarTerm>
+    <TopBarTerm> BEEENJIII!!!!!</TopBarTerm>
   </div>
-  <div class="pagewrapper">
+  <div class="pagewrapper" @scroll="this.check">
     <ParallaxBG id="para1" file-url="./Picture1.jpg" css-height="60vh" z-value="-254"></ParallaxBG>
     <div class="main" id="box1">The three kingdoms period of China</div>
     <div class="main" id="intro">Introduction</div>
-    <div class="main" id="box2" @mouseleave="this.hideCoolGif" @mouseenter="this.showCoolGif">
+    <div class="main" id="box2">
       The Three Kingdoms (simplified Chinese: 三国; traditional Chinese: 三國) from 220 to 280 AD was the
       tripartite division of China among the dynastic states of Cao Wei, Shu Han, and Eastern Wu.
       The Three Kingdoms period was preceded by the Eastern Han dynasty and was followed by the
@@ -58,39 +58,111 @@
       Nevertheless, the term "Three Kingdoms" has become standard among English-speaking sinologists.
       - Wikipedia, <i>Three Kingdoms</i>
     </div>
-    <ParallaxBG id="para2" file-url="./Picture1.jpg" css-height="50vh" z-value="-255"></ParallaxBG>
+    <div class="main" id="box3"></div>
+    <ParallaxBG id="para2" file-url="./Picture1.jpg" css-height="50vh" z-value="-2"></ParallaxBG>
+    <img src="./assets/projectMap.jpeg" class="main" id="projectMap"/>
+    <div class="main" id="box4">Guide<br><br>
+      For my history project, I made a poster for a special type of sesame oil which is made during the three kingdom
+      period in China. The picture down the poster shows how it is made, a donkey drags the piece of rock and grinds the
+      sesame into powder, which is the most traditional way of making sesame oil. The poem on top left is about how Sun
+      Quan used sesame oil as a weapon, which is also how sesame oil is originally used in China, people also generally
+      believed that it is a weapon instead of seasoning material. The poem on the left illustrates about how sesame oils
+      are used in foods as well, it changes the smell and flavor with just a few drops of it. The translation of the
+      poem: “Sesame oils aren’t just used for wars, but also seasoning. Few drops of it makes food tasty, even with
+      grass.” The central idea of this poster is to let citizens acknowledge that sesame oils can also be used for food.
+      <br> -Taisei
+    </div>
+    <ParallaxBG id="para3" file-url="./Map.jpeg" css-height="0" z-value="-2"></ParallaxBG>
+    <div class="main" id="box5">Guide<br><br>
+      For my history project, I made a board game based on the historical Three Kingdoms time period. I based the
+      mechanics of the game on real battles in the historical period, resources being a great factor in the game. This
+      board game has heavy influence from Risk. Some of the most common interpretations of the time period are based on
+      people, including the source used here. But I digress, maybe it was true for some monarchs, but the simple vision
+      of the leader having "won" those fights is a vast oversimplification. So I based the system on the resources
+      there, while allowing tactics at the same time. I also based the map of the game on the real map at the time.
+      There are no borders and I also differentiated their role depending on how big the cities at the time. The board
+      game is also complex enough that it's hard to predict an outcome.
+      <br> -Maxwell
+    </div>
+    <div class="main" id="box6"></div>
     <div class="footer"></div>
+    <ParallaxBG id="para4" file-url="./SWARD.jpeg" css-height="0" z-value="-1"></ParallaxBG>
+    <div class="main" id="box7">Sword Of Goujian<br><br>
+
+      Sword of Goujian is a tin bronze sword renowned for its unusual shape. It was found in 1965 in the Hubei
+      provinces. The sword is generally attributed to Goujian, one of the last kings of Yue during the Spring and Autumn
+      period. The sword was discovered in Jiangliand Country. The sword of Goujian is 55.6cm in length, including 8.4cm
+      in hilt. A hilt is a handle of a weapon or tool. The body of the blade is mainly made of copper, making it more
+      pliant and less likely to shatter. The sword had no signs of tarnish. Tarnish is a dullness of colour, or cause
+      the sword or other things to luster.
+      <br> -Jackson
+    </div>
+    <div class="main" id="box8">Hover to see recreation!<br><img id="SWARD2" src="./assets/SWARD2.jpeg"
+                                                                 class="electric boogaloo"/><br>Masterpiece, right?
+    </div>
+    <div class="main" id="box9">My project is a poem made by myself that talks about the dynasty of three countries. The
+      fou.r lines each standed for four big events that affected the going of the dynasty. The first line of the poem is
+      about the great Zhu Geliang. He was a very smart person who can even control the goings of the winds and clouds.
+      It was easy for him to win a battle. Therefore the army wanted him to be the leader. However, he did not want to
+      do so and the army has visited his house for three times. Then he was willing to come up and negotiate with them.
+      The second line is about one successful battle of Zhu Geliang, which he burned a field of farmings to win. The
+      third line is still about the famous Zhu Geliang. It talks about he divided the dynasty into three big parts in
+      order to exchange for peace. The last sentence is the end, which describes the death of Zhu Geliang. He died of a
+      diease. After he died, the kingdom started to fall because of lost battles. So we can see that Zhu Geliang is very
+      important for the dynasty of the three countries.
+      <br> -Bradley
+    </div>
+    <div class="main" id="box10">
+      <img src="./assets/magazine/1.png" class="immmg"/>
+      <img src="./assets/magazine/2.png" class="immmg"/>
+      <img src="./assets/magazine/3.png" class="immmg"/>
+    </div>
   </div>
-  <img src="./assets/Three_Kingdoms_timelapse.gif" id="coolFloatyGif" :class="{ showCoolGif: this.gifClass }">
+  <img src="./assets/Three_Kingdoms_timelapse.gif" id="coolFloatyGif"
+       :class="(this.$data.gifClass?'show':'hide') + 'CoolGif'">
+  <img src="./assets/WTHisthislol.jpeg" id="coolFloatyTaisei"
+       :class="(this.$data.taiseiClass?'show':'hide') + 'TaiseisEmbarrassingProject'">
+  <img src="./assets/Poetry.png" id="coolFloatyBradley"
+       :class="(this.$data.bradleyClass?'show':'hide') + 'BradleysProject'">
 </template>
 
 <script>
 import TopBarTerm from "@/components/TopBarTerm";
 import ParallaxBG from "@/components/ParallaxBG";
-let options = {
-  root: document.querySelector('.pagewrapper'),
-  rootMargin: '20px',
-  threshold: 0.1
-}
 export default {
   name: 'App',
   components: {
     ParallaxBG,
     TopBarTerm
   },
-  gifClass: false,
-  data(){
+  data() {
     return {
-      gifClass: this.gifClass
+      gifClass: false,
+      taiseiClass: false,
+      bradleyClass: false
     }
   },
-  methods:{
-
+  methods: {
+    isInViewport(element) {
+      const rect = element.getBoundingClientRect();
+      return rect.height <= window.innerHeight ? (
+          (rect.top >= 0 &&
+              rect.bottom <= (window.innerHeight || document.documentElement.clientHeight))
+      ) : (
+          !(rect.top >= 0 ||
+              rect.bottom <= (window.innerHeight || document.documentElement.clientHeight))
+      );
+    },
+    check() {
+      this.$data.gifClass = this.isInViewport(document.querySelector('#box2'));
+      this.$data.taiseiClass = this.isInViewport(document.querySelector('#box4'));
+      this.$data.bradleyClass = this.isInViewport(document.querySelector('#box9'));
+    }
   },
-  async created(){
-    await this.$nextTick();
-    let observer = new IntersectionObserver(()=>{this.gifClass = true}, options);
-    observer.observe(document.querySelector("#box2"));
+  created() {
+    this.gifClass = false;
+    this.taiseiClass = false;
+    this.bradleyClass = false;
   }
 }
 
@@ -109,12 +181,13 @@ export default {
 #8F4D31
 rgb(230,230,255)
  */
-body{
+body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   margin: 0;
+  background: black;
   font-size: 26px;
   color: #2c3e50;
 }
@@ -161,59 +234,245 @@ html {
   padding-top:20vh;
   position: relative;
   top: calc(100% - min(30%, 90px));
-  bottom:0;
-  background: midnightblue;
+  bottom: 0;
+  /*background: midnightblue;*/
   height: 50%;
   z-index: 255;
 }
-#box1{
-  z-index: 254;
+
+#box1 {
+  z-index: 252;
   background-image: linear-gradient(45deg, midnightblue, #ff8935);
-  transform: skewY(-5deg);
-  color: rgb(230,230,255);
+  top: 20vh;
+  transform: skewY(-5deg) translateZ(-0.5px) scale(1.5);
+  color: rgb(230, 230, 255);
   font-size: 50px;
 }
-#intro{
+
+#box3 {
+  z-index: 254;
+  background-image: linear-gradient(45deg, #ff8935, midnightblue);
+  transform: skewY(-5deg);
+  color: rgb(230, 230, 255);
+  font-size: 50px;
+  top: -30vh;
+}
+
+#box6 {
+  z-index: 254;
+  background-image: linear-gradient(45deg, midnightblue, #ff8935);
+  top: 25vh;
+  transform: skewY(-5deg) translateZ(-0.5px) scale(1.5);
+  color: rgb(230, 230, 255);
+  font-size: 50px;
+}
+
+#intro {
   z-index: 253;
   transform: skewY(-5deg);
   padding-top: 30px;
-  color: rgb(128,128,128);
+  color: rgb(128, 128, 128);
   font-size: 40px;
 }
-#box2{
+
+#box2 {
   top: -10vh;
   width: auto;
   padding-left: 50px;
-  padding-right: 600px;
+  padding-right: min(70vh, 70vw);
+  padding-bottom: 20vh;
   text-align: left;
   z-index: 253;
   font-size: 20px;
   height: fit-content;
 }
-#para2:before{
-  top: 100vh;
+
+#box4 {
+  z-index: 200;
+  background: white;
+  width: calc(100% - min(70vh, 70vw) - 50px);
+  height: fit-content;
+  text-align: left;
+  font-size: 20px;
+  padding: 50px;
+  padding-left: min(70vh, 70vw);
+  text-wrap: normal;
 }
-#coolFloatyGif{
+
+#box5 {
+  width: auto;
+  margin: 20px;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.5);
+  color: black;
+  text-align: left;
+  z-index: 253;
+  font-size: 20px;
+  font-weight: 700;
+  height: fit-content;
+}
+
+#box7 {
+  width: auto;
+  margin: 20px;
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.5);
+  color: rgb(230, 230, 255);
+  text-align: left;
+  z-index: 253;
+  font-size: 20px;
+  font-weight: 700;
+  height: fit-content;
+}
+
+#box8 {
+  margin-left: 30%;
+  margin-right: 30%;
+  width: 40%;
+  padding-top: 0;
+  margin-top: 10vh;
+  background: white;
+  color: black;
+  text-align: left;
+  z-index: 253;
+  font-size: 20px;
+  font-weight: 700;
+  height: fit-content;
+}
+
+#SWARD2 {
+  width: 100%;
+  height: auto;
+  z-index: 252;
+  transition: opacity, 0.5s;
+  opacity: 0;
+}
+
+#SWARD2:hover {
+  width: 100%;
+  height: auto;
+  z-index: 252;
+  transition: opacity, 0.5s;
+  opacity: 100%;
+}
+
+#box9 {
+  top: -10vh;
+  width: auto;
+  padding-left: 50px;
+  padding-right: min(70vh, 70vw);
+  padding-bottom: 20vh;
+  text-align: left;
+  z-index: 253;
+  font-size: 20px;
+  height: fit-content;
+}
+
+#box10 {
+  top: -10vh;
+  width: auto;
+  text-align: left;
+  z-index: 253;
+  font-size: 20px;
+  height: fit-content;
+}
+
+#para2:before {
+  top: -40vh;
+}
+
+#para4:before {
+  top: -20vh;
+}
+
+.hideCoolGif {
   z-index: 255;
   position: fixed;
-  width: 50vh;
-  height: 50vh;
+  width: min(50vh, 50vw);
+  height: min(50vh, 50vw);
   top: 50%;
   transform: translateY(-50%);
-  left: calc(100vw - 50vh - 50px);
+  left: calc(100vw - min(50vh, 50vw) - 50px);
   background-image: url("./assets/Three_Kingdoms_timelapse.gif");
   opacity: 0;
   transition: opacity, 0.5s;
 }
-.showCoolGif{
+.showCoolGif {
   z-index: 255;
   position: fixed;
-  width: 50vh;
-  height: 50vh;
+  width: min(50vh, 50vw);
+  height: min(50vh, 50vw);
   top: 50%;
   transform: translateY(-50%);
-  left: calc(100vw - 50vh - 50px);
+  left: calc(100vw - min(50vh, 50vw) - 50px);
   background-image: url("./assets/Three_Kingdoms_timelapse.gif");
   opacity: 100%;
   transition: opacity, 0.5s;
-}</style>
+}
+
+.hideTaiseisEmbarrassingProject {
+  z-index: 255;
+  position: fixed;
+  width: min(50vh, 50vw);
+  height: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 50px;
+  background-image: url("./assets/WTHisthislol.jpeg");
+  opacity: 0;
+  transition: opacity, 0.5s;
+}
+
+.showTaiseisEmbarrassingProject {
+  z-index: 255;
+  position: fixed;
+  width: min(50vh, 50vw);
+  height: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 50px;
+  background-image: url("./assets/WTHisthislol.jpeg");
+  opacity: 100%;
+  transition: opacity, 0.5s;
+}
+
+.hideBradleysProject {
+  z-index: 255;
+  position: fixed;
+  width: min(50vh, 50vw);
+  height: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 50px;
+  background-image: url("./assets/Poetry.png");
+  opacity: 0;
+  transition: opacity, 0.5s;
+}
+
+.showBradleysProject {
+  z-index: 255;
+  position: fixed;
+  width: min(50vh, 50vw);
+  height: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 50px;
+  background-image: url("./assets/Poetry.png");
+  opacity: 100%;
+  transition: opacity, 0.5s;
+}
+
+#projectMap {
+  z-index: 250;
+  padding-top: 0;
+  width: 100%;
+  height: auto;
+}
+
+.immmg {
+  z-index: 250;
+  padding-top: 0;
+  width: 100%;
+  height: auto;
+}
+</style>
