@@ -117,6 +117,31 @@
       <img src="./assets/magazine/2.png" class="immmg"/>
       <img src="./assets/magazine/3.png" class="immmg"/>
     </div>
+    <div class="main" id="box11">Bibliography</div>
+    <div class="main" id="box12">
+      Bibliography:<br>
+      1. Wikimedia Foundation. (2022, June 1). Three Kingdoms. Wikipedia. Retrieved June 1, 2022, from
+      https://en.wikipedia.org/wiki/Three_Kingdoms<br>
+      2. Wikimedia Foundation. (2022, February 17). Sword of goujian. Wikipedia. Retrieved April 24, 2022, from
+      https://en.wikipedia.org/wiki/Sword_of_Goujian<br>
+      3. 三国志原文在线阅读 - 论历史, http://m.zglscom.com/jdgj/sanguozhi/?from=singlemessage. <br>
+      4. “小磨香油_百度百科.” 百度百科,
+      https://baike.baidu.com/item/%E5%B0%8F%E7%A3%A8%E9%A6%99%E6%B2%B9/8476056?fromtitle=%E5%B0%8F%E7%A3%A8%E9%BA%BB%E6%B2%B9&fromid=676620.
+      <br>
+      5. China Three Kingdoms Period (220-280): Wei, Shu, Wu States (travelchinaguide.com)<br>
+      6. 诸葛亮（三国时期蜀汉丞相）_百度百科 (baidu.com)<br>
+      7. http://chinesenotes.com/sanguozhi.html (Records of the Three Kingdoms)
+    </div>
+    <div class="main" id="box13">
+      By Maxwell, Bradley, Benji, Ethan, Jackson, and Taisei.<br>
+      <br>
+      Website designed by Maxwell, made by Maxwell.<br>
+      <br>
+      And yes, once upon a time Benji actually had a project. It was going to be a video, but he encountered some
+      technical problems. RIP Benji's project. <br><br><br><br><br><br><br><br><br>
+      STOP SCROLLING THERE'S NOTHING DOWN HERE I SWEAR<br><br><br><br><br><br><br><br><br>
+      <a href="https://youtu.be/s1Y40bMcMUY" class="ohno"> Click here for bagels! Bagels :)</a>
+    </div>
   </div>
   <img src="./assets/Three_Kingdoms_timelapse.gif" id="coolFloatyGif"
        :class="(this.$data.gifClass?'show':'hide') + 'CoolGif'">
@@ -386,7 +411,7 @@ html {
 }
 
 .hideCoolGif {
-  z-index: 255;
+  z-index: -1;
   position: fixed;
   width: min(50vh, 50vw);
   height: min(50vh, 50vw);
@@ -396,9 +421,10 @@ html {
   background-image: url("./assets/Three_Kingdoms_timelapse.gif");
   opacity: 0;
   transition: opacity, 0.5s;
+  animation: displayHide 1s;
 }
 .showCoolGif {
-  z-index: 255;
+  z-index: 254;
   position: fixed;
   width: min(50vh, 50vw);
   height: min(50vh, 50vw);
@@ -411,7 +437,7 @@ html {
 }
 
 .hideTaiseisEmbarrassingProject {
-  z-index: 255;
+  z-index: -1;
   position: fixed;
   width: min(50vh, 50vw);
   height: auto;
@@ -421,10 +447,11 @@ html {
   background-image: url("./assets/WTHisthislol.jpeg");
   opacity: 0;
   transition: opacity, 0.5s;
+  animation: displayHide 1s;
 }
 
 .showTaiseisEmbarrassingProject {
-  z-index: 255;
+  z-index: 254;
   position: fixed;
   width: min(50vh, 50vw);
   height: auto;
@@ -437,7 +464,7 @@ html {
 }
 
 .hideBradleysProject {
-  z-index: 255;
+  z-index: -1;
   position: fixed;
   width: min(50vh, 50vw);
   height: auto;
@@ -447,10 +474,11 @@ html {
   background-image: url("./assets/Poetry.png");
   opacity: 0;
   transition: opacity, 0.5s;
+  animation: displayHide 1s;
 }
 
 .showBradleysProject {
-  z-index: 255;
+  z-index: 254;
   position: fixed;
   width: min(50vh, 50vw);
   height: auto;
@@ -474,5 +502,65 @@ html {
   padding-top: 0;
   width: 100%;
   height: auto;
+}
+
+#box11 {
+  z-index: 254;
+  background-image: linear-gradient(45deg, #ff8935, midnightblue);
+  transform: skewY(-5deg) translateZ(-0.5px) scale(1.5);
+  color: rgb(230, 230, 255);
+  font-size: 50px;
+  top: -30vh;
+}
+
+#box12 {
+  top: -50vh;
+  width: auto;
+  padding-top: 50vh;
+  padding-left: 50px;
+  padding-right: 50px;
+  text-align: left;
+  z-index: 253;
+  font-size: 20px;
+  height: fit-content;
+  padding-bottom: 30vh;
+}
+
+#box13 {
+  top: -50vh;
+  width: auto;
+  padding-top: 50vh;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-bottom: 0;
+  color: rgb(230, 230, 250);
+  background: midnightblue;
+  text-align: left;
+  z-index: 253;
+  font-size: 20px;
+  height: fit-content;
+}
+
+@keyframes displayHide {
+  from {
+    z-index: 255;
+  }
+  to {
+    z-index: -1;
+  }
+}
+
+.ohno {
+  content: "Click here for bagels! Bagels :)";
+  color: white;
+  text-decoration: none;
+  z-index: 255;
+}
+
+.ohno:hover {
+  content: "Click here for bagels! Bagels :D";
+  color: white;
+  text-decoration: none;
+  z-index: 255;
 }
 </style>
