@@ -1,0 +1,10 @@
+{
+  "tags": {
+    "dictionaries": ["jsdoc"]
+  },
+  "opts": {
+    "encoding": "utf8",
+    "private": true,
+    "recurse": true
+  }
+}
