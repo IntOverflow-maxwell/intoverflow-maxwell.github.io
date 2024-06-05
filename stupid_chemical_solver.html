@@ -7,8 +7,162 @@
 </head>
 <body>
 <script>
+    // import {right} from "core-js/internals/array-reduce";
 
-    
+    // const EPSILON = 1e-3;
+    let NDArray = v.NDArray;
+    let periodic_table_numbers = new Map();
+    let periodic_table_names = [];
+    let periodic_table_loaded = false;
+    let left_molecule_queue = [];
+    let right_molecule_queue = [];
+    let id_counter = 0;
+    async function add_left_molecule(molecule){
+        let get = await get_molecule_vector(molecule);
+        left_molecule_queue.push([get, id_counter ++]);
+        update_molecule_queues();
+    }
+    async function add_right_molecule(molecule){
+        let get = await get_molecule_vector(molecule);
+        right_molecule_queue.push([get, id_counter ++]);
+        update_molecule_queues();
+    }
+    function generate_molecule_desc(molecule, id){
+        // return molecule.toString();
+        let desc = "<div style='border: 1px solid black; margin: 10px; padding: 10px; position: relative;'>" +
+            "\n<div id='mole" + id + "' style='position: absolute; left: 10px; top: 10px;'></div>" +
+            "\n<div style='border-left: 1px solid black; position: relative; padding-left: 10px; left: 30%'>";
+        for(let i = 0; i < molecule.length; i++){
+            if(molecule.get(i) === 0){
+                continue;
+            }
+            desc += periodic_table_names[i] + " " + molecule.get(i) + "<br/>";
+        }
+        desc += "</div>\n<button onclick='remove_molecule(" + id + ")' style='position: absolute; right: 3px; top: 3px;'>X</button>\n</div>";
+        return desc;
+    }
+    function update_molecule_queues(){
+        let div_left_molecule_queue = document.getElementById("left_molecule_queue");
+        div_left_molecule_queue.innerHTML = "";
+        left_molecule_queue.forEach(([molecule, id]) => {
+            div_left_molecule_queue.innerHTML += generate_molecule_desc(molecule, id);
+        });
+        let div_right_molecule_queue = document.getElementById("right_molecule_queue");
+        div_right_molecule_queue.innerHTML = "";
+        right_molecule_queue.forEach(([molecule, id]) => {
+            div_right_molecule_queue.innerHTML += generate_molecule_desc(molecule, id);
+        });
+    }
+    function remove_molecule(id){
+        for(let i = 0; i < left_molecule_queue.length; i++){
+            if(id === left_molecule_queue[i][1]){
+                let t = left_molecule_queue[left_molecule_queue.length - 1];
+                left_molecule_queue[left_molecule_queue.length - 1] = left_molecule_queue[i];
+                left_molecule_queue[i] = t;
+                left_molecule_queue.pop();
+                i --;
+            }
+        }
+        for(let i = 0; i < right_molecule_queue.length; i++){
+            if(id === right_molecule_queue[i][1]){
+                let t = right_molecule_queue[right_molecule_queue.length - 1];
+                right_molecule_queue[right_molecule_queue.length - 1] = right_molecule_queue[i];
+                right_molecule_queue[i] = t;
+                right_molecule_queue.pop();
+                i --;
+            }
+        }
+        update_molecule_queues();
+    }
+    async function load_periodic_table(){
+        if(periodic_table_loaded) return 0;
+        const resp = await fetch("./PeriodicTableJSON.json");
+        const periodic = await resp.json();
+        periodic.elements.forEach((element) => {
+            periodic_table_numbers.set(element.name, element.number);
+            periodic_table_numbers.set(element.symbol, element.number);
+            periodic_table_names[element.number] = element.name;
+        });
+        periodic_table_numbers.set("Charge", 0);
+        periodic_table_names[0] = "Charge";
+        periodic_table_loaded = true;
+        return 0;
+    }
+    async function get_molecule_vector(input_string){
+        await load_periodic_table();
+        let molecule_vector = [];
+        for(let i = 0; i <= 200; i++){
+            molecule_vector[i] = 0;
+        }
+        let string_list = input_string.split(",");
+        string_list
+            .map((element) => {
+                let elements = element.split(/\s/g);
+                let elements_without = [];
+                elements.forEach((string_part) => {
+                    if(string_part !== "") elements_without.push(string_part);
+                });
+                elements = elements_without;
+                if(elements.length > 1) elements[1] = +elements[1]; // converts string into integer. FUCK JS!
+                return elements;
+            })
+            .forEach((element) => {
+                if(element.length === 1){
+                    element[1] = 1;
+                }
+                molecule_vector[periodic_table_numbers.get(element[0])] = element[1];
+            });
+        return v.array(molecule_vector);
+    }
+    async function solve_equation(molecules_left, molecules_right){
+        let matrix_length = periodic_table_names.length + 1 + molecules_left.length + molecules_right.length;
+        let molecule_matrix = v.zeros(matrix_length, molecules_right.length + molecules_left.length);
+        let current = 0;
+        let ids = [];
+        molecules_left.forEach(([molecule, id]) => {
+            for(let i = 0; i < periodic_table_names.length; i++){
+                molecule_matrix.set(i, current, molecule.get(i));
+            }
+            ids.push(id);
+            current ++;
+        });
+        molecules_right.forEach(([molecule, id]) => {
+            for(let i = 0; i < periodic_table_names.length; i++){
+                molecule_matrix.set(i, current, -molecule.get(i));
+            }
+            ids.push(id);
+            current ++;
+        });
+        let target_vector = v.zeros(matrix_length, 1);
+        molecule_matrix.set(matrix_length - 1, 0, 1);
+        target_vector.set(matrix_length - 1, 0, 1);
+        let A = molecule_matrix;
+        let AT = molecule_matrix.copy().transpose();
+        let answer = AT.multiply(A).solve(AT.multiply(target_vector));
+        for(let i = 0; i < ids.length; i++){
+            document.getElementById("mole" + ids[i]).innerHTML = answer.get(i, 0).toString().substr(0, 10);
+        }
+        return answer;
+    }
+    async function solve_and_output(){
+        document.getElementById('solution').innerHTML += (await solve_equation(left_molecule_queue, right_molecule_queue)).toString()
+    }
 </script>
+<div id="left_molecule_queue">
+
+</div>
+<div style="left: 50%; position: relative; font-family:Avenir, Helvetica, Arial, sans-serif;">||<br/>\/</div>
+<div id="right_molecule_queue">
+
+</div>
+<input id="molecule_input" type="text"/>
+<button onclick="add_left_molecule(document.getElementById('molecule_input').value)">SAVE MOLECULE TO LEFT</button>
+<button onclick="add_right_molecule(document.getElementById('molecule_input').value)">SAVE MOLECULE TO RIGHT</button>
+<button onclick="solve_and_output()">SOLVE EQUATION</button>
+<br/>
+<br/>
+<br/>
+<div id="solution"></div>
+<!--<button onclick="document.getElementById('solution').innerHTML = v.solve(v.array([[1, 0, 1], [1, 2, 0], [1, 2, 0]]), v.array([1, 1, 1]).reshape(3, 1)).toString()">afjwfjwjf</button>-->
 </body>
 </html>
