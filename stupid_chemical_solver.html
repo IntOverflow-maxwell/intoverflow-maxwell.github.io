@@ -84,6 +84,7 @@
             periodic_table_names[element.number] = element.name;
         });
         periodic_table_numbers.set("Charge", 0);
+        periodic_table_numbers.set("charge", 0);
         periodic_table_names[0] = "Charge";
         periodic_table_loaded = true;
         return 0;
@@ -110,7 +111,7 @@
                 if(element.length === 1){
                     element[1] = 1;
                 }
-                molecule_vector[periodic_table_numbers.get(element[0])] = element[1];
+                molecule_vector[periodic_table_numbers.get(element[0])] += element[1];
             });
         return v.array(molecule_vector);
     }
@@ -155,10 +156,49 @@
 <div id="right_molecule_queue">
 
 </div>
+Molecule Input:
 <input id="molecule_input" type="text"/>
 <button onclick="add_left_molecule(document.getElementById('molecule_input').value)">SAVE MOLECULE TO LEFT</button>
 <button onclick="add_right_molecule(document.getElementById('molecule_input').value)">SAVE MOLECULE TO RIGHT</button>
-<button onclick="solve_and_output()">SOLVE EQUATION</button>
+<button onclick="solve_and_output()">BALANCE EQUATION</button>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<div style="margin: 70px">
+    <h2>
+        HOW TO USE
+    </h2>
+    All you have to do to use this website to balance some simple chemical equations is for you to input
+    chemicals on both sides in the following format inside the input box above:
+    <div style="margin: 20px; padding: 20px; background: rgb(30, 4, 31); color: snow;">
+        C 4, H 5, N, charge 1
+    </div>
+    (Pyrrolium ion)
+    <div style="margin: 20px; padding: 20px; background: rgb(30, 4, 31); color: snow;">
+        C, O 3, charge -2
+    </div>
+    (Carbonate ion)
+    <div style="margin: 20px; padding: 20px; background: rgb(30, 4, 31); color: snow;">
+        H 2, O
+    </div>
+    (Water)
+    Note the space between the symbols and the numbers, and the commas.
+    Press the "SAVE MOLECULE" button to decide which side of the equation this molecule goes on.
+    Once you have the equation without the coefficients, click on BALANCE EQUATION and you should be done.
+    <h2>
+        LIMITATIONS
+    </h2>
+    DO NOT use this to balance equations that are too complex, or organic equations. Those are hard.
+    This will sometimes not give integer solutions; at that point, you can scale things up until it is an integer
+    solution. It is, however, not guaranteed that this will generate valid chemical equations.
+    Sometimes, this will break and give negative numbers.
+</div>
+<br/>
+<br/>
+<br/>
 <br/>
 <br/>
 <br/>
