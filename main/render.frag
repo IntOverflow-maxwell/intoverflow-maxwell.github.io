@@ -27,7 +27,7 @@ void main() {
     float hue = atan(v.y, v.x) / (2.0 * 3.14159265) + 0.5;
 
     // Calculate the magnitude of the velocity
-    float magnitude = length(v);
+    float magnitude = length(v) / (200.0 / iResolution.x);
 
     // Apply Reinhard tone mapping to the magnitude
     float toneMappedMagnitude = reinhardToneMapping(magnitude);

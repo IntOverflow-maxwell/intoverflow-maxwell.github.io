@@ -22,12 +22,12 @@ void main() {
     }
 
     if(iTime < 0.1){
-        gl_FragColor.xy = vec2(1.0, 0.0);
+        gl_FragColor.xy = vec2(200.0 / iResolution.x, 0.0);
         return;
     }
 
     if(uv.x < 0.03){
-        gl_FragColor.xy = vec2(1.0, 0.0);
+        gl_FragColor.xy = vec2(200.0 / iResolution.x, 0.0);
         return;
     }
 
