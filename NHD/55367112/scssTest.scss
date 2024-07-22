@@ -1,0 +1,178 @@
+@use 'sass:math';
+*, *::before, *::after {
+  padding: 0;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+$cell-header_dim: 20;
+$perspective_size: 100;
+$translate_dist: 10;
+$max_z_index: 255;
+$min_z_index: -255;
+$pallete1: #780000;
+$pallete2: #c1121f;
+$pallete3: #fdf0d5;
+$pallete4: #003049;
+$pallete5: #669bbc;
+$pallete6: #181818;
+@property --positionX {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 50vw;
+}
+@property --positionY {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 50vh;
+}
+.header{
+  --positionX: 50vw;
+  --positionY: 50vh;
+  position: fixed;
+  background: radial-gradient(circle at var(--positionX) var(--positionY), rgba(255, 255, 255, 0.0), rgba(255, 255, 255, 0.1) 10vw, rgba(255, 255, 255, 0.2) 20vw);
+  border: solid rgba(255, 255, 255, 0.2) 0.3px;
+  border-radius: 1rem;
+  backdrop-filter: blur(10px);
+  transition: all 0.1s ease;
+  transition-property: --positionY, --positionX;
+  top: 0;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  height: max(10vh, 6rem);
+  width: calc(100vw - 2rem);
+  z-index: $max_z_index - 1;
+}
+.content {
+  //height: 100vh;
+  //width: 100vw;
+  transform-style: preserve-3d;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  background: $pallete6;
+}
+
+.follow {
+  --positionX: 50vw;
+  --positionY: 50vh;
+}
+
+.toffeeWrapper {
+  --positionX: 50vw;
+  --positionY: 50vh;
+  position: fixed;
+  perspective: 100px;
+  perspective-origin: center;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  //display: grid;
+  //grid-template: repeat(20, 1fr) / repeat(20, 1fr);
+}
+
+// Hide the scrollbar.
+.toffeeWrapper {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+.toffeeWrapper::-webkit-scrollbar {
+  display: none;  /* Safari and Chrome */
+}
+
+.cell-header {
+  position: absolute;
+  width: #{calc(100vw / $cell-header_dim)};
+  height: #{calc(100vh / $cell-header_dim)};
+  border: 1px solid gray;
+  transform-style: flat;
+  z-index: $max_z_index;
+  display: block;
+  transition: 0.3s;
+}
+
+@for $i from 0 to $cell-header_dim {
+  .cell-header:nth-child(#{$cell-header_dim}n + #{$i + 1}){
+    left: #{$i * calc(100vw / $cell-header_dim)};
+  }
+  .cell-header:nth-child(n + #{$cell-header_dim * $i + 1}):nth-child(-n + #{$cell-header_dim * ($i + 1)}){
+    top: #{$i * calc(100vh / $cell-header_dim)};
+  }
+  .cell-header:nth-child(#{$cell-header_dim}n + #{$i + 1}):hover ~ .toffeeWrapper {
+    --positionX: #{($i + 0.5) * calc(100vw / $cell-header_dim)};
+  }
+  .cell-header:nth-child(#{$cell-header_dim}n + #{$i + 1}):hover ~ .follow {
+    --positionX: #{($i + 0.5) * calc(100vw / $cell-header_dim)};
+  }
+  .cell-header:nth-child(#{$cell-header_dim}n + #{$i + 1}):hover ~ .header {
+    --positionX: #{($i + 0.5) * calc(100vw / $cell-header_dim)};
+  }
+  .cell-header:nth-child(n + #{$cell-header_dim * $i + 1}):nth-child(-n + #{$cell-header_dim * ($i + 1)}):hover ~ .toffeeWrapper {
+    --positionY: #{($i + 0.5) * calc(100vh / $cell-header_dim)};
+  }
+  .cell-header:nth-child(n + #{$cell-header_dim * $i + 1}):nth-child(-n + #{$cell-header_dim * ($i + 1)}):hover ~ .follow {
+    --positionY: #{($i + 0.5) * calc(100vh / $cell-header_dim)};
+  }
+  .cell-header:nth-child(n + #{$cell-header_dim * $i + 1}):nth-child(-n + #{$cell-header_dim * ($i + 1)}):hover ~ .header {
+    --positionY: #{($i + 0.5) * calc(100vh / $cell-header_dim)};
+  }
+}
+
+.follow{
+  top: var(--positionY);
+  left: var(--positionX);
+  background: white;
+  position: fixed;
+  transition: 0s;
+  width: 10px;
+  height: 10px;
+}
+
+.mountain{
+  transform-style: preserve-3d;
+}
+.mountain_part{
+  transform-style:preserve-3d;
+  position: absolute;
+  //display: flex;
+  //left: calc(50vh - 50%);
+  width: 110vw;
+  left: -5vw;
+  height: 100vh;
+  border: 1px solid red;
+}
+
+//.mountain_part:after{
+//  content: " ";
+//
+//}
+
+$mnt_pcs: 9;
+
+@for $i from 0 to $mnt_pcs {
+  .mountain_part:nth-child(n + #{$i}):nth-child(-n + #{$i}){
+    $dist: (-$mnt_pcs + $i + 1) * $translate_dist;
+    transform: scale(#{1 - math.div($dist, $perspective_size)}) translateZ(#{$dist}px);
+    background-origin:padding-box;
+    background-position: bottom center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("./mountain#{$i + 1}.png");
+  }
+}
+.annoyingly_long{
+  height: 1000vh;
+}
+.section1{
+  position: relative;
+  background: $pallete1;
+  height: 70vh;
+  top: 100vh;
+}

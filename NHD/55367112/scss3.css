@@ -1,0 +1,5643 @@
+*, *::before, *::after {
+  padding: 0;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+@property --positionX {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 50vw;
+}
+@property --positionY {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 50vh;
+}
+@property --angleX {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+@property --angleY {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+@font-face {
+  font-family: "JosefinSans-SemiBold";
+  src: url("big/JosefinSans-SemiBold.ttf");
+}
+@font-face {
+  font-family: "JosefinSans-ExtraLight";
+  src: url("big/JosefinSans-ExtraLight.ttf");
+}
+@font-face {
+  font-family: "JosefinSans-Regular";
+  src: url("big/JosefinSans-Regular.ttf");
+}
+#top {
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 0;
+}
+
+.header {
+  --positionX: 50vw;
+  --positionY: 50vh;
+  position: fixed;
+  background: radial-gradient(circle at var(--positionX) var(--positionY), rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.1) 10vw, rgba(255, 255, 255, 0.2) 20vw);
+  --angleY: 0deg;
+  --angleX: 0deg;
+  transform: perspective(300px) rotateY(var(--angleY)) rotateX(var(--angleX));
+  border: solid rgba(255, 255, 255, 0.2) 0.3px;
+  border-radius: 1rem;
+  backdrop-filter: blur(10px);
+  top: 0;
+  margin-top: 1vh;
+  margin-left: 1vw;
+  margin-right: 1vw;
+  height: max(10vh, 6rem);
+  width: 98vw;
+  z-index: 254;
+  display: flex;
+  align-items: center;
+  justify-items: left;
+  font-family: JosefinSans-SemiBold;
+  font-size: 25px;
+}
+
+.header-link {
+  position: relative;
+  color: rgba(0, 0, 0, 0.5);
+  background: transparent;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  z-index: 257;
+}
+
+.header-link:after {
+  position: relative;
+  right: 0;
+  left: 30px;
+  content: " ";
+  border-right: 1px solid white;
+  height: calc(max(10vh, 6rem) - 1rem);
+  width: 1px;
+}
+
+.sectionTitle {
+  margin: 0;
+  display: flex;
+}
+
+.content {
+  transform-style: preserve-3d;
+}
+
+.candyWrapper {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  background: #181818;
+}
+
+.follow {
+  --positionX: 50vw;
+  --positionY: 50vh;
+}
+
+.toffeeWrapper {
+  --positionX: 50vw;
+  --positionY: 50vh;
+  position: fixed;
+  perspective: 100px;
+  perspective-origin: center;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}
+
+.toffeeWrapper {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.toffeeWrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.cell-header {
+  position: absolute;
+  width: 5vw;
+  height: 5vh;
+  border: 1px solid gray;
+  transform-style: flat;
+  z-index: 255;
+  display: block;
+}
+
+@keyframes flash {
+  0% {
+    background: white;
+  }
+  20% {
+    background: transparent;
+  }
+  40% {
+    background: white;
+  }
+  60% {
+    background: transparent;
+  }
+  80% {
+    background: white;
+  }
+  100% {
+    background: transparent;
+  }
+}
+@keyframes fadeRed {
+  0% {
+    color: red;
+  }
+  100% {
+    color: black;
+  }
+}
+@keyframes setPain {}
+.cell-header:nth-child(n+2):nth-child(-n+2):hover ~ .header {
+  --angleX: 1deg;
+  --angleY: -1deg;
+  --positionX: 2.5vw;
+  --positionY: 2.5vw;
+}
+
+.cell-header:nth-child(n+2):nth-child(-n+2) {
+  left: 0vw;
+  top: 0vh;
+}
+
+.cell-header:nth-child(n+3):nth-child(-n+3):hover ~ .header {
+  --angleX: 1deg;
+  --angleY: -0.9deg;
+  --positionX: 7.5vw;
+  --positionY: 2.5vw;
+}
+
+.cell-header:nth-child(n+3):nth-child(-n+3) {
+  left: 5vw;
+  top: 0vh;
+}
+
+.cell-header:nth-child(n+4):nth-child(-n+4):hover ~ .header {
+  --angleX: 1deg;
+  --angleY: -0.8deg;
+  --positionX: 12.5vw;
+  --positionY: 2.5vw;
+}
+
+.cell-header:nth-child(n+4):nth-child(-n+4) {
+  left: 10vw;
+  top: 0vh;
+}
+
+.cell-header:nth-child(n+5):nth-child(-n+5):hover ~ .header {
+  --angleX: 1deg;
+  --angleY: -0.7deg;
+  --positionX: 17.5vw;
+  --positionY: 2.5vw;
+}
+
+.cell-header:nth-child(n+5):nth-child(-n+5) {
+  left: 15vw;
+  top: 0vh;
+}
+
+.cell-header:nth-child(n+6):nth-child(-n+6):hover ~ .header {
+  --angleX: 1deg;
+  --angleY: -0.6deg;
+  --positionX: 22.5vw;
+  --positionY: 2.5vw;
+}
+
+.cell-header:nth-child(n+6):nth-child(-n+6) {
+  left: 20vw;
+  top: 0vh;
+}
+
+.cell-header:nth-child(n+7):nth-child(-n+7):hover ~ .header {
+  --angleX: 1deg;
+  --angleY: -0.5deg;
+  --positionX: 27.5vw;
+  --positionY: 2.5vw;
+}
+
+.cell-header:nth-child(n+7):nth-child(-n+7) {
+  left: 25vw;
+  top: 0vh;
+}
+
+.cell-header:nth-child(n+8):nth-child(-n+8):hover ~ .header {
+  --angleX: 1deg;
+  --angleY: -0.4deg;
+  --positionX: 32.5vw;
+  --positionY: 2.5vw;
+}
+
+.cell-header:nth-child(n+8):nth-child(-n+8) {
+  left: 30vw;
+  top: 0vh;
+}
+
+.cell-header:nth-child(n+9):nth-child(-n+9):hover ~ .header {
+  --angleX: 1deg;
+  --angleY: -0.3deg;
+  --positionX: 37.5vw;
+  --positionY: 2.5vw;
+}
+
+.cell-header:nth-child(n+9):nth-child(-n+9) {
+  left: 35vw;
+  top: 0vh;
+}
+
+.cell-header:nth-child(n+10):nth-child(-n+10):hover ~ .header {
+  --angleX: 1deg;
+  --angleY: -0.2deg;
+  --positionX: 42.5vw;
+  --positionY: 2.5vw;
+}
+
+.cell-header:nth-child(n+10):nth-child(-n+10) {
+  left: 40vw;
+  top: 0vh;
+}
+
+.cell-header:nth-child(n+11):nth-child(-n+11):hover ~ .header {
+  --angleX: 1deg;
+  --angleY: -0.1deg;
+  --positionX: 47.5vw;
+  --positionY: 2.5vw;
+}
+
+.cell-header:nth-child(n+11):nth-child(-n+11) {
+  left: 45vw;
+  top: 0vh;
+}
+
+.cell-header:nth-child(n+12):nth-child(-n+12):hover ~ .header {
+  --angleX: 1deg;
+  --angleY: 0deg;
+  --positionX: 52.5vw;
+  --positionY: 2.5vw;
+}
+
+.cell-header:nth-child(n+12):nth-child(-n+12) {
+  left: 50vw;
+  top: 0vh;
+}
+
+.cell-header:nth-child(n+13):nth-child(-n+13):hover ~ .header {
+  --angleX: 1deg;
+  --angleY: 0.1deg;
+  --positionX: 57.5vw;
+  --positionY: 2.5vw;
+}
+
+.cell-header:nth-child(n+13):nth-child(-n+13) {
+  left: 55vw;
+  top: 0vh;
+}
+
+.cell-header:nth-child(n+14):nth-child(-n+14):hover ~ .header {
+  --angleX: 1deg;
+  --angleY: 0.2deg;
+  --positionX: 62.5vw;
+  --positionY: 2.5vw;
+}
+
+.cell-header:nth-child(n+14):nth-child(-n+14) {
+  left: 60vw;
+  top: 0vh;
+}
+
+.cell-header:nth-child(n+15):nth-child(-n+15):hover ~ .header {
+  --angleX: 1deg;
+  --angleY: 0.3deg;
+  --positionX: 67.5vw;
+  --positionY: 2.5vw;
+}
+
+.cell-header:nth-child(n+15):nth-child(-n+15) {
+  left: 65vw;
+  top: 0vh;
+}
+
+.cell-header:nth-child(n+16):nth-child(-n+16):hover ~ .header {
+  --angleX: 1deg;
+  --angleY: 0.4deg;
+  --positionX: 72.5vw;
+  --positionY: 2.5vw;
+}
+
+.cell-header:nth-child(n+16):nth-child(-n+16) {
+  left: 70vw;
+  top: 0vh;
+}
+
+.cell-header:nth-child(n+17):nth-child(-n+17):hover ~ .header {
+  --angleX: 1deg;
+  --angleY: 0.5deg;
+  --positionX: 77.5vw;
+  --positionY: 2.5vw;
+}
+
+.cell-header:nth-child(n+17):nth-child(-n+17) {
+  left: 75vw;
+  top: 0vh;
+}
+
+.cell-header:nth-child(n+18):nth-child(-n+18):hover ~ .header {
+  --angleX: 1deg;
+  --angleY: 0.6deg;
+  --positionX: 82.5vw;
+  --positionY: 2.5vw;
+}
+
+.cell-header:nth-child(n+18):nth-child(-n+18) {
+  left: 80vw;
+  top: 0vh;
+}
+
+.cell-header:nth-child(n+19):nth-child(-n+19):hover ~ .header {
+  --angleX: 1deg;
+  --angleY: 0.7deg;
+  --positionX: 87.5vw;
+  --positionY: 2.5vw;
+}
+
+.cell-header:nth-child(n+19):nth-child(-n+19) {
+  left: 85vw;
+  top: 0vh;
+}
+
+.cell-header:nth-child(n+20):nth-child(-n+20):hover ~ .header {
+  --angleX: 1deg;
+  --angleY: 0.8deg;
+  --positionX: 92.5vw;
+  --positionY: 2.5vw;
+}
+
+.cell-header:nth-child(n+20):nth-child(-n+20) {
+  left: 90vw;
+  top: 0vh;
+}
+
+.cell-header:nth-child(n+21):nth-child(-n+21):hover ~ .header {
+  --angleX: 1deg;
+  --angleY: 0.9deg;
+  --positionX: 97.5vw;
+  --positionY: 2.5vw;
+}
+
+.cell-header:nth-child(n+21):nth-child(-n+21) {
+  left: 95vw;
+  top: 0vh;
+}
+
+.cell-header:nth-child(n+22):nth-child(-n+22):hover ~ .header {
+  --angleX: 0.4756147123deg;
+  --angleY: -0.9512294245deg;
+  --positionX: 2.5vw;
+  --positionY: 7.5vw;
+}
+
+.cell-header:nth-child(n+22):nth-child(-n+22) {
+  left: 0vw;
+  top: 5vh;
+}
+
+.cell-header:nth-child(n+23):nth-child(-n+23):hover ~ .header {
+  --angleX: 0.4756147123deg;
+  --angleY: -0.8561064821deg;
+  --positionX: 7.5vw;
+  --positionY: 7.5vw;
+}
+
+.cell-header:nth-child(n+23):nth-child(-n+23) {
+  left: 5vw;
+  top: 5vh;
+}
+
+.cell-header:nth-child(n+24):nth-child(-n+24):hover ~ .header {
+  --angleX: 0.4756147123deg;
+  --angleY: -0.7609835396deg;
+  --positionX: 12.5vw;
+  --positionY: 7.5vw;
+}
+
+.cell-header:nth-child(n+24):nth-child(-n+24) {
+  left: 10vw;
+  top: 5vh;
+}
+
+.cell-header:nth-child(n+25):nth-child(-n+25):hover ~ .header {
+  --angleX: 0.4756147123deg;
+  --angleY: -0.6658605972deg;
+  --positionX: 17.5vw;
+  --positionY: 7.5vw;
+}
+
+.cell-header:nth-child(n+25):nth-child(-n+25) {
+  left: 15vw;
+  top: 5vh;
+}
+
+.cell-header:nth-child(n+26):nth-child(-n+26):hover ~ .header {
+  --angleX: 0.4756147123deg;
+  --angleY: -0.5707376547deg;
+  --positionX: 22.5vw;
+  --positionY: 7.5vw;
+}
+
+.cell-header:nth-child(n+26):nth-child(-n+26) {
+  left: 20vw;
+  top: 5vh;
+}
+
+.cell-header:nth-child(n+27):nth-child(-n+27):hover ~ .header {
+  --angleX: 0.4756147123deg;
+  --angleY: -0.4756147123deg;
+  --positionX: 27.5vw;
+  --positionY: 7.5vw;
+}
+
+.cell-header:nth-child(n+27):nth-child(-n+27) {
+  left: 25vw;
+  top: 5vh;
+}
+
+.cell-header:nth-child(n+28):nth-child(-n+28):hover ~ .header {
+  --angleX: 0.4756147123deg;
+  --angleY: -0.3804917698deg;
+  --positionX: 32.5vw;
+  --positionY: 7.5vw;
+}
+
+.cell-header:nth-child(n+28):nth-child(-n+28) {
+  left: 30vw;
+  top: 5vh;
+}
+
+.cell-header:nth-child(n+29):nth-child(-n+29):hover ~ .header {
+  --angleX: 0.4756147123deg;
+  --angleY: -0.2853688274deg;
+  --positionX: 37.5vw;
+  --positionY: 7.5vw;
+}
+
+.cell-header:nth-child(n+29):nth-child(-n+29) {
+  left: 35vw;
+  top: 5vh;
+}
+
+.cell-header:nth-child(n+30):nth-child(-n+30):hover ~ .header {
+  --angleX: 0.4756147123deg;
+  --angleY: -0.1902458849deg;
+  --positionX: 42.5vw;
+  --positionY: 7.5vw;
+}
+
+.cell-header:nth-child(n+30):nth-child(-n+30) {
+  left: 40vw;
+  top: 5vh;
+}
+
+.cell-header:nth-child(n+31):nth-child(-n+31):hover ~ .header {
+  --angleX: 0.4756147123deg;
+  --angleY: -0.0951229425deg;
+  --positionX: 47.5vw;
+  --positionY: 7.5vw;
+}
+
+.cell-header:nth-child(n+31):nth-child(-n+31) {
+  left: 45vw;
+  top: 5vh;
+}
+
+.cell-header:nth-child(n+32):nth-child(-n+32):hover ~ .header {
+  --angleX: 0.4756147123deg;
+  --angleY: 0deg;
+  --positionX: 52.5vw;
+  --positionY: 7.5vw;
+}
+
+.cell-header:nth-child(n+32):nth-child(-n+32) {
+  left: 50vw;
+  top: 5vh;
+}
+
+.cell-header:nth-child(n+33):nth-child(-n+33):hover ~ .header {
+  --angleX: 0.4756147123deg;
+  --angleY: 0.0951229425deg;
+  --positionX: 57.5vw;
+  --positionY: 7.5vw;
+}
+
+.cell-header:nth-child(n+33):nth-child(-n+33) {
+  left: 55vw;
+  top: 5vh;
+}
+
+.cell-header:nth-child(n+34):nth-child(-n+34):hover ~ .header {
+  --angleX: 0.4756147123deg;
+  --angleY: 0.1902458849deg;
+  --positionX: 62.5vw;
+  --positionY: 7.5vw;
+}
+
+.cell-header:nth-child(n+34):nth-child(-n+34) {
+  left: 60vw;
+  top: 5vh;
+}
+
+.cell-header:nth-child(n+35):nth-child(-n+35):hover ~ .header {
+  --angleX: 0.4756147123deg;
+  --angleY: 0.2853688274deg;
+  --positionX: 67.5vw;
+  --positionY: 7.5vw;
+}
+
+.cell-header:nth-child(n+35):nth-child(-n+35) {
+  left: 65vw;
+  top: 5vh;
+}
+
+.cell-header:nth-child(n+36):nth-child(-n+36):hover ~ .header {
+  --angleX: 0.4756147123deg;
+  --angleY: 0.3804917698deg;
+  --positionX: 72.5vw;
+  --positionY: 7.5vw;
+}
+
+.cell-header:nth-child(n+36):nth-child(-n+36) {
+  left: 70vw;
+  top: 5vh;
+}
+
+.cell-header:nth-child(n+37):nth-child(-n+37):hover ~ .header {
+  --angleX: 0.4756147123deg;
+  --angleY: 0.4756147123deg;
+  --positionX: 77.5vw;
+  --positionY: 7.5vw;
+}
+
+.cell-header:nth-child(n+37):nth-child(-n+37) {
+  left: 75vw;
+  top: 5vh;
+}
+
+.cell-header:nth-child(n+38):nth-child(-n+38):hover ~ .header {
+  --angleX: 0.4756147123deg;
+  --angleY: 0.5707376547deg;
+  --positionX: 82.5vw;
+  --positionY: 7.5vw;
+}
+
+.cell-header:nth-child(n+38):nth-child(-n+38) {
+  left: 80vw;
+  top: 5vh;
+}
+
+.cell-header:nth-child(n+39):nth-child(-n+39):hover ~ .header {
+  --angleX: 0.4756147123deg;
+  --angleY: 0.6658605972deg;
+  --positionX: 87.5vw;
+  --positionY: 7.5vw;
+}
+
+.cell-header:nth-child(n+39):nth-child(-n+39) {
+  left: 85vw;
+  top: 5vh;
+}
+
+.cell-header:nth-child(n+40):nth-child(-n+40):hover ~ .header {
+  --angleX: 0.4756147123deg;
+  --angleY: 0.7609835396deg;
+  --positionX: 92.5vw;
+  --positionY: 7.5vw;
+}
+
+.cell-header:nth-child(n+40):nth-child(-n+40) {
+  left: 90vw;
+  top: 5vh;
+}
+
+.cell-header:nth-child(n+41):nth-child(-n+41):hover ~ .header {
+  --angleX: 0.4756147123deg;
+  --angleY: 0.8561064821deg;
+  --positionX: 97.5vw;
+  --positionY: 7.5vw;
+}
+
+.cell-header:nth-child(n+41):nth-child(-n+41) {
+  left: 95vw;
+  top: 5vh;
+}
+
+.cell-header:nth-child(n+42):nth-child(-n+42):hover ~ .header {
+  --angleX: 0deg;
+  --angleY: -0.8187307531deg;
+  --positionX: 2.5vw;
+  --positionY: 12.5vw;
+}
+
+.cell-header:nth-child(n+42):nth-child(-n+42) {
+  left: 0vw;
+  top: 10vh;
+}
+
+.cell-header:nth-child(n+43):nth-child(-n+43):hover ~ .header {
+  --angleX: 0deg;
+  --angleY: -0.7368576778deg;
+  --positionX: 7.5vw;
+  --positionY: 12.5vw;
+}
+
+.cell-header:nth-child(n+43):nth-child(-n+43) {
+  left: 5vw;
+  top: 10vh;
+}
+
+.cell-header:nth-child(n+44):nth-child(-n+44):hover ~ .header {
+  --angleX: 0deg;
+  --angleY: -0.6549846025deg;
+  --positionX: 12.5vw;
+  --positionY: 12.5vw;
+}
+
+.cell-header:nth-child(n+44):nth-child(-n+44) {
+  left: 10vw;
+  top: 10vh;
+}
+
+.cell-header:nth-child(n+45):nth-child(-n+45):hover ~ .header {
+  --angleX: 0deg;
+  --angleY: -0.5731115272deg;
+  --positionX: 17.5vw;
+  --positionY: 12.5vw;
+}
+
+.cell-header:nth-child(n+45):nth-child(-n+45) {
+  left: 15vw;
+  top: 10vh;
+}
+
+.cell-header:nth-child(n+46):nth-child(-n+46):hover ~ .header {
+  --angleX: 0deg;
+  --angleY: -0.4912384518deg;
+  --positionX: 22.5vw;
+  --positionY: 12.5vw;
+}
+
+.cell-header:nth-child(n+46):nth-child(-n+46) {
+  left: 20vw;
+  top: 10vh;
+}
+
+.cell-header:nth-child(n+47):nth-child(-n+47):hover ~ .header {
+  --angleX: 0deg;
+  --angleY: -0.4093653765deg;
+  --positionX: 27.5vw;
+  --positionY: 12.5vw;
+}
+
+.cell-header:nth-child(n+47):nth-child(-n+47) {
+  left: 25vw;
+  top: 10vh;
+}
+
+.cell-header:nth-child(n+48):nth-child(-n+48):hover ~ .header {
+  --angleX: 0deg;
+  --angleY: -0.3274923012deg;
+  --positionX: 32.5vw;
+  --positionY: 12.5vw;
+}
+
+.cell-header:nth-child(n+48):nth-child(-n+48) {
+  left: 30vw;
+  top: 10vh;
+}
+
+.cell-header:nth-child(n+49):nth-child(-n+49):hover ~ .header {
+  --angleX: 0deg;
+  --angleY: -0.2456192259deg;
+  --positionX: 37.5vw;
+  --positionY: 12.5vw;
+}
+
+.cell-header:nth-child(n+49):nth-child(-n+49) {
+  left: 35vw;
+  top: 10vh;
+}
+
+.cell-header:nth-child(n+50):nth-child(-n+50):hover ~ .header {
+  --angleX: 0deg;
+  --angleY: -0.1637461506deg;
+  --positionX: 42.5vw;
+  --positionY: 12.5vw;
+}
+
+.cell-header:nth-child(n+50):nth-child(-n+50) {
+  left: 40vw;
+  top: 10vh;
+}
+
+.cell-header:nth-child(n+51):nth-child(-n+51):hover ~ .header {
+  --angleX: 0deg;
+  --angleY: -0.0818730753deg;
+  --positionX: 47.5vw;
+  --positionY: 12.5vw;
+}
+
+.cell-header:nth-child(n+51):nth-child(-n+51) {
+  left: 45vw;
+  top: 10vh;
+}
+
+.cell-header:nth-child(n+52):nth-child(-n+52):hover ~ .header {
+  --angleX: 0deg;
+  --angleY: 0deg;
+  --positionX: 52.5vw;
+  --positionY: 12.5vw;
+}
+
+.cell-header:nth-child(n+52):nth-child(-n+52) {
+  left: 50vw;
+  top: 10vh;
+}
+
+.cell-header:nth-child(n+53):nth-child(-n+53):hover ~ .header {
+  --angleX: 0deg;
+  --angleY: 0.0818730753deg;
+  --positionX: 57.5vw;
+  --positionY: 12.5vw;
+}
+
+.cell-header:nth-child(n+53):nth-child(-n+53) {
+  left: 55vw;
+  top: 10vh;
+}
+
+.cell-header:nth-child(n+54):nth-child(-n+54):hover ~ .header {
+  --angleX: 0deg;
+  --angleY: 0.1637461506deg;
+  --positionX: 62.5vw;
+  --positionY: 12.5vw;
+}
+
+.cell-header:nth-child(n+54):nth-child(-n+54) {
+  left: 60vw;
+  top: 10vh;
+}
+
+.cell-header:nth-child(n+55):nth-child(-n+55):hover ~ .header {
+  --angleX: 0deg;
+  --angleY: 0.2456192259deg;
+  --positionX: 67.5vw;
+  --positionY: 12.5vw;
+}
+
+.cell-header:nth-child(n+55):nth-child(-n+55) {
+  left: 65vw;
+  top: 10vh;
+}
+
+.cell-header:nth-child(n+56):nth-child(-n+56):hover ~ .header {
+  --angleX: 0deg;
+  --angleY: 0.3274923012deg;
+  --positionX: 72.5vw;
+  --positionY: 12.5vw;
+}
+
+.cell-header:nth-child(n+56):nth-child(-n+56) {
+  left: 70vw;
+  top: 10vh;
+}
+
+.cell-header:nth-child(n+57):nth-child(-n+57):hover ~ .header {
+  --angleX: 0deg;
+  --angleY: 0.4093653765deg;
+  --positionX: 77.5vw;
+  --positionY: 12.5vw;
+}
+
+.cell-header:nth-child(n+57):nth-child(-n+57) {
+  left: 75vw;
+  top: 10vh;
+}
+
+.cell-header:nth-child(n+58):nth-child(-n+58):hover ~ .header {
+  --angleX: 0deg;
+  --angleY: 0.4912384518deg;
+  --positionX: 82.5vw;
+  --positionY: 12.5vw;
+}
+
+.cell-header:nth-child(n+58):nth-child(-n+58) {
+  left: 80vw;
+  top: 10vh;
+}
+
+.cell-header:nth-child(n+59):nth-child(-n+59):hover ~ .header {
+  --angleX: 0deg;
+  --angleY: 0.5731115272deg;
+  --positionX: 87.5vw;
+  --positionY: 12.5vw;
+}
+
+.cell-header:nth-child(n+59):nth-child(-n+59) {
+  left: 85vw;
+  top: 10vh;
+}
+
+.cell-header:nth-child(n+60):nth-child(-n+60):hover ~ .header {
+  --angleX: 0deg;
+  --angleY: 0.6549846025deg;
+  --positionX: 92.5vw;
+  --positionY: 12.5vw;
+}
+
+.cell-header:nth-child(n+60):nth-child(-n+60) {
+  left: 90vw;
+  top: 10vh;
+}
+
+.cell-header:nth-child(n+61):nth-child(-n+61):hover ~ .header {
+  --angleX: 0deg;
+  --angleY: 0.7368576778deg;
+  --positionX: 97.5vw;
+  --positionY: 12.5vw;
+}
+
+.cell-header:nth-child(n+61):nth-child(-n+61) {
+  left: 95vw;
+  top: 10vh;
+}
+
+.cell-header:nth-child(n+62):nth-child(-n+62):hover ~ .header {
+  --angleX: -0.3188140758deg;
+  --angleY: -0.6376281516deg;
+  --positionX: 2.5vw;
+  --positionY: 17.5vw;
+}
+
+.cell-header:nth-child(n+62):nth-child(-n+62) {
+  left: 0vw;
+  top: 15vh;
+}
+
+.cell-header:nth-child(n+63):nth-child(-n+63):hover ~ .header {
+  --angleX: -0.3188140758deg;
+  --angleY: -0.5738653365deg;
+  --positionX: 7.5vw;
+  --positionY: 17.5vw;
+}
+
+.cell-header:nth-child(n+63):nth-child(-n+63) {
+  left: 5vw;
+  top: 15vh;
+}
+
+.cell-header:nth-child(n+64):nth-child(-n+64):hover ~ .header {
+  --angleX: -0.3188140758deg;
+  --angleY: -0.5101025213deg;
+  --positionX: 12.5vw;
+  --positionY: 17.5vw;
+}
+
+.cell-header:nth-child(n+64):nth-child(-n+64) {
+  left: 10vw;
+  top: 15vh;
+}
+
+.cell-header:nth-child(n+65):nth-child(-n+65):hover ~ .header {
+  --angleX: -0.3188140758deg;
+  --angleY: -0.4463397061deg;
+  --positionX: 17.5vw;
+  --positionY: 17.5vw;
+}
+
+.cell-header:nth-child(n+65):nth-child(-n+65) {
+  left: 15vw;
+  top: 15vh;
+}
+
+.cell-header:nth-child(n+66):nth-child(-n+66):hover ~ .header {
+  --angleX: -0.3188140758deg;
+  --angleY: -0.382576891deg;
+  --positionX: 22.5vw;
+  --positionY: 17.5vw;
+}
+
+.cell-header:nth-child(n+66):nth-child(-n+66) {
+  left: 20vw;
+  top: 15vh;
+}
+
+.cell-header:nth-child(n+67):nth-child(-n+67):hover ~ .header {
+  --angleX: -0.3188140758deg;
+  --angleY: -0.3188140758deg;
+  --positionX: 27.5vw;
+  --positionY: 17.5vw;
+}
+
+.cell-header:nth-child(n+67):nth-child(-n+67) {
+  left: 25vw;
+  top: 15vh;
+}
+
+.cell-header:nth-child(n+68):nth-child(-n+68):hover ~ .header {
+  --angleX: -0.3188140758deg;
+  --angleY: -0.2550512606deg;
+  --positionX: 32.5vw;
+  --positionY: 17.5vw;
+}
+
+.cell-header:nth-child(n+68):nth-child(-n+68) {
+  left: 30vw;
+  top: 15vh;
+}
+
+.cell-header:nth-child(n+69):nth-child(-n+69):hover ~ .header {
+  --angleX: -0.3188140758deg;
+  --angleY: -0.1912884455deg;
+  --positionX: 37.5vw;
+  --positionY: 17.5vw;
+}
+
+.cell-header:nth-child(n+69):nth-child(-n+69) {
+  left: 35vw;
+  top: 15vh;
+}
+
+.cell-header:nth-child(n+70):nth-child(-n+70):hover ~ .header {
+  --angleX: -0.3188140758deg;
+  --angleY: -0.1275256303deg;
+  --positionX: 42.5vw;
+  --positionY: 17.5vw;
+}
+
+.cell-header:nth-child(n+70):nth-child(-n+70) {
+  left: 40vw;
+  top: 15vh;
+}
+
+.cell-header:nth-child(n+71):nth-child(-n+71):hover ~ .header {
+  --angleX: -0.3188140758deg;
+  --angleY: -0.0637628152deg;
+  --positionX: 47.5vw;
+  --positionY: 17.5vw;
+}
+
+.cell-header:nth-child(n+71):nth-child(-n+71) {
+  left: 45vw;
+  top: 15vh;
+}
+
+.cell-header:nth-child(n+72):nth-child(-n+72):hover ~ .header {
+  --angleX: -0.3188140758deg;
+  --angleY: 0deg;
+  --positionX: 52.5vw;
+  --positionY: 17.5vw;
+}
+
+.cell-header:nth-child(n+72):nth-child(-n+72) {
+  left: 50vw;
+  top: 15vh;
+}
+
+.cell-header:nth-child(n+73):nth-child(-n+73):hover ~ .header {
+  --angleX: -0.3188140758deg;
+  --angleY: 0.0637628152deg;
+  --positionX: 57.5vw;
+  --positionY: 17.5vw;
+}
+
+.cell-header:nth-child(n+73):nth-child(-n+73) {
+  left: 55vw;
+  top: 15vh;
+}
+
+.cell-header:nth-child(n+74):nth-child(-n+74):hover ~ .header {
+  --angleX: -0.3188140758deg;
+  --angleY: 0.1275256303deg;
+  --positionX: 62.5vw;
+  --positionY: 17.5vw;
+}
+
+.cell-header:nth-child(n+74):nth-child(-n+74) {
+  left: 60vw;
+  top: 15vh;
+}
+
+.cell-header:nth-child(n+75):nth-child(-n+75):hover ~ .header {
+  --angleX: -0.3188140758deg;
+  --angleY: 0.1912884455deg;
+  --positionX: 67.5vw;
+  --positionY: 17.5vw;
+}
+
+.cell-header:nth-child(n+75):nth-child(-n+75) {
+  left: 65vw;
+  top: 15vh;
+}
+
+.cell-header:nth-child(n+76):nth-child(-n+76):hover ~ .header {
+  --angleX: -0.3188140758deg;
+  --angleY: 0.2550512606deg;
+  --positionX: 72.5vw;
+  --positionY: 17.5vw;
+}
+
+.cell-header:nth-child(n+76):nth-child(-n+76) {
+  left: 70vw;
+  top: 15vh;
+}
+
+.cell-header:nth-child(n+77):nth-child(-n+77):hover ~ .header {
+  --angleX: -0.3188140758deg;
+  --angleY: 0.3188140758deg;
+  --positionX: 77.5vw;
+  --positionY: 17.5vw;
+}
+
+.cell-header:nth-child(n+77):nth-child(-n+77) {
+  left: 75vw;
+  top: 15vh;
+}
+
+.cell-header:nth-child(n+78):nth-child(-n+78):hover ~ .header {
+  --angleX: -0.3188140758deg;
+  --angleY: 0.382576891deg;
+  --positionX: 82.5vw;
+  --positionY: 17.5vw;
+}
+
+.cell-header:nth-child(n+78):nth-child(-n+78) {
+  left: 80vw;
+  top: 15vh;
+}
+
+.cell-header:nth-child(n+79):nth-child(-n+79):hover ~ .header {
+  --angleX: -0.3188140758deg;
+  --angleY: 0.4463397061deg;
+  --positionX: 87.5vw;
+  --positionY: 17.5vw;
+}
+
+.cell-header:nth-child(n+79):nth-child(-n+79) {
+  left: 85vw;
+  top: 15vh;
+}
+
+.cell-header:nth-child(n+80):nth-child(-n+80):hover ~ .header {
+  --angleX: -0.3188140758deg;
+  --angleY: 0.5101025213deg;
+  --positionX: 92.5vw;
+  --positionY: 17.5vw;
+}
+
+.cell-header:nth-child(n+80):nth-child(-n+80) {
+  left: 90vw;
+  top: 15vh;
+}
+
+.cell-header:nth-child(n+81):nth-child(-n+81):hover ~ .header {
+  --angleX: -0.3188140758deg;
+  --angleY: 0.5738653365deg;
+  --positionX: 97.5vw;
+  --positionY: 17.5vw;
+}
+
+.cell-header:nth-child(n+81):nth-child(-n+81) {
+  left: 95vw;
+  top: 15vh;
+}
+
+.cell-header:nth-child(n+82):nth-child(-n+82):hover ~ .header {
+  --angleX: -0.4493289641deg;
+  --angleY: -0.4493289641deg;
+  --positionX: 2.5vw;
+  --positionY: 22.5vw;
+}
+
+.cell-header:nth-child(n+82):nth-child(-n+82) {
+  left: 0vw;
+  top: 20vh;
+}
+
+.cell-header:nth-child(n+83):nth-child(-n+83):hover ~ .header {
+  --angleX: -0.4493289641deg;
+  --angleY: -0.4043960677deg;
+  --positionX: 7.5vw;
+  --positionY: 22.5vw;
+}
+
+.cell-header:nth-child(n+83):nth-child(-n+83) {
+  left: 5vw;
+  top: 20vh;
+}
+
+.cell-header:nth-child(n+84):nth-child(-n+84):hover ~ .header {
+  --angleX: -0.4493289641deg;
+  --angleY: -0.3594631713deg;
+  --positionX: 12.5vw;
+  --positionY: 22.5vw;
+}
+
+.cell-header:nth-child(n+84):nth-child(-n+84) {
+  left: 10vw;
+  top: 20vh;
+}
+
+.cell-header:nth-child(n+85):nth-child(-n+85):hover ~ .header {
+  --angleX: -0.4493289641deg;
+  --angleY: -0.3145302749deg;
+  --positionX: 17.5vw;
+  --positionY: 22.5vw;
+}
+
+.cell-header:nth-child(n+85):nth-child(-n+85) {
+  left: 15vw;
+  top: 20vh;
+}
+
+.cell-header:nth-child(n+86):nth-child(-n+86):hover ~ .header {
+  --angleX: -0.4493289641deg;
+  --angleY: -0.2695973785deg;
+  --positionX: 22.5vw;
+  --positionY: 22.5vw;
+}
+
+.cell-header:nth-child(n+86):nth-child(-n+86) {
+  left: 20vw;
+  top: 20vh;
+}
+
+.cell-header:nth-child(n+87):nth-child(-n+87):hover ~ .header {
+  --angleX: -0.4493289641deg;
+  --angleY: -0.2246644821deg;
+  --positionX: 27.5vw;
+  --positionY: 22.5vw;
+}
+
+.cell-header:nth-child(n+87):nth-child(-n+87) {
+  left: 25vw;
+  top: 20vh;
+}
+
+.cell-header:nth-child(n+88):nth-child(-n+88):hover ~ .header {
+  --angleX: -0.4493289641deg;
+  --angleY: -0.1797315856deg;
+  --positionX: 32.5vw;
+  --positionY: 22.5vw;
+}
+
+.cell-header:nth-child(n+88):nth-child(-n+88) {
+  left: 30vw;
+  top: 20vh;
+}
+
+.cell-header:nth-child(n+89):nth-child(-n+89):hover ~ .header {
+  --angleX: -0.4493289641deg;
+  --angleY: -0.1347986892deg;
+  --positionX: 37.5vw;
+  --positionY: 22.5vw;
+}
+
+.cell-header:nth-child(n+89):nth-child(-n+89) {
+  left: 35vw;
+  top: 20vh;
+}
+
+.cell-header:nth-child(n+90):nth-child(-n+90):hover ~ .header {
+  --angleX: -0.4493289641deg;
+  --angleY: -0.0898657928deg;
+  --positionX: 42.5vw;
+  --positionY: 22.5vw;
+}
+
+.cell-header:nth-child(n+90):nth-child(-n+90) {
+  left: 40vw;
+  top: 20vh;
+}
+
+.cell-header:nth-child(n+91):nth-child(-n+91):hover ~ .header {
+  --angleX: -0.4493289641deg;
+  --angleY: -0.0449328964deg;
+  --positionX: 47.5vw;
+  --positionY: 22.5vw;
+}
+
+.cell-header:nth-child(n+91):nth-child(-n+91) {
+  left: 45vw;
+  top: 20vh;
+}
+
+.cell-header:nth-child(n+92):nth-child(-n+92):hover ~ .header {
+  --angleX: -0.4493289641deg;
+  --angleY: 0deg;
+  --positionX: 52.5vw;
+  --positionY: 22.5vw;
+}
+
+.cell-header:nth-child(n+92):nth-child(-n+92) {
+  left: 50vw;
+  top: 20vh;
+}
+
+.cell-header:nth-child(n+93):nth-child(-n+93):hover ~ .header {
+  --angleX: -0.4493289641deg;
+  --angleY: 0.0449328964deg;
+  --positionX: 57.5vw;
+  --positionY: 22.5vw;
+}
+
+.cell-header:nth-child(n+93):nth-child(-n+93) {
+  left: 55vw;
+  top: 20vh;
+}
+
+.cell-header:nth-child(n+94):nth-child(-n+94):hover ~ .header {
+  --angleX: -0.4493289641deg;
+  --angleY: 0.0898657928deg;
+  --positionX: 62.5vw;
+  --positionY: 22.5vw;
+}
+
+.cell-header:nth-child(n+94):nth-child(-n+94) {
+  left: 60vw;
+  top: 20vh;
+}
+
+.cell-header:nth-child(n+95):nth-child(-n+95):hover ~ .header {
+  --angleX: -0.4493289641deg;
+  --angleY: 0.1347986892deg;
+  --positionX: 67.5vw;
+  --positionY: 22.5vw;
+}
+
+.cell-header:nth-child(n+95):nth-child(-n+95) {
+  left: 65vw;
+  top: 20vh;
+}
+
+.cell-header:nth-child(n+96):nth-child(-n+96):hover ~ .header {
+  --angleX: -0.4493289641deg;
+  --angleY: 0.1797315856deg;
+  --positionX: 72.5vw;
+  --positionY: 22.5vw;
+}
+
+.cell-header:nth-child(n+96):nth-child(-n+96) {
+  left: 70vw;
+  top: 20vh;
+}
+
+.cell-header:nth-child(n+97):nth-child(-n+97):hover ~ .header {
+  --angleX: -0.4493289641deg;
+  --angleY: 0.2246644821deg;
+  --positionX: 77.5vw;
+  --positionY: 22.5vw;
+}
+
+.cell-header:nth-child(n+97):nth-child(-n+97) {
+  left: 75vw;
+  top: 20vh;
+}
+
+.cell-header:nth-child(n+98):nth-child(-n+98):hover ~ .header {
+  --angleX: -0.4493289641deg;
+  --angleY: 0.2695973785deg;
+  --positionX: 82.5vw;
+  --positionY: 22.5vw;
+}
+
+.cell-header:nth-child(n+98):nth-child(-n+98) {
+  left: 80vw;
+  top: 20vh;
+}
+
+.cell-header:nth-child(n+99):nth-child(-n+99):hover ~ .header {
+  --angleX: -0.4493289641deg;
+  --angleY: 0.3145302749deg;
+  --positionX: 87.5vw;
+  --positionY: 22.5vw;
+}
+
+.cell-header:nth-child(n+99):nth-child(-n+99) {
+  left: 85vw;
+  top: 20vh;
+}
+
+.cell-header:nth-child(n+100):nth-child(-n+100):hover ~ .header {
+  --angleX: -0.4493289641deg;
+  --angleY: 0.3594631713deg;
+  --positionX: 92.5vw;
+  --positionY: 22.5vw;
+}
+
+.cell-header:nth-child(n+100):nth-child(-n+100) {
+  left: 90vw;
+  top: 20vh;
+}
+
+.cell-header:nth-child(n+101):nth-child(-n+101):hover ~ .header {
+  --angleX: -0.4493289641deg;
+  --angleY: 0.4043960677deg;
+  --positionX: 97.5vw;
+  --positionY: 22.5vw;
+}
+
+.cell-header:nth-child(n+101):nth-child(-n+101) {
+  left: 95vw;
+  top: 20vh;
+}
+
+.cell-header:nth-child(n+102):nth-child(-n+102):hover ~ .header {
+  --angleX: -0.4297571953deg;
+  --angleY: -0.2865047969deg;
+  --positionX: 2.5vw;
+  --positionY: 27.5vw;
+}
+
+.cell-header:nth-child(n+102):nth-child(-n+102) {
+  left: 0vw;
+  top: 25vh;
+}
+
+.cell-header:nth-child(n+103):nth-child(-n+103):hover ~ .header {
+  --angleX: -0.4297571953deg;
+  --angleY: -0.2578543172deg;
+  --positionX: 7.5vw;
+  --positionY: 27.5vw;
+}
+
+.cell-header:nth-child(n+103):nth-child(-n+103) {
+  left: 5vw;
+  top: 25vh;
+}
+
+.cell-header:nth-child(n+104):nth-child(-n+104):hover ~ .header {
+  --angleX: -0.4297571953deg;
+  --angleY: -0.2292038375deg;
+  --positionX: 12.5vw;
+  --positionY: 27.5vw;
+}
+
+.cell-header:nth-child(n+104):nth-child(-n+104) {
+  left: 10vw;
+  top: 25vh;
+}
+
+.cell-header:nth-child(n+105):nth-child(-n+105):hover ~ .header {
+  --angleX: -0.4297571953deg;
+  --angleY: -0.2005533578deg;
+  --positionX: 17.5vw;
+  --positionY: 27.5vw;
+}
+
+.cell-header:nth-child(n+105):nth-child(-n+105) {
+  left: 15vw;
+  top: 25vh;
+}
+
+.cell-header:nth-child(n+106):nth-child(-n+106):hover ~ .header {
+  --angleX: -0.4297571953deg;
+  --angleY: -0.1719028781deg;
+  --positionX: 22.5vw;
+  --positionY: 27.5vw;
+}
+
+.cell-header:nth-child(n+106):nth-child(-n+106) {
+  left: 20vw;
+  top: 25vh;
+}
+
+.cell-header:nth-child(n+107):nth-child(-n+107):hover ~ .header {
+  --angleX: -0.4297571953deg;
+  --angleY: -0.1432523984deg;
+  --positionX: 27.5vw;
+  --positionY: 27.5vw;
+}
+
+.cell-header:nth-child(n+107):nth-child(-n+107) {
+  left: 25vw;
+  top: 25vh;
+}
+
+.cell-header:nth-child(n+108):nth-child(-n+108):hover ~ .header {
+  --angleX: -0.4297571953deg;
+  --angleY: -0.1146019187deg;
+  --positionX: 32.5vw;
+  --positionY: 27.5vw;
+}
+
+.cell-header:nth-child(n+108):nth-child(-n+108) {
+  left: 30vw;
+  top: 25vh;
+}
+
+.cell-header:nth-child(n+109):nth-child(-n+109):hover ~ .header {
+  --angleX: -0.4297571953deg;
+  --angleY: -0.0859514391deg;
+  --positionX: 37.5vw;
+  --positionY: 27.5vw;
+}
+
+.cell-header:nth-child(n+109):nth-child(-n+109) {
+  left: 35vw;
+  top: 25vh;
+}
+
+.cell-header:nth-child(n+110):nth-child(-n+110):hover ~ .header {
+  --angleX: -0.4297571953deg;
+  --angleY: -0.0573009594deg;
+  --positionX: 42.5vw;
+  --positionY: 27.5vw;
+}
+
+.cell-header:nth-child(n+110):nth-child(-n+110) {
+  left: 40vw;
+  top: 25vh;
+}
+
+.cell-header:nth-child(n+111):nth-child(-n+111):hover ~ .header {
+  --angleX: -0.4297571953deg;
+  --angleY: -0.0286504797deg;
+  --positionX: 47.5vw;
+  --positionY: 27.5vw;
+}
+
+.cell-header:nth-child(n+111):nth-child(-n+111) {
+  left: 45vw;
+  top: 25vh;
+}
+
+.cell-header:nth-child(n+112):nth-child(-n+112):hover ~ .header {
+  --angleX: -0.4297571953deg;
+  --angleY: 0deg;
+  --positionX: 52.5vw;
+  --positionY: 27.5vw;
+}
+
+.cell-header:nth-child(n+112):nth-child(-n+112) {
+  left: 50vw;
+  top: 25vh;
+}
+
+.cell-header:nth-child(n+113):nth-child(-n+113):hover ~ .header {
+  --angleX: -0.4297571953deg;
+  --angleY: 0.0286504797deg;
+  --positionX: 57.5vw;
+  --positionY: 27.5vw;
+}
+
+.cell-header:nth-child(n+113):nth-child(-n+113) {
+  left: 55vw;
+  top: 25vh;
+}
+
+.cell-header:nth-child(n+114):nth-child(-n+114):hover ~ .header {
+  --angleX: -0.4297571953deg;
+  --angleY: 0.0573009594deg;
+  --positionX: 62.5vw;
+  --positionY: 27.5vw;
+}
+
+.cell-header:nth-child(n+114):nth-child(-n+114) {
+  left: 60vw;
+  top: 25vh;
+}
+
+.cell-header:nth-child(n+115):nth-child(-n+115):hover ~ .header {
+  --angleX: -0.4297571953deg;
+  --angleY: 0.0859514391deg;
+  --positionX: 67.5vw;
+  --positionY: 27.5vw;
+}
+
+.cell-header:nth-child(n+115):nth-child(-n+115) {
+  left: 65vw;
+  top: 25vh;
+}
+
+.cell-header:nth-child(n+116):nth-child(-n+116):hover ~ .header {
+  --angleX: -0.4297571953deg;
+  --angleY: 0.1146019187deg;
+  --positionX: 72.5vw;
+  --positionY: 27.5vw;
+}
+
+.cell-header:nth-child(n+116):nth-child(-n+116) {
+  left: 70vw;
+  top: 25vh;
+}
+
+.cell-header:nth-child(n+117):nth-child(-n+117):hover ~ .header {
+  --angleX: -0.4297571953deg;
+  --angleY: 0.1432523984deg;
+  --positionX: 77.5vw;
+  --positionY: 27.5vw;
+}
+
+.cell-header:nth-child(n+117):nth-child(-n+117) {
+  left: 75vw;
+  top: 25vh;
+}
+
+.cell-header:nth-child(n+118):nth-child(-n+118):hover ~ .header {
+  --angleX: -0.4297571953deg;
+  --angleY: 0.1719028781deg;
+  --positionX: 82.5vw;
+  --positionY: 27.5vw;
+}
+
+.cell-header:nth-child(n+118):nth-child(-n+118) {
+  left: 80vw;
+  top: 25vh;
+}
+
+.cell-header:nth-child(n+119):nth-child(-n+119):hover ~ .header {
+  --angleX: -0.4297571953deg;
+  --angleY: 0.2005533578deg;
+  --positionX: 87.5vw;
+  --positionY: 27.5vw;
+}
+
+.cell-header:nth-child(n+119):nth-child(-n+119) {
+  left: 85vw;
+  top: 25vh;
+}
+
+.cell-header:nth-child(n+120):nth-child(-n+120):hover ~ .header {
+  --angleX: -0.4297571953deg;
+  --angleY: 0.2292038375deg;
+  --positionX: 92.5vw;
+  --positionY: 27.5vw;
+}
+
+.cell-header:nth-child(n+120):nth-child(-n+120) {
+  left: 90vw;
+  top: 25vh;
+}
+
+.cell-header:nth-child(n+121):nth-child(-n+121):hover ~ .header {
+  --angleX: -0.4297571953deg;
+  --angleY: 0.2578543172deg;
+  --positionX: 97.5vw;
+  --positionY: 27.5vw;
+}
+
+.cell-header:nth-child(n+121):nth-child(-n+121) {
+  left: 95vw;
+  top: 25vh;
+}
+
+.cell-header:nth-child(n+122):nth-child(-n+122):hover ~ .header {
+  --angleX: -0.3305977764deg;
+  --angleY: -0.1652988882deg;
+  --positionX: 2.5vw;
+  --positionY: 32.5vw;
+}
+
+.cell-header:nth-child(n+122):nth-child(-n+122) {
+  left: 0vw;
+  top: 30vh;
+}
+
+.cell-header:nth-child(n+123):nth-child(-n+123):hover ~ .header {
+  --angleX: -0.3305977764deg;
+  --angleY: -0.1487689994deg;
+  --positionX: 7.5vw;
+  --positionY: 32.5vw;
+}
+
+.cell-header:nth-child(n+123):nth-child(-n+123) {
+  left: 5vw;
+  top: 30vh;
+}
+
+.cell-header:nth-child(n+124):nth-child(-n+124):hover ~ .header {
+  --angleX: -0.3305977764deg;
+  --angleY: -0.1322391106deg;
+  --positionX: 12.5vw;
+  --positionY: 32.5vw;
+}
+
+.cell-header:nth-child(n+124):nth-child(-n+124) {
+  left: 10vw;
+  top: 30vh;
+}
+
+.cell-header:nth-child(n+125):nth-child(-n+125):hover ~ .header {
+  --angleX: -0.3305977764deg;
+  --angleY: -0.1157092218deg;
+  --positionX: 17.5vw;
+  --positionY: 32.5vw;
+}
+
+.cell-header:nth-child(n+125):nth-child(-n+125) {
+  left: 15vw;
+  top: 30vh;
+}
+
+.cell-header:nth-child(n+126):nth-child(-n+126):hover ~ .header {
+  --angleX: -0.3305977764deg;
+  --angleY: -0.0991793329deg;
+  --positionX: 22.5vw;
+  --positionY: 32.5vw;
+}
+
+.cell-header:nth-child(n+126):nth-child(-n+126) {
+  left: 20vw;
+  top: 30vh;
+}
+
+.cell-header:nth-child(n+127):nth-child(-n+127):hover ~ .header {
+  --angleX: -0.3305977764deg;
+  --angleY: -0.0826494441deg;
+  --positionX: 27.5vw;
+  --positionY: 32.5vw;
+}
+
+.cell-header:nth-child(n+127):nth-child(-n+127) {
+  left: 25vw;
+  top: 30vh;
+}
+
+.cell-header:nth-child(n+128):nth-child(-n+128):hover ~ .header {
+  --angleX: -0.3305977764deg;
+  --angleY: -0.0661195553deg;
+  --positionX: 32.5vw;
+  --positionY: 32.5vw;
+}
+
+.cell-header:nth-child(n+128):nth-child(-n+128) {
+  left: 30vw;
+  top: 30vh;
+}
+
+.cell-header:nth-child(n+129):nth-child(-n+129):hover ~ .header {
+  --angleX: -0.3305977764deg;
+  --angleY: -0.0495896665deg;
+  --positionX: 37.5vw;
+  --positionY: 32.5vw;
+}
+
+.cell-header:nth-child(n+129):nth-child(-n+129) {
+  left: 35vw;
+  top: 30vh;
+}
+
+.cell-header:nth-child(n+130):nth-child(-n+130):hover ~ .header {
+  --angleX: -0.3305977764deg;
+  --angleY: -0.0330597776deg;
+  --positionX: 42.5vw;
+  --positionY: 32.5vw;
+}
+
+.cell-header:nth-child(n+130):nth-child(-n+130) {
+  left: 40vw;
+  top: 30vh;
+}
+
+.cell-header:nth-child(n+131):nth-child(-n+131):hover ~ .header {
+  --angleX: -0.3305977764deg;
+  --angleY: -0.0165298888deg;
+  --positionX: 47.5vw;
+  --positionY: 32.5vw;
+}
+
+.cell-header:nth-child(n+131):nth-child(-n+131) {
+  left: 45vw;
+  top: 30vh;
+}
+
+.cell-header:nth-child(n+132):nth-child(-n+132):hover ~ .header {
+  --angleX: -0.3305977764deg;
+  --angleY: 0deg;
+  --positionX: 52.5vw;
+  --positionY: 32.5vw;
+}
+
+.cell-header:nth-child(n+132):nth-child(-n+132) {
+  left: 50vw;
+  top: 30vh;
+}
+
+.cell-header:nth-child(n+133):nth-child(-n+133):hover ~ .header {
+  --angleX: -0.3305977764deg;
+  --angleY: 0.0165298888deg;
+  --positionX: 57.5vw;
+  --positionY: 32.5vw;
+}
+
+.cell-header:nth-child(n+133):nth-child(-n+133) {
+  left: 55vw;
+  top: 30vh;
+}
+
+.cell-header:nth-child(n+134):nth-child(-n+134):hover ~ .header {
+  --angleX: -0.3305977764deg;
+  --angleY: 0.0330597776deg;
+  --positionX: 62.5vw;
+  --positionY: 32.5vw;
+}
+
+.cell-header:nth-child(n+134):nth-child(-n+134) {
+  left: 60vw;
+  top: 30vh;
+}
+
+.cell-header:nth-child(n+135):nth-child(-n+135):hover ~ .header {
+  --angleX: -0.3305977764deg;
+  --angleY: 0.0495896665deg;
+  --positionX: 67.5vw;
+  --positionY: 32.5vw;
+}
+
+.cell-header:nth-child(n+135):nth-child(-n+135) {
+  left: 65vw;
+  top: 30vh;
+}
+
+.cell-header:nth-child(n+136):nth-child(-n+136):hover ~ .header {
+  --angleX: -0.3305977764deg;
+  --angleY: 0.0661195553deg;
+  --positionX: 72.5vw;
+  --positionY: 32.5vw;
+}
+
+.cell-header:nth-child(n+136):nth-child(-n+136) {
+  left: 70vw;
+  top: 30vh;
+}
+
+.cell-header:nth-child(n+137):nth-child(-n+137):hover ~ .header {
+  --angleX: -0.3305977764deg;
+  --angleY: 0.0826494441deg;
+  --positionX: 77.5vw;
+  --positionY: 32.5vw;
+}
+
+.cell-header:nth-child(n+137):nth-child(-n+137) {
+  left: 75vw;
+  top: 30vh;
+}
+
+.cell-header:nth-child(n+138):nth-child(-n+138):hover ~ .header {
+  --angleX: -0.3305977764deg;
+  --angleY: 0.0991793329deg;
+  --positionX: 82.5vw;
+  --positionY: 32.5vw;
+}
+
+.cell-header:nth-child(n+138):nth-child(-n+138) {
+  left: 80vw;
+  top: 30vh;
+}
+
+.cell-header:nth-child(n+139):nth-child(-n+139):hover ~ .header {
+  --angleX: -0.3305977764deg;
+  --angleY: 0.1157092218deg;
+  --positionX: 87.5vw;
+  --positionY: 32.5vw;
+}
+
+.cell-header:nth-child(n+139):nth-child(-n+139) {
+  left: 85vw;
+  top: 30vh;
+}
+
+.cell-header:nth-child(n+140):nth-child(-n+140):hover ~ .header {
+  --angleX: -0.3305977764deg;
+  --angleY: 0.1322391106deg;
+  --positionX: 92.5vw;
+  --positionY: 32.5vw;
+}
+
+.cell-header:nth-child(n+140):nth-child(-n+140) {
+  left: 90vw;
+  top: 30vh;
+}
+
+.cell-header:nth-child(n+141):nth-child(-n+141):hover ~ .header {
+  --angleX: -0.3305977764deg;
+  --angleY: 0.1487689994deg;
+  --positionX: 97.5vw;
+  --positionY: 32.5vw;
+}
+
+.cell-header:nth-child(n+141):nth-child(-n+141) {
+  left: 95vw;
+  top: 30vh;
+}
+
+.cell-header:nth-child(n+142):nth-child(-n+142):hover ~ .header {
+  --angleX: -0.2157339662deg;
+  --angleY: -0.0862935865deg;
+  --positionX: 2.5vw;
+  --positionY: 37.5vw;
+}
+
+.cell-header:nth-child(n+142):nth-child(-n+142) {
+  left: 0vw;
+  top: 35vh;
+}
+
+.cell-header:nth-child(n+143):nth-child(-n+143):hover ~ .header {
+  --angleX: -0.2157339662deg;
+  --angleY: -0.0776642278deg;
+  --positionX: 7.5vw;
+  --positionY: 37.5vw;
+}
+
+.cell-header:nth-child(n+143):nth-child(-n+143) {
+  left: 5vw;
+  top: 35vh;
+}
+
+.cell-header:nth-child(n+144):nth-child(-n+144):hover ~ .header {
+  --angleX: -0.2157339662deg;
+  --angleY: -0.0690348692deg;
+  --positionX: 12.5vw;
+  --positionY: 37.5vw;
+}
+
+.cell-header:nth-child(n+144):nth-child(-n+144) {
+  left: 10vw;
+  top: 35vh;
+}
+
+.cell-header:nth-child(n+145):nth-child(-n+145):hover ~ .header {
+  --angleX: -0.2157339662deg;
+  --angleY: -0.0604055105deg;
+  --positionX: 17.5vw;
+  --positionY: 37.5vw;
+}
+
+.cell-header:nth-child(n+145):nth-child(-n+145) {
+  left: 15vw;
+  top: 35vh;
+}
+
+.cell-header:nth-child(n+146):nth-child(-n+146):hover ~ .header {
+  --angleX: -0.2157339662deg;
+  --angleY: -0.0517761519deg;
+  --positionX: 22.5vw;
+  --positionY: 37.5vw;
+}
+
+.cell-header:nth-child(n+146):nth-child(-n+146) {
+  left: 20vw;
+  top: 35vh;
+}
+
+.cell-header:nth-child(n+147):nth-child(-n+147):hover ~ .header {
+  --angleX: -0.2157339662deg;
+  --angleY: -0.0431467932deg;
+  --positionX: 27.5vw;
+  --positionY: 37.5vw;
+}
+
+.cell-header:nth-child(n+147):nth-child(-n+147) {
+  left: 25vw;
+  top: 35vh;
+}
+
+.cell-header:nth-child(n+148):nth-child(-n+148):hover ~ .header {
+  --angleX: -0.2157339662deg;
+  --angleY: -0.0345174346deg;
+  --positionX: 32.5vw;
+  --positionY: 37.5vw;
+}
+
+.cell-header:nth-child(n+148):nth-child(-n+148) {
+  left: 30vw;
+  top: 35vh;
+}
+
+.cell-header:nth-child(n+149):nth-child(-n+149):hover ~ .header {
+  --angleX: -0.2157339662deg;
+  --angleY: -0.0258880759deg;
+  --positionX: 37.5vw;
+  --positionY: 37.5vw;
+}
+
+.cell-header:nth-child(n+149):nth-child(-n+149) {
+  left: 35vw;
+  top: 35vh;
+}
+
+.cell-header:nth-child(n+150):nth-child(-n+150):hover ~ .header {
+  --angleX: -0.2157339662deg;
+  --angleY: -0.0172587173deg;
+  --positionX: 42.5vw;
+  --positionY: 37.5vw;
+}
+
+.cell-header:nth-child(n+150):nth-child(-n+150) {
+  left: 40vw;
+  top: 35vh;
+}
+
+.cell-header:nth-child(n+151):nth-child(-n+151):hover ~ .header {
+  --angleX: -0.2157339662deg;
+  --angleY: -0.0086293586deg;
+  --positionX: 47.5vw;
+  --positionY: 37.5vw;
+}
+
+.cell-header:nth-child(n+151):nth-child(-n+151) {
+  left: 45vw;
+  top: 35vh;
+}
+
+.cell-header:nth-child(n+152):nth-child(-n+152):hover ~ .header {
+  --angleX: -0.2157339662deg;
+  --angleY: 0deg;
+  --positionX: 52.5vw;
+  --positionY: 37.5vw;
+}
+
+.cell-header:nth-child(n+152):nth-child(-n+152) {
+  left: 50vw;
+  top: 35vh;
+}
+
+.cell-header:nth-child(n+153):nth-child(-n+153):hover ~ .header {
+  --angleX: -0.2157339662deg;
+  --angleY: 0.0086293586deg;
+  --positionX: 57.5vw;
+  --positionY: 37.5vw;
+}
+
+.cell-header:nth-child(n+153):nth-child(-n+153) {
+  left: 55vw;
+  top: 35vh;
+}
+
+.cell-header:nth-child(n+154):nth-child(-n+154):hover ~ .header {
+  --angleX: -0.2157339662deg;
+  --angleY: 0.0172587173deg;
+  --positionX: 62.5vw;
+  --positionY: 37.5vw;
+}
+
+.cell-header:nth-child(n+154):nth-child(-n+154) {
+  left: 60vw;
+  top: 35vh;
+}
+
+.cell-header:nth-child(n+155):nth-child(-n+155):hover ~ .header {
+  --angleX: -0.2157339662deg;
+  --angleY: 0.0258880759deg;
+  --positionX: 67.5vw;
+  --positionY: 37.5vw;
+}
+
+.cell-header:nth-child(n+155):nth-child(-n+155) {
+  left: 65vw;
+  top: 35vh;
+}
+
+.cell-header:nth-child(n+156):nth-child(-n+156):hover ~ .header {
+  --angleX: -0.2157339662deg;
+  --angleY: 0.0345174346deg;
+  --positionX: 72.5vw;
+  --positionY: 37.5vw;
+}
+
+.cell-header:nth-child(n+156):nth-child(-n+156) {
+  left: 70vw;
+  top: 35vh;
+}
+
+.cell-header:nth-child(n+157):nth-child(-n+157):hover ~ .header {
+  --angleX: -0.2157339662deg;
+  --angleY: 0.0431467932deg;
+  --positionX: 77.5vw;
+  --positionY: 37.5vw;
+}
+
+.cell-header:nth-child(n+157):nth-child(-n+157) {
+  left: 75vw;
+  top: 35vh;
+}
+
+.cell-header:nth-child(n+158):nth-child(-n+158):hover ~ .header {
+  --angleX: -0.2157339662deg;
+  --angleY: 0.0517761519deg;
+  --positionX: 82.5vw;
+  --positionY: 37.5vw;
+}
+
+.cell-header:nth-child(n+158):nth-child(-n+158) {
+  left: 80vw;
+  top: 35vh;
+}
+
+.cell-header:nth-child(n+159):nth-child(-n+159):hover ~ .header {
+  --angleX: -0.2157339662deg;
+  --angleY: 0.0604055105deg;
+  --positionX: 87.5vw;
+  --positionY: 37.5vw;
+}
+
+.cell-header:nth-child(n+159):nth-child(-n+159) {
+  left: 85vw;
+  top: 35vh;
+}
+
+.cell-header:nth-child(n+160):nth-child(-n+160):hover ~ .header {
+  --angleX: -0.2157339662deg;
+  --angleY: 0.0690348692deg;
+  --positionX: 92.5vw;
+  --positionY: 37.5vw;
+}
+
+.cell-header:nth-child(n+160):nth-child(-n+160) {
+  left: 90vw;
+  top: 35vh;
+}
+
+.cell-header:nth-child(n+161):nth-child(-n+161):hover ~ .header {
+  --angleX: -0.2157339662deg;
+  --angleY: 0.0776642278deg;
+  --positionX: 97.5vw;
+  --positionY: 37.5vw;
+}
+
+.cell-header:nth-child(n+161):nth-child(-n+161) {
+  left: 95vw;
+  top: 35vh;
+}
+
+.cell-header:nth-child(n+162):nth-child(-n+162):hover ~ .header {
+  --angleX: -0.1222866119deg;
+  --angleY: -0.040762204deg;
+  --positionX: 2.5vw;
+  --positionY: 42.5vw;
+}
+
+.cell-header:nth-child(n+162):nth-child(-n+162) {
+  left: 0vw;
+  top: 40vh;
+}
+
+.cell-header:nth-child(n+163):nth-child(-n+163):hover ~ .header {
+  --angleX: -0.1222866119deg;
+  --angleY: -0.0366859836deg;
+  --positionX: 7.5vw;
+  --positionY: 42.5vw;
+}
+
+.cell-header:nth-child(n+163):nth-child(-n+163) {
+  left: 5vw;
+  top: 40vh;
+}
+
+.cell-header:nth-child(n+164):nth-child(-n+164):hover ~ .header {
+  --angleX: -0.1222866119deg;
+  --angleY: -0.0326097632deg;
+  --positionX: 12.5vw;
+  --positionY: 42.5vw;
+}
+
+.cell-header:nth-child(n+164):nth-child(-n+164) {
+  left: 10vw;
+  top: 40vh;
+}
+
+.cell-header:nth-child(n+165):nth-child(-n+165):hover ~ .header {
+  --angleX: -0.1222866119deg;
+  --angleY: -0.0285335428deg;
+  --positionX: 17.5vw;
+  --positionY: 42.5vw;
+}
+
+.cell-header:nth-child(n+165):nth-child(-n+165) {
+  left: 15vw;
+  top: 40vh;
+}
+
+.cell-header:nth-child(n+166):nth-child(-n+166):hover ~ .header {
+  --angleX: -0.1222866119deg;
+  --angleY: -0.0244573224deg;
+  --positionX: 22.5vw;
+  --positionY: 42.5vw;
+}
+
+.cell-header:nth-child(n+166):nth-child(-n+166) {
+  left: 20vw;
+  top: 40vh;
+}
+
+.cell-header:nth-child(n+167):nth-child(-n+167):hover ~ .header {
+  --angleX: -0.1222866119deg;
+  --angleY: -0.020381102deg;
+  --positionX: 27.5vw;
+  --positionY: 42.5vw;
+}
+
+.cell-header:nth-child(n+167):nth-child(-n+167) {
+  left: 25vw;
+  top: 40vh;
+}
+
+.cell-header:nth-child(n+168):nth-child(-n+168):hover ~ .header {
+  --angleX: -0.1222866119deg;
+  --angleY: -0.0163048816deg;
+  --positionX: 32.5vw;
+  --positionY: 42.5vw;
+}
+
+.cell-header:nth-child(n+168):nth-child(-n+168) {
+  left: 30vw;
+  top: 40vh;
+}
+
+.cell-header:nth-child(n+169):nth-child(-n+169):hover ~ .header {
+  --angleX: -0.1222866119deg;
+  --angleY: -0.0122286612deg;
+  --positionX: 37.5vw;
+  --positionY: 42.5vw;
+}
+
+.cell-header:nth-child(n+169):nth-child(-n+169) {
+  left: 35vw;
+  top: 40vh;
+}
+
+.cell-header:nth-child(n+170):nth-child(-n+170):hover ~ .header {
+  --angleX: -0.1222866119deg;
+  --angleY: -0.0081524408deg;
+  --positionX: 42.5vw;
+  --positionY: 42.5vw;
+}
+
+.cell-header:nth-child(n+170):nth-child(-n+170) {
+  left: 40vw;
+  top: 40vh;
+}
+
+.cell-header:nth-child(n+171):nth-child(-n+171):hover ~ .header {
+  --angleX: -0.1222866119deg;
+  --angleY: -0.0040762204deg;
+  --positionX: 47.5vw;
+  --positionY: 42.5vw;
+}
+
+.cell-header:nth-child(n+171):nth-child(-n+171) {
+  left: 45vw;
+  top: 40vh;
+}
+
+.cell-header:nth-child(n+172):nth-child(-n+172):hover ~ .header {
+  --angleX: -0.1222866119deg;
+  --angleY: 0deg;
+  --positionX: 52.5vw;
+  --positionY: 42.5vw;
+}
+
+.cell-header:nth-child(n+172):nth-child(-n+172) {
+  left: 50vw;
+  top: 40vh;
+}
+
+.cell-header:nth-child(n+173):nth-child(-n+173):hover ~ .header {
+  --angleX: -0.1222866119deg;
+  --angleY: 0.0040762204deg;
+  --positionX: 57.5vw;
+  --positionY: 42.5vw;
+}
+
+.cell-header:nth-child(n+173):nth-child(-n+173) {
+  left: 55vw;
+  top: 40vh;
+}
+
+.cell-header:nth-child(n+174):nth-child(-n+174):hover ~ .header {
+  --angleX: -0.1222866119deg;
+  --angleY: 0.0081524408deg;
+  --positionX: 62.5vw;
+  --positionY: 42.5vw;
+}
+
+.cell-header:nth-child(n+174):nth-child(-n+174) {
+  left: 60vw;
+  top: 40vh;
+}
+
+.cell-header:nth-child(n+175):nth-child(-n+175):hover ~ .header {
+  --angleX: -0.1222866119deg;
+  --angleY: 0.0122286612deg;
+  --positionX: 67.5vw;
+  --positionY: 42.5vw;
+}
+
+.cell-header:nth-child(n+175):nth-child(-n+175) {
+  left: 65vw;
+  top: 40vh;
+}
+
+.cell-header:nth-child(n+176):nth-child(-n+176):hover ~ .header {
+  --angleX: -0.1222866119deg;
+  --angleY: 0.0163048816deg;
+  --positionX: 72.5vw;
+  --positionY: 42.5vw;
+}
+
+.cell-header:nth-child(n+176):nth-child(-n+176) {
+  left: 70vw;
+  top: 40vh;
+}
+
+.cell-header:nth-child(n+177):nth-child(-n+177):hover ~ .header {
+  --angleX: -0.1222866119deg;
+  --angleY: 0.020381102deg;
+  --positionX: 77.5vw;
+  --positionY: 42.5vw;
+}
+
+.cell-header:nth-child(n+177):nth-child(-n+177) {
+  left: 75vw;
+  top: 40vh;
+}
+
+.cell-header:nth-child(n+178):nth-child(-n+178):hover ~ .header {
+  --angleX: -0.1222866119deg;
+  --angleY: 0.0244573224deg;
+  --positionX: 82.5vw;
+  --positionY: 42.5vw;
+}
+
+.cell-header:nth-child(n+178):nth-child(-n+178) {
+  left: 80vw;
+  top: 40vh;
+}
+
+.cell-header:nth-child(n+179):nth-child(-n+179):hover ~ .header {
+  --angleX: -0.1222866119deg;
+  --angleY: 0.0285335428deg;
+  --positionX: 87.5vw;
+  --positionY: 42.5vw;
+}
+
+.cell-header:nth-child(n+179):nth-child(-n+179) {
+  left: 85vw;
+  top: 40vh;
+}
+
+.cell-header:nth-child(n+180):nth-child(-n+180):hover ~ .header {
+  --angleX: -0.1222866119deg;
+  --angleY: 0.0326097632deg;
+  --positionX: 92.5vw;
+  --positionY: 42.5vw;
+}
+
+.cell-header:nth-child(n+180):nth-child(-n+180) {
+  left: 90vw;
+  top: 40vh;
+}
+
+.cell-header:nth-child(n+181):nth-child(-n+181):hover ~ .header {
+  --angleX: -0.1222866119deg;
+  --angleY: 0.0366859836deg;
+  --positionX: 97.5vw;
+  --positionY: 42.5vw;
+}
+
+.cell-header:nth-child(n+181):nth-child(-n+181) {
+  left: 95vw;
+  top: 40vh;
+}
+
+.cell-header:nth-child(n+182):nth-child(-n+182):hover ~ .header {
+  --angleX: -0.0609783112deg;
+  --angleY: -0.0174223746deg;
+  --positionX: 2.5vw;
+  --positionY: 47.5vw;
+}
+
+.cell-header:nth-child(n+182):nth-child(-n+182) {
+  left: 0vw;
+  top: 45vh;
+}
+
+.cell-header:nth-child(n+183):nth-child(-n+183):hover ~ .header {
+  --angleX: -0.0609783112deg;
+  --angleY: -0.0156801372deg;
+  --positionX: 7.5vw;
+  --positionY: 47.5vw;
+}
+
+.cell-header:nth-child(n+183):nth-child(-n+183) {
+  left: 5vw;
+  top: 45vh;
+}
+
+.cell-header:nth-child(n+184):nth-child(-n+184):hover ~ .header {
+  --angleX: -0.0609783112deg;
+  --angleY: -0.0139378997deg;
+  --positionX: 12.5vw;
+  --positionY: 47.5vw;
+}
+
+.cell-header:nth-child(n+184):nth-child(-n+184) {
+  left: 10vw;
+  top: 45vh;
+}
+
+.cell-header:nth-child(n+185):nth-child(-n+185):hover ~ .header {
+  --angleX: -0.0609783112deg;
+  --angleY: -0.0121956622deg;
+  --positionX: 17.5vw;
+  --positionY: 47.5vw;
+}
+
+.cell-header:nth-child(n+185):nth-child(-n+185) {
+  left: 15vw;
+  top: 45vh;
+}
+
+.cell-header:nth-child(n+186):nth-child(-n+186):hover ~ .header {
+  --angleX: -0.0609783112deg;
+  --angleY: -0.0104534248deg;
+  --positionX: 22.5vw;
+  --positionY: 47.5vw;
+}
+
+.cell-header:nth-child(n+186):nth-child(-n+186) {
+  left: 20vw;
+  top: 45vh;
+}
+
+.cell-header:nth-child(n+187):nth-child(-n+187):hover ~ .header {
+  --angleX: -0.0609783112deg;
+  --angleY: -0.0087111873deg;
+  --positionX: 27.5vw;
+  --positionY: 47.5vw;
+}
+
+.cell-header:nth-child(n+187):nth-child(-n+187) {
+  left: 25vw;
+  top: 45vh;
+}
+
+.cell-header:nth-child(n+188):nth-child(-n+188):hover ~ .header {
+  --angleX: -0.0609783112deg;
+  --angleY: -0.0069689499deg;
+  --positionX: 32.5vw;
+  --positionY: 47.5vw;
+}
+
+.cell-header:nth-child(n+188):nth-child(-n+188) {
+  left: 30vw;
+  top: 45vh;
+}
+
+.cell-header:nth-child(n+189):nth-child(-n+189):hover ~ .header {
+  --angleX: -0.0609783112deg;
+  --angleY: -0.0052267124deg;
+  --positionX: 37.5vw;
+  --positionY: 47.5vw;
+}
+
+.cell-header:nth-child(n+189):nth-child(-n+189) {
+  left: 35vw;
+  top: 45vh;
+}
+
+.cell-header:nth-child(n+190):nth-child(-n+190):hover ~ .header {
+  --angleX: -0.0609783112deg;
+  --angleY: -0.0034844749deg;
+  --positionX: 42.5vw;
+  --positionY: 47.5vw;
+}
+
+.cell-header:nth-child(n+190):nth-child(-n+190) {
+  left: 40vw;
+  top: 45vh;
+}
+
+.cell-header:nth-child(n+191):nth-child(-n+191):hover ~ .header {
+  --angleX: -0.0609783112deg;
+  --angleY: -0.0017422375deg;
+  --positionX: 47.5vw;
+  --positionY: 47.5vw;
+}
+
+.cell-header:nth-child(n+191):nth-child(-n+191) {
+  left: 45vw;
+  top: 45vh;
+}
+
+.cell-header:nth-child(n+192):nth-child(-n+192):hover ~ .header {
+  --angleX: -0.0609783112deg;
+  --angleY: 0deg;
+  --positionX: 52.5vw;
+  --positionY: 47.5vw;
+}
+
+.cell-header:nth-child(n+192):nth-child(-n+192) {
+  left: 50vw;
+  top: 45vh;
+}
+
+.cell-header:nth-child(n+193):nth-child(-n+193):hover ~ .header {
+  --angleX: -0.0609783112deg;
+  --angleY: 0.0017422375deg;
+  --positionX: 57.5vw;
+  --positionY: 47.5vw;
+}
+
+.cell-header:nth-child(n+193):nth-child(-n+193) {
+  left: 55vw;
+  top: 45vh;
+}
+
+.cell-header:nth-child(n+194):nth-child(-n+194):hover ~ .header {
+  --angleX: -0.0609783112deg;
+  --angleY: 0.0034844749deg;
+  --positionX: 62.5vw;
+  --positionY: 47.5vw;
+}
+
+.cell-header:nth-child(n+194):nth-child(-n+194) {
+  left: 60vw;
+  top: 45vh;
+}
+
+.cell-header:nth-child(n+195):nth-child(-n+195):hover ~ .header {
+  --angleX: -0.0609783112deg;
+  --angleY: 0.0052267124deg;
+  --positionX: 67.5vw;
+  --positionY: 47.5vw;
+}
+
+.cell-header:nth-child(n+195):nth-child(-n+195) {
+  left: 65vw;
+  top: 45vh;
+}
+
+.cell-header:nth-child(n+196):nth-child(-n+196):hover ~ .header {
+  --angleX: -0.0609783112deg;
+  --angleY: 0.0069689499deg;
+  --positionX: 72.5vw;
+  --positionY: 47.5vw;
+}
+
+.cell-header:nth-child(n+196):nth-child(-n+196) {
+  left: 70vw;
+  top: 45vh;
+}
+
+.cell-header:nth-child(n+197):nth-child(-n+197):hover ~ .header {
+  --angleX: -0.0609783112deg;
+  --angleY: 0.0087111873deg;
+  --positionX: 77.5vw;
+  --positionY: 47.5vw;
+}
+
+.cell-header:nth-child(n+197):nth-child(-n+197) {
+  left: 75vw;
+  top: 45vh;
+}
+
+.cell-header:nth-child(n+198):nth-child(-n+198):hover ~ .header {
+  --angleX: -0.0609783112deg;
+  --angleY: 0.0104534248deg;
+  --positionX: 82.5vw;
+  --positionY: 47.5vw;
+}
+
+.cell-header:nth-child(n+198):nth-child(-n+198) {
+  left: 80vw;
+  top: 45vh;
+}
+
+.cell-header:nth-child(n+199):nth-child(-n+199):hover ~ .header {
+  --angleX: -0.0609783112deg;
+  --angleY: 0.0121956622deg;
+  --positionX: 87.5vw;
+  --positionY: 47.5vw;
+}
+
+.cell-header:nth-child(n+199):nth-child(-n+199) {
+  left: 85vw;
+  top: 45vh;
+}
+
+.cell-header:nth-child(n+200):nth-child(-n+200):hover ~ .header {
+  --angleX: -0.0609783112deg;
+  --angleY: 0.0139378997deg;
+  --positionX: 92.5vw;
+  --positionY: 47.5vw;
+}
+
+.cell-header:nth-child(n+200):nth-child(-n+200) {
+  left: 90vw;
+  top: 45vh;
+}
+
+.cell-header:nth-child(n+201):nth-child(-n+201):hover ~ .header {
+  --angleX: -0.0609783112deg;
+  --angleY: 0.0156801372deg;
+  --positionX: 97.5vw;
+  --positionY: 47.5vw;
+}
+
+.cell-header:nth-child(n+201):nth-child(-n+201) {
+  left: 95vw;
+  top: 45vh;
+}
+
+.cell-header:nth-child(n+202):nth-child(-n+202):hover ~ .header {
+  --angleX: -0.026951788deg;
+  --angleY: -0.006737947deg;
+  --positionX: 2.5vw;
+  --positionY: 52.5vw;
+}
+
+.cell-header:nth-child(n+202):nth-child(-n+202) {
+  left: 0vw;
+  top: 50vh;
+}
+
+.cell-header:nth-child(n+203):nth-child(-n+203):hover ~ .header {
+  --angleX: -0.026951788deg;
+  --angleY: -0.0060641523deg;
+  --positionX: 7.5vw;
+  --positionY: 52.5vw;
+}
+
+.cell-header:nth-child(n+203):nth-child(-n+203) {
+  left: 5vw;
+  top: 50vh;
+}
+
+.cell-header:nth-child(n+204):nth-child(-n+204):hover ~ .header {
+  --angleX: -0.026951788deg;
+  --angleY: -0.0053903576deg;
+  --positionX: 12.5vw;
+  --positionY: 52.5vw;
+}
+
+.cell-header:nth-child(n+204):nth-child(-n+204) {
+  left: 10vw;
+  top: 50vh;
+}
+
+.cell-header:nth-child(n+205):nth-child(-n+205):hover ~ .header {
+  --angleX: -0.026951788deg;
+  --angleY: -0.0047165629deg;
+  --positionX: 17.5vw;
+  --positionY: 52.5vw;
+}
+
+.cell-header:nth-child(n+205):nth-child(-n+205) {
+  left: 15vw;
+  top: 50vh;
+}
+
+.cell-header:nth-child(n+206):nth-child(-n+206):hover ~ .header {
+  --angleX: -0.026951788deg;
+  --angleY: -0.0040427682deg;
+  --positionX: 22.5vw;
+  --positionY: 52.5vw;
+}
+
+.cell-header:nth-child(n+206):nth-child(-n+206) {
+  left: 20vw;
+  top: 50vh;
+}
+
+.cell-header:nth-child(n+207):nth-child(-n+207):hover ~ .header {
+  --angleX: -0.026951788deg;
+  --angleY: -0.0033689735deg;
+  --positionX: 27.5vw;
+  --positionY: 52.5vw;
+}
+
+.cell-header:nth-child(n+207):nth-child(-n+207) {
+  left: 25vw;
+  top: 50vh;
+}
+
+.cell-header:nth-child(n+208):nth-child(-n+208):hover ~ .header {
+  --angleX: -0.026951788deg;
+  --angleY: -0.0026951788deg;
+  --positionX: 32.5vw;
+  --positionY: 52.5vw;
+}
+
+.cell-header:nth-child(n+208):nth-child(-n+208) {
+  left: 30vw;
+  top: 50vh;
+}
+
+.cell-header:nth-child(n+209):nth-child(-n+209):hover ~ .header {
+  --angleX: -0.026951788deg;
+  --angleY: -0.0020213841deg;
+  --positionX: 37.5vw;
+  --positionY: 52.5vw;
+}
+
+.cell-header:nth-child(n+209):nth-child(-n+209) {
+  left: 35vw;
+  top: 50vh;
+}
+
+.cell-header:nth-child(n+210):nth-child(-n+210):hover ~ .header {
+  --angleX: -0.026951788deg;
+  --angleY: -0.0013475894deg;
+  --positionX: 42.5vw;
+  --positionY: 52.5vw;
+}
+
+.cell-header:nth-child(n+210):nth-child(-n+210) {
+  left: 40vw;
+  top: 50vh;
+}
+
+.cell-header:nth-child(n+211):nth-child(-n+211):hover ~ .header {
+  --angleX: -0.026951788deg;
+  --angleY: -0.0006737947deg;
+  --positionX: 47.5vw;
+  --positionY: 52.5vw;
+}
+
+.cell-header:nth-child(n+211):nth-child(-n+211) {
+  left: 45vw;
+  top: 50vh;
+}
+
+.cell-header:nth-child(n+212):nth-child(-n+212):hover ~ .header {
+  --angleX: -0.026951788deg;
+  --angleY: 0deg;
+  --positionX: 52.5vw;
+  --positionY: 52.5vw;
+}
+
+.cell-header:nth-child(n+212):nth-child(-n+212) {
+  left: 50vw;
+  top: 50vh;
+}
+
+.cell-header:nth-child(n+213):nth-child(-n+213):hover ~ .header {
+  --angleX: -0.026951788deg;
+  --angleY: 0.0006737947deg;
+  --positionX: 57.5vw;
+  --positionY: 52.5vw;
+}
+
+.cell-header:nth-child(n+213):nth-child(-n+213) {
+  left: 55vw;
+  top: 50vh;
+}
+
+.cell-header:nth-child(n+214):nth-child(-n+214):hover ~ .header {
+  --angleX: -0.026951788deg;
+  --angleY: 0.0013475894deg;
+  --positionX: 62.5vw;
+  --positionY: 52.5vw;
+}
+
+.cell-header:nth-child(n+214):nth-child(-n+214) {
+  left: 60vw;
+  top: 50vh;
+}
+
+.cell-header:nth-child(n+215):nth-child(-n+215):hover ~ .header {
+  --angleX: -0.026951788deg;
+  --angleY: 0.0020213841deg;
+  --positionX: 67.5vw;
+  --positionY: 52.5vw;
+}
+
+.cell-header:nth-child(n+215):nth-child(-n+215) {
+  left: 65vw;
+  top: 50vh;
+}
+
+.cell-header:nth-child(n+216):nth-child(-n+216):hover ~ .header {
+  --angleX: -0.026951788deg;
+  --angleY: 0.0026951788deg;
+  --positionX: 72.5vw;
+  --positionY: 52.5vw;
+}
+
+.cell-header:nth-child(n+216):nth-child(-n+216) {
+  left: 70vw;
+  top: 50vh;
+}
+
+.cell-header:nth-child(n+217):nth-child(-n+217):hover ~ .header {
+  --angleX: -0.026951788deg;
+  --angleY: 0.0033689735deg;
+  --positionX: 77.5vw;
+  --positionY: 52.5vw;
+}
+
+.cell-header:nth-child(n+217):nth-child(-n+217) {
+  left: 75vw;
+  top: 50vh;
+}
+
+.cell-header:nth-child(n+218):nth-child(-n+218):hover ~ .header {
+  --angleX: -0.026951788deg;
+  --angleY: 0.0040427682deg;
+  --positionX: 82.5vw;
+  --positionY: 52.5vw;
+}
+
+.cell-header:nth-child(n+218):nth-child(-n+218) {
+  left: 80vw;
+  top: 50vh;
+}
+
+.cell-header:nth-child(n+219):nth-child(-n+219):hover ~ .header {
+  --angleX: -0.026951788deg;
+  --angleY: 0.0047165629deg;
+  --positionX: 87.5vw;
+  --positionY: 52.5vw;
+}
+
+.cell-header:nth-child(n+219):nth-child(-n+219) {
+  left: 85vw;
+  top: 50vh;
+}
+
+.cell-header:nth-child(n+220):nth-child(-n+220):hover ~ .header {
+  --angleX: -0.026951788deg;
+  --angleY: 0.0053903576deg;
+  --positionX: 92.5vw;
+  --positionY: 52.5vw;
+}
+
+.cell-header:nth-child(n+220):nth-child(-n+220) {
+  left: 90vw;
+  top: 50vh;
+}
+
+.cell-header:nth-child(n+221):nth-child(-n+221):hover ~ .header {
+  --angleX: -0.026951788deg;
+  --angleY: 0.0060641523deg;
+  --positionX: 97.5vw;
+  --positionY: 52.5vw;
+}
+
+.cell-header:nth-child(n+221):nth-child(-n+221) {
+  left: 95vw;
+  top: 50vh;
+}
+
+.cell-header:nth-child(n+222):nth-child(-n+222):hover ~ .header {
+  --angleX: -0.010610379deg;
+  --angleY: -0.002357862deg;
+  --positionX: 2.5vw;
+  --positionY: 57.5vw;
+}
+
+.cell-header:nth-child(n+222):nth-child(-n+222) {
+  left: 0vw;
+  top: 55vh;
+}
+
+.cell-header:nth-child(n+223):nth-child(-n+223):hover ~ .header {
+  --angleX: -0.010610379deg;
+  --angleY: -0.0021220758deg;
+  --positionX: 7.5vw;
+  --positionY: 57.5vw;
+}
+
+.cell-header:nth-child(n+223):nth-child(-n+223) {
+  left: 5vw;
+  top: 55vh;
+}
+
+.cell-header:nth-child(n+224):nth-child(-n+224):hover ~ .header {
+  --angleX: -0.010610379deg;
+  --angleY: -0.0018862896deg;
+  --positionX: 12.5vw;
+  --positionY: 57.5vw;
+}
+
+.cell-header:nth-child(n+224):nth-child(-n+224) {
+  left: 10vw;
+  top: 55vh;
+}
+
+.cell-header:nth-child(n+225):nth-child(-n+225):hover ~ .header {
+  --angleX: -0.010610379deg;
+  --angleY: -0.0016505034deg;
+  --positionX: 17.5vw;
+  --positionY: 57.5vw;
+}
+
+.cell-header:nth-child(n+225):nth-child(-n+225) {
+  left: 15vw;
+  top: 55vh;
+}
+
+.cell-header:nth-child(n+226):nth-child(-n+226):hover ~ .header {
+  --angleX: -0.010610379deg;
+  --angleY: -0.0014147172deg;
+  --positionX: 22.5vw;
+  --positionY: 57.5vw;
+}
+
+.cell-header:nth-child(n+226):nth-child(-n+226) {
+  left: 20vw;
+  top: 55vh;
+}
+
+.cell-header:nth-child(n+227):nth-child(-n+227):hover ~ .header {
+  --angleX: -0.010610379deg;
+  --angleY: -0.001178931deg;
+  --positionX: 27.5vw;
+  --positionY: 57.5vw;
+}
+
+.cell-header:nth-child(n+227):nth-child(-n+227) {
+  left: 25vw;
+  top: 55vh;
+}
+
+.cell-header:nth-child(n+228):nth-child(-n+228):hover ~ .header {
+  --angleX: -0.010610379deg;
+  --angleY: -0.0009431448deg;
+  --positionX: 32.5vw;
+  --positionY: 57.5vw;
+}
+
+.cell-header:nth-child(n+228):nth-child(-n+228) {
+  left: 30vw;
+  top: 55vh;
+}
+
+.cell-header:nth-child(n+229):nth-child(-n+229):hover ~ .header {
+  --angleX: -0.010610379deg;
+  --angleY: -0.0007073586deg;
+  --positionX: 37.5vw;
+  --positionY: 57.5vw;
+}
+
+.cell-header:nth-child(n+229):nth-child(-n+229) {
+  left: 35vw;
+  top: 55vh;
+}
+
+.cell-header:nth-child(n+230):nth-child(-n+230):hover ~ .header {
+  --angleX: -0.010610379deg;
+  --angleY: -0.0004715724deg;
+  --positionX: 42.5vw;
+  --positionY: 57.5vw;
+}
+
+.cell-header:nth-child(n+230):nth-child(-n+230) {
+  left: 40vw;
+  top: 55vh;
+}
+
+.cell-header:nth-child(n+231):nth-child(-n+231):hover ~ .header {
+  --angleX: -0.010610379deg;
+  --angleY: -0.0002357862deg;
+  --positionX: 47.5vw;
+  --positionY: 57.5vw;
+}
+
+.cell-header:nth-child(n+231):nth-child(-n+231) {
+  left: 45vw;
+  top: 55vh;
+}
+
+.cell-header:nth-child(n+232):nth-child(-n+232):hover ~ .header {
+  --angleX: -0.010610379deg;
+  --angleY: 0deg;
+  --positionX: 52.5vw;
+  --positionY: 57.5vw;
+}
+
+.cell-header:nth-child(n+232):nth-child(-n+232) {
+  left: 50vw;
+  top: 55vh;
+}
+
+.cell-header:nth-child(n+233):nth-child(-n+233):hover ~ .header {
+  --angleX: -0.010610379deg;
+  --angleY: 0.0002357862deg;
+  --positionX: 57.5vw;
+  --positionY: 57.5vw;
+}
+
+.cell-header:nth-child(n+233):nth-child(-n+233) {
+  left: 55vw;
+  top: 55vh;
+}
+
+.cell-header:nth-child(n+234):nth-child(-n+234):hover ~ .header {
+  --angleX: -0.010610379deg;
+  --angleY: 0.0004715724deg;
+  --positionX: 62.5vw;
+  --positionY: 57.5vw;
+}
+
+.cell-header:nth-child(n+234):nth-child(-n+234) {
+  left: 60vw;
+  top: 55vh;
+}
+
+.cell-header:nth-child(n+235):nth-child(-n+235):hover ~ .header {
+  --angleX: -0.010610379deg;
+  --angleY: 0.0007073586deg;
+  --positionX: 67.5vw;
+  --positionY: 57.5vw;
+}
+
+.cell-header:nth-child(n+235):nth-child(-n+235) {
+  left: 65vw;
+  top: 55vh;
+}
+
+.cell-header:nth-child(n+236):nth-child(-n+236):hover ~ .header {
+  --angleX: -0.010610379deg;
+  --angleY: 0.0009431448deg;
+  --positionX: 72.5vw;
+  --positionY: 57.5vw;
+}
+
+.cell-header:nth-child(n+236):nth-child(-n+236) {
+  left: 70vw;
+  top: 55vh;
+}
+
+.cell-header:nth-child(n+237):nth-child(-n+237):hover ~ .header {
+  --angleX: -0.010610379deg;
+  --angleY: 0.001178931deg;
+  --positionX: 77.5vw;
+  --positionY: 57.5vw;
+}
+
+.cell-header:nth-child(n+237):nth-child(-n+237) {
+  left: 75vw;
+  top: 55vh;
+}
+
+.cell-header:nth-child(n+238):nth-child(-n+238):hover ~ .header {
+  --angleX: -0.010610379deg;
+  --angleY: 0.0014147172deg;
+  --positionX: 82.5vw;
+  --positionY: 57.5vw;
+}
+
+.cell-header:nth-child(n+238):nth-child(-n+238) {
+  left: 80vw;
+  top: 55vh;
+}
+
+.cell-header:nth-child(n+239):nth-child(-n+239):hover ~ .header {
+  --angleX: -0.010610379deg;
+  --angleY: 0.0016505034deg;
+  --positionX: 87.5vw;
+  --positionY: 57.5vw;
+}
+
+.cell-header:nth-child(n+239):nth-child(-n+239) {
+  left: 85vw;
+  top: 55vh;
+}
+
+.cell-header:nth-child(n+240):nth-child(-n+240):hover ~ .header {
+  --angleX: -0.010610379deg;
+  --angleY: 0.0018862896deg;
+  --positionX: 92.5vw;
+  --positionY: 57.5vw;
+}
+
+.cell-header:nth-child(n+240):nth-child(-n+240) {
+  left: 90vw;
+  top: 55vh;
+}
+
+.cell-header:nth-child(n+241):nth-child(-n+241):hover ~ .header {
+  --angleX: -0.010610379deg;
+  --angleY: 0.0021220758deg;
+  --positionX: 97.5vw;
+  --positionY: 57.5vw;
+}
+
+.cell-header:nth-child(n+241):nth-child(-n+241) {
+  left: 95vw;
+  top: 55vh;
+}
+
+.cell-header:nth-child(n+242):nth-child(-n+242):hover ~ .header {
+  --angleX: -0.003732929deg;
+  --angleY: -0.0007465858deg;
+  --positionX: 2.5vw;
+  --positionY: 62.5vw;
+}
+
+.cell-header:nth-child(n+242):nth-child(-n+242) {
+  left: 0vw;
+  top: 60vh;
+}
+
+.cell-header:nth-child(n+243):nth-child(-n+243):hover ~ .header {
+  --angleX: -0.003732929deg;
+  --angleY: -0.0006719272deg;
+  --positionX: 7.5vw;
+  --positionY: 62.5vw;
+}
+
+.cell-header:nth-child(n+243):nth-child(-n+243) {
+  left: 5vw;
+  top: 60vh;
+}
+
+.cell-header:nth-child(n+244):nth-child(-n+244):hover ~ .header {
+  --angleX: -0.003732929deg;
+  --angleY: -0.0005972686deg;
+  --positionX: 12.5vw;
+  --positionY: 62.5vw;
+}
+
+.cell-header:nth-child(n+244):nth-child(-n+244) {
+  left: 10vw;
+  top: 60vh;
+}
+
+.cell-header:nth-child(n+245):nth-child(-n+245):hover ~ .header {
+  --angleX: -0.003732929deg;
+  --angleY: -0.0005226101deg;
+  --positionX: 17.5vw;
+  --positionY: 62.5vw;
+}
+
+.cell-header:nth-child(n+245):nth-child(-n+245) {
+  left: 15vw;
+  top: 60vh;
+}
+
+.cell-header:nth-child(n+246):nth-child(-n+246):hover ~ .header {
+  --angleX: -0.003732929deg;
+  --angleY: -0.0004479515deg;
+  --positionX: 22.5vw;
+  --positionY: 62.5vw;
+}
+
+.cell-header:nth-child(n+246):nth-child(-n+246) {
+  left: 20vw;
+  top: 60vh;
+}
+
+.cell-header:nth-child(n+247):nth-child(-n+247):hover ~ .header {
+  --angleX: -0.003732929deg;
+  --angleY: -0.0003732929deg;
+  --positionX: 27.5vw;
+  --positionY: 62.5vw;
+}
+
+.cell-header:nth-child(n+247):nth-child(-n+247) {
+  left: 25vw;
+  top: 60vh;
+}
+
+.cell-header:nth-child(n+248):nth-child(-n+248):hover ~ .header {
+  --angleX: -0.003732929deg;
+  --angleY: -0.0002986343deg;
+  --positionX: 32.5vw;
+  --positionY: 62.5vw;
+}
+
+.cell-header:nth-child(n+248):nth-child(-n+248) {
+  left: 30vw;
+  top: 60vh;
+}
+
+.cell-header:nth-child(n+249):nth-child(-n+249):hover ~ .header {
+  --angleX: -0.003732929deg;
+  --angleY: -0.0002239757deg;
+  --positionX: 37.5vw;
+  --positionY: 62.5vw;
+}
+
+.cell-header:nth-child(n+249):nth-child(-n+249) {
+  left: 35vw;
+  top: 60vh;
+}
+
+.cell-header:nth-child(n+250):nth-child(-n+250):hover ~ .header {
+  --angleX: -0.003732929deg;
+  --angleY: -0.0001493172deg;
+  --positionX: 42.5vw;
+  --positionY: 62.5vw;
+}
+
+.cell-header:nth-child(n+250):nth-child(-n+250) {
+  left: 40vw;
+  top: 60vh;
+}
+
+.cell-header:nth-child(n+251):nth-child(-n+251):hover ~ .header {
+  --angleX: -0.003732929deg;
+  --angleY: -0.0000746586deg;
+  --positionX: 47.5vw;
+  --positionY: 62.5vw;
+}
+
+.cell-header:nth-child(n+251):nth-child(-n+251) {
+  left: 45vw;
+  top: 60vh;
+}
+
+.cell-header:nth-child(n+252):nth-child(-n+252):hover ~ .header {
+  --angleX: -0.003732929deg;
+  --angleY: 0deg;
+  --positionX: 52.5vw;
+  --positionY: 62.5vw;
+}
+
+.cell-header:nth-child(n+252):nth-child(-n+252) {
+  left: 50vw;
+  top: 60vh;
+}
+
+.cell-header:nth-child(n+253):nth-child(-n+253):hover ~ .header {
+  --angleX: -0.003732929deg;
+  --angleY: 0.0000746586deg;
+  --positionX: 57.5vw;
+  --positionY: 62.5vw;
+}
+
+.cell-header:nth-child(n+253):nth-child(-n+253) {
+  left: 55vw;
+  top: 60vh;
+}
+
+.cell-header:nth-child(n+254):nth-child(-n+254):hover ~ .header {
+  --angleX: -0.003732929deg;
+  --angleY: 0.0001493172deg;
+  --positionX: 62.5vw;
+  --positionY: 62.5vw;
+}
+
+.cell-header:nth-child(n+254):nth-child(-n+254) {
+  left: 60vw;
+  top: 60vh;
+}
+
+.cell-header:nth-child(n+255):nth-child(-n+255):hover ~ .header {
+  --angleX: -0.003732929deg;
+  --angleY: 0.0002239757deg;
+  --positionX: 67.5vw;
+  --positionY: 62.5vw;
+}
+
+.cell-header:nth-child(n+255):nth-child(-n+255) {
+  left: 65vw;
+  top: 60vh;
+}
+
+.cell-header:nth-child(n+256):nth-child(-n+256):hover ~ .header {
+  --angleX: -0.003732929deg;
+  --angleY: 0.0002986343deg;
+  --positionX: 72.5vw;
+  --positionY: 62.5vw;
+}
+
+.cell-header:nth-child(n+256):nth-child(-n+256) {
+  left: 70vw;
+  top: 60vh;
+}
+
+.cell-header:nth-child(n+257):nth-child(-n+257):hover ~ .header {
+  --angleX: -0.003732929deg;
+  --angleY: 0.0003732929deg;
+  --positionX: 77.5vw;
+  --positionY: 62.5vw;
+}
+
+.cell-header:nth-child(n+257):nth-child(-n+257) {
+  left: 75vw;
+  top: 60vh;
+}
+
+.cell-header:nth-child(n+258):nth-child(-n+258):hover ~ .header {
+  --angleX: -0.003732929deg;
+  --angleY: 0.0004479515deg;
+  --positionX: 82.5vw;
+  --positionY: 62.5vw;
+}
+
+.cell-header:nth-child(n+258):nth-child(-n+258) {
+  left: 80vw;
+  top: 60vh;
+}
+
+.cell-header:nth-child(n+259):nth-child(-n+259):hover ~ .header {
+  --angleX: -0.003732929deg;
+  --angleY: 0.0005226101deg;
+  --positionX: 87.5vw;
+  --positionY: 62.5vw;
+}
+
+.cell-header:nth-child(n+259):nth-child(-n+259) {
+  left: 85vw;
+  top: 60vh;
+}
+
+.cell-header:nth-child(n+260):nth-child(-n+260):hover ~ .header {
+  --angleX: -0.003732929deg;
+  --angleY: 0.0005972686deg;
+  --positionX: 92.5vw;
+  --positionY: 62.5vw;
+}
+
+.cell-header:nth-child(n+260):nth-child(-n+260) {
+  left: 90vw;
+  top: 60vh;
+}
+
+.cell-header:nth-child(n+261):nth-child(-n+261):hover ~ .header {
+  --angleX: -0.003732929deg;
+  --angleY: 0.0006719272deg;
+  --positionX: 97.5vw;
+  --positionY: 62.5vw;
+}
+
+.cell-header:nth-child(n+261):nth-child(-n+261) {
+  left: 95vw;
+  top: 60vh;
+}
+
+.cell-header:nth-child(n+262):nth-child(-n+262):hover ~ .header {
+  --angleX: -0.0011764523deg;
+  --angleY: -0.0002139004deg;
+  --positionX: 2.5vw;
+  --positionY: 67.5vw;
+}
+
+.cell-header:nth-child(n+262):nth-child(-n+262) {
+  left: 0vw;
+  top: 65vh;
+}
+
+.cell-header:nth-child(n+263):nth-child(-n+263):hover ~ .header {
+  --angleX: -0.0011764523deg;
+  --angleY: -0.0001925104deg;
+  --positionX: 7.5vw;
+  --positionY: 67.5vw;
+}
+
+.cell-header:nth-child(n+263):nth-child(-n+263) {
+  left: 5vw;
+  top: 65vh;
+}
+
+.cell-header:nth-child(n+264):nth-child(-n+264):hover ~ .header {
+  --angleX: -0.0011764523deg;
+  --angleY: -0.0001711203deg;
+  --positionX: 12.5vw;
+  --positionY: 67.5vw;
+}
+
+.cell-header:nth-child(n+264):nth-child(-n+264) {
+  left: 10vw;
+  top: 65vh;
+}
+
+.cell-header:nth-child(n+265):nth-child(-n+265):hover ~ .header {
+  --angleX: -0.0011764523deg;
+  --angleY: -0.0001497303deg;
+  --positionX: 17.5vw;
+  --positionY: 67.5vw;
+}
+
+.cell-header:nth-child(n+265):nth-child(-n+265) {
+  left: 15vw;
+  top: 65vh;
+}
+
+.cell-header:nth-child(n+266):nth-child(-n+266):hover ~ .header {
+  --angleX: -0.0011764523deg;
+  --angleY: -0.0001283402deg;
+  --positionX: 22.5vw;
+  --positionY: 67.5vw;
+}
+
+.cell-header:nth-child(n+266):nth-child(-n+266) {
+  left: 20vw;
+  top: 65vh;
+}
+
+.cell-header:nth-child(n+267):nth-child(-n+267):hover ~ .header {
+  --angleX: -0.0011764523deg;
+  --angleY: -0.0001069502deg;
+  --positionX: 27.5vw;
+  --positionY: 67.5vw;
+}
+
+.cell-header:nth-child(n+267):nth-child(-n+267) {
+  left: 25vw;
+  top: 65vh;
+}
+
+.cell-header:nth-child(n+268):nth-child(-n+268):hover ~ .header {
+  --angleX: -0.0011764523deg;
+  --angleY: -0.0000855602deg;
+  --positionX: 32.5vw;
+  --positionY: 67.5vw;
+}
+
+.cell-header:nth-child(n+268):nth-child(-n+268) {
+  left: 30vw;
+  top: 65vh;
+}
+
+.cell-header:nth-child(n+269):nth-child(-n+269):hover ~ .header {
+  --angleX: -0.0011764523deg;
+  --angleY: -0.0000641701deg;
+  --positionX: 37.5vw;
+  --positionY: 67.5vw;
+}
+
+.cell-header:nth-child(n+269):nth-child(-n+269) {
+  left: 35vw;
+  top: 65vh;
+}
+
+.cell-header:nth-child(n+270):nth-child(-n+270):hover ~ .header {
+  --angleX: -0.0011764523deg;
+  --angleY: -0.0000427801deg;
+  --positionX: 42.5vw;
+  --positionY: 67.5vw;
+}
+
+.cell-header:nth-child(n+270):nth-child(-n+270) {
+  left: 40vw;
+  top: 65vh;
+}
+
+.cell-header:nth-child(n+271):nth-child(-n+271):hover ~ .header {
+  --angleX: -0.0011764523deg;
+  --angleY: -0.00002139deg;
+  --positionX: 47.5vw;
+  --positionY: 67.5vw;
+}
+
+.cell-header:nth-child(n+271):nth-child(-n+271) {
+  left: 45vw;
+  top: 65vh;
+}
+
+.cell-header:nth-child(n+272):nth-child(-n+272):hover ~ .header {
+  --angleX: -0.0011764523deg;
+  --angleY: 0deg;
+  --positionX: 52.5vw;
+  --positionY: 67.5vw;
+}
+
+.cell-header:nth-child(n+272):nth-child(-n+272) {
+  left: 50vw;
+  top: 65vh;
+}
+
+.cell-header:nth-child(n+273):nth-child(-n+273):hover ~ .header {
+  --angleX: -0.0011764523deg;
+  --angleY: 0.00002139deg;
+  --positionX: 57.5vw;
+  --positionY: 67.5vw;
+}
+
+.cell-header:nth-child(n+273):nth-child(-n+273) {
+  left: 55vw;
+  top: 65vh;
+}
+
+.cell-header:nth-child(n+274):nth-child(-n+274):hover ~ .header {
+  --angleX: -0.0011764523deg;
+  --angleY: 0.0000427801deg;
+  --positionX: 62.5vw;
+  --positionY: 67.5vw;
+}
+
+.cell-header:nth-child(n+274):nth-child(-n+274) {
+  left: 60vw;
+  top: 65vh;
+}
+
+.cell-header:nth-child(n+275):nth-child(-n+275):hover ~ .header {
+  --angleX: -0.0011764523deg;
+  --angleY: 0.0000641701deg;
+  --positionX: 67.5vw;
+  --positionY: 67.5vw;
+}
+
+.cell-header:nth-child(n+275):nth-child(-n+275) {
+  left: 65vw;
+  top: 65vh;
+}
+
+.cell-header:nth-child(n+276):nth-child(-n+276):hover ~ .header {
+  --angleX: -0.0011764523deg;
+  --angleY: 0.0000855602deg;
+  --positionX: 72.5vw;
+  --positionY: 67.5vw;
+}
+
+.cell-header:nth-child(n+276):nth-child(-n+276) {
+  left: 70vw;
+  top: 65vh;
+}
+
+.cell-header:nth-child(n+277):nth-child(-n+277):hover ~ .header {
+  --angleX: -0.0011764523deg;
+  --angleY: 0.0001069502deg;
+  --positionX: 77.5vw;
+  --positionY: 67.5vw;
+}
+
+.cell-header:nth-child(n+277):nth-child(-n+277) {
+  left: 75vw;
+  top: 65vh;
+}
+
+.cell-header:nth-child(n+278):nth-child(-n+278):hover ~ .header {
+  --angleX: -0.0011764523deg;
+  --angleY: 0.0001283402deg;
+  --positionX: 82.5vw;
+  --positionY: 67.5vw;
+}
+
+.cell-header:nth-child(n+278):nth-child(-n+278) {
+  left: 80vw;
+  top: 65vh;
+}
+
+.cell-header:nth-child(n+279):nth-child(-n+279):hover ~ .header {
+  --angleX: -0.0011764523deg;
+  --angleY: 0.0001497303deg;
+  --positionX: 87.5vw;
+  --positionY: 67.5vw;
+}
+
+.cell-header:nth-child(n+279):nth-child(-n+279) {
+  left: 85vw;
+  top: 65vh;
+}
+
+.cell-header:nth-child(n+280):nth-child(-n+280):hover ~ .header {
+  --angleX: -0.0011764523deg;
+  --angleY: 0.0001711203deg;
+  --positionX: 92.5vw;
+  --positionY: 67.5vw;
+}
+
+.cell-header:nth-child(n+280):nth-child(-n+280) {
+  left: 90vw;
+  top: 65vh;
+}
+
+.cell-header:nth-child(n+281):nth-child(-n+281):hover ~ .header {
+  --angleX: -0.0011764523deg;
+  --angleY: 0.0001925104deg;
+  --positionX: 97.5vw;
+  --positionY: 67.5vw;
+}
+
+.cell-header:nth-child(n+281):nth-child(-n+281) {
+  left: 95vw;
+  top: 65vh;
+}
+
+.cell-header:nth-child(n+282):nth-child(-n+282):hover ~ .header {
+  --angleX: -0.0003327096deg;
+  --angleY: -0.0000554516deg;
+  --positionX: 2.5vw;
+  --positionY: 72.5vw;
+}
+
+.cell-header:nth-child(n+282):nth-child(-n+282) {
+  left: 0vw;
+  top: 70vh;
+}
+
+.cell-header:nth-child(n+283):nth-child(-n+283):hover ~ .header {
+  --angleX: -0.0003327096deg;
+  --angleY: -0.0000499064deg;
+  --positionX: 7.5vw;
+  --positionY: 72.5vw;
+}
+
+.cell-header:nth-child(n+283):nth-child(-n+283) {
+  left: 5vw;
+  top: 70vh;
+}
+
+.cell-header:nth-child(n+284):nth-child(-n+284):hover ~ .header {
+  --angleX: -0.0003327096deg;
+  --angleY: -0.0000443613deg;
+  --positionX: 12.5vw;
+  --positionY: 72.5vw;
+}
+
+.cell-header:nth-child(n+284):nth-child(-n+284) {
+  left: 10vw;
+  top: 70vh;
+}
+
+.cell-header:nth-child(n+285):nth-child(-n+285):hover ~ .header {
+  --angleX: -0.0003327096deg;
+  --angleY: -0.0000388161deg;
+  --positionX: 17.5vw;
+  --positionY: 72.5vw;
+}
+
+.cell-header:nth-child(n+285):nth-child(-n+285) {
+  left: 15vw;
+  top: 70vh;
+}
+
+.cell-header:nth-child(n+286):nth-child(-n+286):hover ~ .header {
+  --angleX: -0.0003327096deg;
+  --angleY: -0.000033271deg;
+  --positionX: 22.5vw;
+  --positionY: 72.5vw;
+}
+
+.cell-header:nth-child(n+286):nth-child(-n+286) {
+  left: 20vw;
+  top: 70vh;
+}
+
+.cell-header:nth-child(n+287):nth-child(-n+287):hover ~ .header {
+  --angleX: -0.0003327096deg;
+  --angleY: -0.0000277258deg;
+  --positionX: 27.5vw;
+  --positionY: 72.5vw;
+}
+
+.cell-header:nth-child(n+287):nth-child(-n+287) {
+  left: 25vw;
+  top: 70vh;
+}
+
+.cell-header:nth-child(n+288):nth-child(-n+288):hover ~ .header {
+  --angleX: -0.0003327096deg;
+  --angleY: -0.0000221806deg;
+  --positionX: 32.5vw;
+  --positionY: 72.5vw;
+}
+
+.cell-header:nth-child(n+288):nth-child(-n+288) {
+  left: 30vw;
+  top: 70vh;
+}
+
+.cell-header:nth-child(n+289):nth-child(-n+289):hover ~ .header {
+  --angleX: -0.0003327096deg;
+  --angleY: -0.0000166355deg;
+  --positionX: 37.5vw;
+  --positionY: 72.5vw;
+}
+
+.cell-header:nth-child(n+289):nth-child(-n+289) {
+  left: 35vw;
+  top: 70vh;
+}
+
+.cell-header:nth-child(n+290):nth-child(-n+290):hover ~ .header {
+  --angleX: -0.0003327096deg;
+  --angleY: -0.0000110903deg;
+  --positionX: 42.5vw;
+  --positionY: 72.5vw;
+}
+
+.cell-header:nth-child(n+290):nth-child(-n+290) {
+  left: 40vw;
+  top: 70vh;
+}
+
+.cell-header:nth-child(n+291):nth-child(-n+291):hover ~ .header {
+  --angleX: -0.0003327096deg;
+  --angleY: -0.0000055452deg;
+  --positionX: 47.5vw;
+  --positionY: 72.5vw;
+}
+
+.cell-header:nth-child(n+291):nth-child(-n+291) {
+  left: 45vw;
+  top: 70vh;
+}
+
+.cell-header:nth-child(n+292):nth-child(-n+292):hover ~ .header {
+  --angleX: -0.0003327096deg;
+  --angleY: 0deg;
+  --positionX: 52.5vw;
+  --positionY: 72.5vw;
+}
+
+.cell-header:nth-child(n+292):nth-child(-n+292) {
+  left: 50vw;
+  top: 70vh;
+}
+
+.cell-header:nth-child(n+293):nth-child(-n+293):hover ~ .header {
+  --angleX: -0.0003327096deg;
+  --angleY: 0.0000055452deg;
+  --positionX: 57.5vw;
+  --positionY: 72.5vw;
+}
+
+.cell-header:nth-child(n+293):nth-child(-n+293) {
+  left: 55vw;
+  top: 70vh;
+}
+
+.cell-header:nth-child(n+294):nth-child(-n+294):hover ~ .header {
+  --angleX: -0.0003327096deg;
+  --angleY: 0.0000110903deg;
+  --positionX: 62.5vw;
+  --positionY: 72.5vw;
+}
+
+.cell-header:nth-child(n+294):nth-child(-n+294) {
+  left: 60vw;
+  top: 70vh;
+}
+
+.cell-header:nth-child(n+295):nth-child(-n+295):hover ~ .header {
+  --angleX: -0.0003327096deg;
+  --angleY: 0.0000166355deg;
+  --positionX: 67.5vw;
+  --positionY: 72.5vw;
+}
+
+.cell-header:nth-child(n+295):nth-child(-n+295) {
+  left: 65vw;
+  top: 70vh;
+}
+
+.cell-header:nth-child(n+296):nth-child(-n+296):hover ~ .header {
+  --angleX: -0.0003327096deg;
+  --angleY: 0.0000221806deg;
+  --positionX: 72.5vw;
+  --positionY: 72.5vw;
+}
+
+.cell-header:nth-child(n+296):nth-child(-n+296) {
+  left: 70vw;
+  top: 70vh;
+}
+
+.cell-header:nth-child(n+297):nth-child(-n+297):hover ~ .header {
+  --angleX: -0.0003327096deg;
+  --angleY: 0.0000277258deg;
+  --positionX: 77.5vw;
+  --positionY: 72.5vw;
+}
+
+.cell-header:nth-child(n+297):nth-child(-n+297) {
+  left: 75vw;
+  top: 70vh;
+}
+
+.cell-header:nth-child(n+298):nth-child(-n+298):hover ~ .header {
+  --angleX: -0.0003327096deg;
+  --angleY: 0.000033271deg;
+  --positionX: 82.5vw;
+  --positionY: 72.5vw;
+}
+
+.cell-header:nth-child(n+298):nth-child(-n+298) {
+  left: 80vw;
+  top: 70vh;
+}
+
+.cell-header:nth-child(n+299):nth-child(-n+299):hover ~ .header {
+  --angleX: -0.0003327096deg;
+  --angleY: 0.0000388161deg;
+  --positionX: 87.5vw;
+  --positionY: 72.5vw;
+}
+
+.cell-header:nth-child(n+299):nth-child(-n+299) {
+  left: 85vw;
+  top: 70vh;
+}
+
+.cell-header:nth-child(n+300):nth-child(-n+300):hover ~ .header {
+  --angleX: -0.0003327096deg;
+  --angleY: 0.0000443613deg;
+  --positionX: 92.5vw;
+  --positionY: 72.5vw;
+}
+
+.cell-header:nth-child(n+300):nth-child(-n+300) {
+  left: 90vw;
+  top: 70vh;
+}
+
+.cell-header:nth-child(n+301):nth-child(-n+301):hover ~ .header {
+  --angleX: -0.0003327096deg;
+  --angleY: 0.0000499064deg;
+  --positionX: 97.5vw;
+  --positionY: 72.5vw;
+}
+
+.cell-header:nth-child(n+301):nth-child(-n+301) {
+  left: 95vw;
+  top: 70vh;
+}
+
+.cell-header:nth-child(n+302):nth-child(-n+302):hover ~ .header {
+  --angleX: -0.0000845474deg;
+  --angleY: -0.0000130073deg;
+  --positionX: 2.5vw;
+  --positionY: 77.5vw;
+}
+
+.cell-header:nth-child(n+302):nth-child(-n+302) {
+  left: 0vw;
+  top: 75vh;
+}
+
+.cell-header:nth-child(n+303):nth-child(-n+303):hover ~ .header {
+  --angleX: -0.0000845474deg;
+  --angleY: -0.0000117066deg;
+  --positionX: 7.5vw;
+  --positionY: 77.5vw;
+}
+
+.cell-header:nth-child(n+303):nth-child(-n+303) {
+  left: 5vw;
+  top: 75vh;
+}
+
+.cell-header:nth-child(n+304):nth-child(-n+304):hover ~ .header {
+  --angleX: -0.0000845474deg;
+  --angleY: -0.0000104058deg;
+  --positionX: 12.5vw;
+  --positionY: 77.5vw;
+}
+
+.cell-header:nth-child(n+304):nth-child(-n+304) {
+  left: 10vw;
+  top: 75vh;
+}
+
+.cell-header:nth-child(n+305):nth-child(-n+305):hover ~ .header {
+  --angleX: -0.0000845474deg;
+  --angleY: -0.0000091051deg;
+  --positionX: 17.5vw;
+  --positionY: 77.5vw;
+}
+
+.cell-header:nth-child(n+305):nth-child(-n+305) {
+  left: 15vw;
+  top: 75vh;
+}
+
+.cell-header:nth-child(n+306):nth-child(-n+306):hover ~ .header {
+  --angleX: -0.0000845474deg;
+  --angleY: -0.0000078044deg;
+  --positionX: 22.5vw;
+  --positionY: 77.5vw;
+}
+
+.cell-header:nth-child(n+306):nth-child(-n+306) {
+  left: 20vw;
+  top: 75vh;
+}
+
+.cell-header:nth-child(n+307):nth-child(-n+307):hover ~ .header {
+  --angleX: -0.0000845474deg;
+  --angleY: -0.0000065036deg;
+  --positionX: 27.5vw;
+  --positionY: 77.5vw;
+}
+
+.cell-header:nth-child(n+307):nth-child(-n+307) {
+  left: 25vw;
+  top: 75vh;
+}
+
+.cell-header:nth-child(n+308):nth-child(-n+308):hover ~ .header {
+  --angleX: -0.0000845474deg;
+  --angleY: -0.0000052029deg;
+  --positionX: 32.5vw;
+  --positionY: 77.5vw;
+}
+
+.cell-header:nth-child(n+308):nth-child(-n+308) {
+  left: 30vw;
+  top: 75vh;
+}
+
+.cell-header:nth-child(n+309):nth-child(-n+309):hover ~ .header {
+  --angleX: -0.0000845474deg;
+  --angleY: -0.0000039022deg;
+  --positionX: 37.5vw;
+  --positionY: 77.5vw;
+}
+
+.cell-header:nth-child(n+309):nth-child(-n+309) {
+  left: 35vw;
+  top: 75vh;
+}
+
+.cell-header:nth-child(n+310):nth-child(-n+310):hover ~ .header {
+  --angleX: -0.0000845474deg;
+  --angleY: -0.0000026015deg;
+  --positionX: 42.5vw;
+  --positionY: 77.5vw;
+}
+
+.cell-header:nth-child(n+310):nth-child(-n+310) {
+  left: 40vw;
+  top: 75vh;
+}
+
+.cell-header:nth-child(n+311):nth-child(-n+311):hover ~ .header {
+  --angleX: -0.0000845474deg;
+  --angleY: -0.0000013007deg;
+  --positionX: 47.5vw;
+  --positionY: 77.5vw;
+}
+
+.cell-header:nth-child(n+311):nth-child(-n+311) {
+  left: 45vw;
+  top: 75vh;
+}
+
+.cell-header:nth-child(n+312):nth-child(-n+312):hover ~ .header {
+  --angleX: -0.0000845474deg;
+  --angleY: 0deg;
+  --positionX: 52.5vw;
+  --positionY: 77.5vw;
+}
+
+.cell-header:nth-child(n+312):nth-child(-n+312) {
+  left: 50vw;
+  top: 75vh;
+}
+
+.cell-header:nth-child(n+313):nth-child(-n+313):hover ~ .header {
+  --angleX: -0.0000845474deg;
+  --angleY: 0.0000013007deg;
+  --positionX: 57.5vw;
+  --positionY: 77.5vw;
+}
+
+.cell-header:nth-child(n+313):nth-child(-n+313) {
+  left: 55vw;
+  top: 75vh;
+}
+
+.cell-header:nth-child(n+314):nth-child(-n+314):hover ~ .header {
+  --angleX: -0.0000845474deg;
+  --angleY: 0.0000026015deg;
+  --positionX: 62.5vw;
+  --positionY: 77.5vw;
+}
+
+.cell-header:nth-child(n+314):nth-child(-n+314) {
+  left: 60vw;
+  top: 75vh;
+}
+
+.cell-header:nth-child(n+315):nth-child(-n+315):hover ~ .header {
+  --angleX: -0.0000845474deg;
+  --angleY: 0.0000039022deg;
+  --positionX: 67.5vw;
+  --positionY: 77.5vw;
+}
+
+.cell-header:nth-child(n+315):nth-child(-n+315) {
+  left: 65vw;
+  top: 75vh;
+}
+
+.cell-header:nth-child(n+316):nth-child(-n+316):hover ~ .header {
+  --angleX: -0.0000845474deg;
+  --angleY: 0.0000052029deg;
+  --positionX: 72.5vw;
+  --positionY: 77.5vw;
+}
+
+.cell-header:nth-child(n+316):nth-child(-n+316) {
+  left: 70vw;
+  top: 75vh;
+}
+
+.cell-header:nth-child(n+317):nth-child(-n+317):hover ~ .header {
+  --angleX: -0.0000845474deg;
+  --angleY: 0.0000065036deg;
+  --positionX: 77.5vw;
+  --positionY: 77.5vw;
+}
+
+.cell-header:nth-child(n+317):nth-child(-n+317) {
+  left: 75vw;
+  top: 75vh;
+}
+
+.cell-header:nth-child(n+318):nth-child(-n+318):hover ~ .header {
+  --angleX: -0.0000845474deg;
+  --angleY: 0.0000078044deg;
+  --positionX: 82.5vw;
+  --positionY: 77.5vw;
+}
+
+.cell-header:nth-child(n+318):nth-child(-n+318) {
+  left: 80vw;
+  top: 75vh;
+}
+
+.cell-header:nth-child(n+319):nth-child(-n+319):hover ~ .header {
+  --angleX: -0.0000845474deg;
+  --angleY: 0.0000091051deg;
+  --positionX: 87.5vw;
+  --positionY: 77.5vw;
+}
+
+.cell-header:nth-child(n+319):nth-child(-n+319) {
+  left: 85vw;
+  top: 75vh;
+}
+
+.cell-header:nth-child(n+320):nth-child(-n+320):hover ~ .header {
+  --angleX: -0.0000845474deg;
+  --angleY: 0.0000104058deg;
+  --positionX: 92.5vw;
+  --positionY: 77.5vw;
+}
+
+.cell-header:nth-child(n+320):nth-child(-n+320) {
+  left: 90vw;
+  top: 75vh;
+}
+
+.cell-header:nth-child(n+321):nth-child(-n+321):hover ~ .header {
+  --angleX: -0.0000845474deg;
+  --angleY: 0.0000117066deg;
+  --positionX: 97.5vw;
+  --positionY: 77.5vw;
+}
+
+.cell-header:nth-child(n+321):nth-child(-n+321) {
+  left: 95vw;
+  top: 75vh;
+}
+
+.cell-header:nth-child(n+322):nth-child(-n+322):hover ~ .header {
+  --angleX: -0.0000193254deg;
+  --angleY: -0.0000027608deg;
+  --positionX: 2.5vw;
+  --positionY: 82.5vw;
+}
+
+.cell-header:nth-child(n+322):nth-child(-n+322) {
+  left: 0vw;
+  top: 80vh;
+}
+
+.cell-header:nth-child(n+323):nth-child(-n+323):hover ~ .header {
+  --angleX: -0.0000193254deg;
+  --angleY: -0.0000024847deg;
+  --positionX: 7.5vw;
+  --positionY: 82.5vw;
+}
+
+.cell-header:nth-child(n+323):nth-child(-n+323) {
+  left: 5vw;
+  top: 80vh;
+}
+
+.cell-header:nth-child(n+324):nth-child(-n+324):hover ~ .header {
+  --angleX: -0.0000193254deg;
+  --angleY: -0.0000022086deg;
+  --positionX: 12.5vw;
+  --positionY: 82.5vw;
+}
+
+.cell-header:nth-child(n+324):nth-child(-n+324) {
+  left: 10vw;
+  top: 80vh;
+}
+
+.cell-header:nth-child(n+325):nth-child(-n+325):hover ~ .header {
+  --angleX: -0.0000193254deg;
+  --angleY: -0.0000019325deg;
+  --positionX: 17.5vw;
+  --positionY: 82.5vw;
+}
+
+.cell-header:nth-child(n+325):nth-child(-n+325) {
+  left: 15vw;
+  top: 80vh;
+}
+
+.cell-header:nth-child(n+326):nth-child(-n+326):hover ~ .header {
+  --angleX: -0.0000193254deg;
+  --angleY: -0.0000016565deg;
+  --positionX: 22.5vw;
+  --positionY: 82.5vw;
+}
+
+.cell-header:nth-child(n+326):nth-child(-n+326) {
+  left: 20vw;
+  top: 80vh;
+}
+
+.cell-header:nth-child(n+327):nth-child(-n+327):hover ~ .header {
+  --angleX: -0.0000193254deg;
+  --angleY: -0.0000013804deg;
+  --positionX: 27.5vw;
+  --positionY: 82.5vw;
+}
+
+.cell-header:nth-child(n+327):nth-child(-n+327) {
+  left: 25vw;
+  top: 80vh;
+}
+
+.cell-header:nth-child(n+328):nth-child(-n+328):hover ~ .header {
+  --angleX: -0.0000193254deg;
+  --angleY: -0.0000011043deg;
+  --positionX: 32.5vw;
+  --positionY: 82.5vw;
+}
+
+.cell-header:nth-child(n+328):nth-child(-n+328) {
+  left: 30vw;
+  top: 80vh;
+}
+
+.cell-header:nth-child(n+329):nth-child(-n+329):hover ~ .header {
+  --angleX: -0.0000193254deg;
+  --angleY: -0.0000008282deg;
+  --positionX: 37.5vw;
+  --positionY: 82.5vw;
+}
+
+.cell-header:nth-child(n+329):nth-child(-n+329) {
+  left: 35vw;
+  top: 80vh;
+}
+
+.cell-header:nth-child(n+330):nth-child(-n+330):hover ~ .header {
+  --angleX: -0.0000193254deg;
+  --angleY: -0.0000005522deg;
+  --positionX: 42.5vw;
+  --positionY: 82.5vw;
+}
+
+.cell-header:nth-child(n+330):nth-child(-n+330) {
+  left: 40vw;
+  top: 80vh;
+}
+
+.cell-header:nth-child(n+331):nth-child(-n+331):hover ~ .header {
+  --angleX: -0.0000193254deg;
+  --angleY: -0.0000002761deg;
+  --positionX: 47.5vw;
+  --positionY: 82.5vw;
+}
+
+.cell-header:nth-child(n+331):nth-child(-n+331) {
+  left: 45vw;
+  top: 80vh;
+}
+
+.cell-header:nth-child(n+332):nth-child(-n+332):hover ~ .header {
+  --angleX: -0.0000193254deg;
+  --angleY: 0deg;
+  --positionX: 52.5vw;
+  --positionY: 82.5vw;
+}
+
+.cell-header:nth-child(n+332):nth-child(-n+332) {
+  left: 50vw;
+  top: 80vh;
+}
+
+.cell-header:nth-child(n+333):nth-child(-n+333):hover ~ .header {
+  --angleX: -0.0000193254deg;
+  --angleY: 0.0000002761deg;
+  --positionX: 57.5vw;
+  --positionY: 82.5vw;
+}
+
+.cell-header:nth-child(n+333):nth-child(-n+333) {
+  left: 55vw;
+  top: 80vh;
+}
+
+.cell-header:nth-child(n+334):nth-child(-n+334):hover ~ .header {
+  --angleX: -0.0000193254deg;
+  --angleY: 0.0000005522deg;
+  --positionX: 62.5vw;
+  --positionY: 82.5vw;
+}
+
+.cell-header:nth-child(n+334):nth-child(-n+334) {
+  left: 60vw;
+  top: 80vh;
+}
+
+.cell-header:nth-child(n+335):nth-child(-n+335):hover ~ .header {
+  --angleX: -0.0000193254deg;
+  --angleY: 0.0000008282deg;
+  --positionX: 67.5vw;
+  --positionY: 82.5vw;
+}
+
+.cell-header:nth-child(n+335):nth-child(-n+335) {
+  left: 65vw;
+  top: 80vh;
+}
+
+.cell-header:nth-child(n+336):nth-child(-n+336):hover ~ .header {
+  --angleX: -0.0000193254deg;
+  --angleY: 0.0000011043deg;
+  --positionX: 72.5vw;
+  --positionY: 82.5vw;
+}
+
+.cell-header:nth-child(n+336):nth-child(-n+336) {
+  left: 70vw;
+  top: 80vh;
+}
+
+.cell-header:nth-child(n+337):nth-child(-n+337):hover ~ .header {
+  --angleX: -0.0000193254deg;
+  --angleY: 0.0000013804deg;
+  --positionX: 77.5vw;
+  --positionY: 82.5vw;
+}
+
+.cell-header:nth-child(n+337):nth-child(-n+337) {
+  left: 75vw;
+  top: 80vh;
+}
+
+.cell-header:nth-child(n+338):nth-child(-n+338):hover ~ .header {
+  --angleX: -0.0000193254deg;
+  --angleY: 0.0000016565deg;
+  --positionX: 82.5vw;
+  --positionY: 82.5vw;
+}
+
+.cell-header:nth-child(n+338):nth-child(-n+338) {
+  left: 80vw;
+  top: 80vh;
+}
+
+.cell-header:nth-child(n+339):nth-child(-n+339):hover ~ .header {
+  --angleX: -0.0000193254deg;
+  --angleY: 0.0000019325deg;
+  --positionX: 87.5vw;
+  --positionY: 82.5vw;
+}
+
+.cell-header:nth-child(n+339):nth-child(-n+339) {
+  left: 85vw;
+  top: 80vh;
+}
+
+.cell-header:nth-child(n+340):nth-child(-n+340):hover ~ .header {
+  --angleX: -0.0000193254deg;
+  --angleY: 0.0000022086deg;
+  --positionX: 92.5vw;
+  --positionY: 82.5vw;
+}
+
+.cell-header:nth-child(n+340):nth-child(-n+340) {
+  left: 90vw;
+  top: 80vh;
+}
+
+.cell-header:nth-child(n+341):nth-child(-n+341):hover ~ .header {
+  --angleX: -0.0000193254deg;
+  --angleY: 0.0000024847deg;
+  --positionX: 97.5vw;
+  --positionY: 82.5vw;
+}
+
+.cell-header:nth-child(n+341):nth-child(-n+341) {
+  left: 95vw;
+  top: 80vh;
+}
+
+.cell-header:nth-child(n+342):nth-child(-n+342):hover ~ .header {
+  --angleX: -0.0000039765deg;
+  --angleY: -0.0000005302deg;
+  --positionX: 2.5vw;
+  --positionY: 87.5vw;
+}
+
+.cell-header:nth-child(n+342):nth-child(-n+342) {
+  left: 0vw;
+  top: 85vh;
+}
+
+.cell-header:nth-child(n+343):nth-child(-n+343):hover ~ .header {
+  --angleX: -0.0000039765deg;
+  --angleY: -0.0000004772deg;
+  --positionX: 7.5vw;
+  --positionY: 87.5vw;
+}
+
+.cell-header:nth-child(n+343):nth-child(-n+343) {
+  left: 5vw;
+  top: 85vh;
+}
+
+.cell-header:nth-child(n+344):nth-child(-n+344):hover ~ .header {
+  --angleX: -0.0000039765deg;
+  --angleY: -0.0000004242deg;
+  --positionX: 12.5vw;
+  --positionY: 87.5vw;
+}
+
+.cell-header:nth-child(n+344):nth-child(-n+344) {
+  left: 10vw;
+  top: 85vh;
+}
+
+.cell-header:nth-child(n+345):nth-child(-n+345):hover ~ .header {
+  --angleX: -0.0000039765deg;
+  --angleY: -0.0000003711deg;
+  --positionX: 17.5vw;
+  --positionY: 87.5vw;
+}
+
+.cell-header:nth-child(n+345):nth-child(-n+345) {
+  left: 15vw;
+  top: 85vh;
+}
+
+.cell-header:nth-child(n+346):nth-child(-n+346):hover ~ .header {
+  --angleX: -0.0000039765deg;
+  --angleY: -0.0000003181deg;
+  --positionX: 22.5vw;
+  --positionY: 87.5vw;
+}
+
+.cell-header:nth-child(n+346):nth-child(-n+346) {
+  left: 20vw;
+  top: 85vh;
+}
+
+.cell-header:nth-child(n+347):nth-child(-n+347):hover ~ .header {
+  --angleX: -0.0000039765deg;
+  --angleY: -0.0000002651deg;
+  --positionX: 27.5vw;
+  --positionY: 87.5vw;
+}
+
+.cell-header:nth-child(n+347):nth-child(-n+347) {
+  left: 25vw;
+  top: 85vh;
+}
+
+.cell-header:nth-child(n+348):nth-child(-n+348):hover ~ .header {
+  --angleX: -0.0000039765deg;
+  --angleY: -0.0000002121deg;
+  --positionX: 32.5vw;
+  --positionY: 87.5vw;
+}
+
+.cell-header:nth-child(n+348):nth-child(-n+348) {
+  left: 30vw;
+  top: 85vh;
+}
+
+.cell-header:nth-child(n+349):nth-child(-n+349):hover ~ .header {
+  --angleX: -0.0000039765deg;
+  --angleY: -0.0000001591deg;
+  --positionX: 37.5vw;
+  --positionY: 87.5vw;
+}
+
+.cell-header:nth-child(n+349):nth-child(-n+349) {
+  left: 35vw;
+  top: 85vh;
+}
+
+.cell-header:nth-child(n+350):nth-child(-n+350):hover ~ .header {
+  --angleX: -0.0000039765deg;
+  --angleY: -0.000000106deg;
+  --positionX: 42.5vw;
+  --positionY: 87.5vw;
+}
+
+.cell-header:nth-child(n+350):nth-child(-n+350) {
+  left: 40vw;
+  top: 85vh;
+}
+
+.cell-header:nth-child(n+351):nth-child(-n+351):hover ~ .header {
+  --angleX: -0.0000039765deg;
+  --angleY: -0.000000053deg;
+  --positionX: 47.5vw;
+  --positionY: 87.5vw;
+}
+
+.cell-header:nth-child(n+351):nth-child(-n+351) {
+  left: 45vw;
+  top: 85vh;
+}
+
+.cell-header:nth-child(n+352):nth-child(-n+352):hover ~ .header {
+  --angleX: -0.0000039765deg;
+  --angleY: 0deg;
+  --positionX: 52.5vw;
+  --positionY: 87.5vw;
+}
+
+.cell-header:nth-child(n+352):nth-child(-n+352) {
+  left: 50vw;
+  top: 85vh;
+}
+
+.cell-header:nth-child(n+353):nth-child(-n+353):hover ~ .header {
+  --angleX: -0.0000039765deg;
+  --angleY: 0.000000053deg;
+  --positionX: 57.5vw;
+  --positionY: 87.5vw;
+}
+
+.cell-header:nth-child(n+353):nth-child(-n+353) {
+  left: 55vw;
+  top: 85vh;
+}
+
+.cell-header:nth-child(n+354):nth-child(-n+354):hover ~ .header {
+  --angleX: -0.0000039765deg;
+  --angleY: 0.000000106deg;
+  --positionX: 62.5vw;
+  --positionY: 87.5vw;
+}
+
+.cell-header:nth-child(n+354):nth-child(-n+354) {
+  left: 60vw;
+  top: 85vh;
+}
+
+.cell-header:nth-child(n+355):nth-child(-n+355):hover ~ .header {
+  --angleX: -0.0000039765deg;
+  --angleY: 0.0000001591deg;
+  --positionX: 67.5vw;
+  --positionY: 87.5vw;
+}
+
+.cell-header:nth-child(n+355):nth-child(-n+355) {
+  left: 65vw;
+  top: 85vh;
+}
+
+.cell-header:nth-child(n+356):nth-child(-n+356):hover ~ .header {
+  --angleX: -0.0000039765deg;
+  --angleY: 0.0000002121deg;
+  --positionX: 72.5vw;
+  --positionY: 87.5vw;
+}
+
+.cell-header:nth-child(n+356):nth-child(-n+356) {
+  left: 70vw;
+  top: 85vh;
+}
+
+.cell-header:nth-child(n+357):nth-child(-n+357):hover ~ .header {
+  --angleX: -0.0000039765deg;
+  --angleY: 0.0000002651deg;
+  --positionX: 77.5vw;
+  --positionY: 87.5vw;
+}
+
+.cell-header:nth-child(n+357):nth-child(-n+357) {
+  left: 75vw;
+  top: 85vh;
+}
+
+.cell-header:nth-child(n+358):nth-child(-n+358):hover ~ .header {
+  --angleX: -0.0000039765deg;
+  --angleY: 0.0000003181deg;
+  --positionX: 82.5vw;
+  --positionY: 87.5vw;
+}
+
+.cell-header:nth-child(n+358):nth-child(-n+358) {
+  left: 80vw;
+  top: 85vh;
+}
+
+.cell-header:nth-child(n+359):nth-child(-n+359):hover ~ .header {
+  --angleX: -0.0000039765deg;
+  --angleY: 0.0000003711deg;
+  --positionX: 87.5vw;
+  --positionY: 87.5vw;
+}
+
+.cell-header:nth-child(n+359):nth-child(-n+359) {
+  left: 85vw;
+  top: 85vh;
+}
+
+.cell-header:nth-child(n+360):nth-child(-n+360):hover ~ .header {
+  --angleX: -0.0000039765deg;
+  --angleY: 0.0000004242deg;
+  --positionX: 92.5vw;
+  --positionY: 87.5vw;
+}
+
+.cell-header:nth-child(n+360):nth-child(-n+360) {
+  left: 90vw;
+  top: 85vh;
+}
+
+.cell-header:nth-child(n+361):nth-child(-n+361):hover ~ .header {
+  --angleX: -0.0000039765deg;
+  --angleY: 0.0000004772deg;
+  --positionX: 97.5vw;
+  --positionY: 87.5vw;
+}
+
+.cell-header:nth-child(n+361):nth-child(-n+361) {
+  left: 95vw;
+  top: 85vh;
+}
+
+.cell-header:nth-child(n+362):nth-child(-n+362):hover ~ .header {
+  --angleX: -0.0000007371deg;
+  --angleY: -0.0000000921deg;
+  --positionX: 2.5vw;
+  --positionY: 92.5vw;
+}
+
+.cell-header:nth-child(n+362):nth-child(-n+362) {
+  left: 0vw;
+  top: 90vh;
+}
+
+.cell-header:nth-child(n+363):nth-child(-n+363):hover ~ .header {
+  --angleX: -0.0000007371deg;
+  --angleY: -0.0000000829deg;
+  --positionX: 7.5vw;
+  --positionY: 92.5vw;
+}
+
+.cell-header:nth-child(n+363):nth-child(-n+363) {
+  left: 5vw;
+  top: 90vh;
+}
+
+.cell-header:nth-child(n+364):nth-child(-n+364):hover ~ .header {
+  --angleX: -0.0000007371deg;
+  --angleY: -0.0000000737deg;
+  --positionX: 12.5vw;
+  --positionY: 92.5vw;
+}
+
+.cell-header:nth-child(n+364):nth-child(-n+364) {
+  left: 10vw;
+  top: 90vh;
+}
+
+.cell-header:nth-child(n+365):nth-child(-n+365):hover ~ .header {
+  --angleX: -0.0000007371deg;
+  --angleY: -0.0000000645deg;
+  --positionX: 17.5vw;
+  --positionY: 92.5vw;
+}
+
+.cell-header:nth-child(n+365):nth-child(-n+365) {
+  left: 15vw;
+  top: 90vh;
+}
+
+.cell-header:nth-child(n+366):nth-child(-n+366):hover ~ .header {
+  --angleX: -0.0000007371deg;
+  --angleY: -0.0000000553deg;
+  --positionX: 22.5vw;
+  --positionY: 92.5vw;
+}
+
+.cell-header:nth-child(n+366):nth-child(-n+366) {
+  left: 20vw;
+  top: 90vh;
+}
+
+.cell-header:nth-child(n+367):nth-child(-n+367):hover ~ .header {
+  --angleX: -0.0000007371deg;
+  --angleY: -0.0000000461deg;
+  --positionX: 27.5vw;
+  --positionY: 92.5vw;
+}
+
+.cell-header:nth-child(n+367):nth-child(-n+367) {
+  left: 25vw;
+  top: 90vh;
+}
+
+.cell-header:nth-child(n+368):nth-child(-n+368):hover ~ .header {
+  --angleX: -0.0000007371deg;
+  --angleY: -0.0000000369deg;
+  --positionX: 32.5vw;
+  --positionY: 92.5vw;
+}
+
+.cell-header:nth-child(n+368):nth-child(-n+368) {
+  left: 30vw;
+  top: 90vh;
+}
+
+.cell-header:nth-child(n+369):nth-child(-n+369):hover ~ .header {
+  --angleX: -0.0000007371deg;
+  --angleY: -0.0000000276deg;
+  --positionX: 37.5vw;
+  --positionY: 92.5vw;
+}
+
+.cell-header:nth-child(n+369):nth-child(-n+369) {
+  left: 35vw;
+  top: 90vh;
+}
+
+.cell-header:nth-child(n+370):nth-child(-n+370):hover ~ .header {
+  --angleX: -0.0000007371deg;
+  --angleY: -0.0000000184deg;
+  --positionX: 42.5vw;
+  --positionY: 92.5vw;
+}
+
+.cell-header:nth-child(n+370):nth-child(-n+370) {
+  left: 40vw;
+  top: 90vh;
+}
+
+.cell-header:nth-child(n+371):nth-child(-n+371):hover ~ .header {
+  --angleX: -0.0000007371deg;
+  --angleY: -0.0000000092deg;
+  --positionX: 47.5vw;
+  --positionY: 92.5vw;
+}
+
+.cell-header:nth-child(n+371):nth-child(-n+371) {
+  left: 45vw;
+  top: 90vh;
+}
+
+.cell-header:nth-child(n+372):nth-child(-n+372):hover ~ .header {
+  --angleX: -0.0000007371deg;
+  --angleY: 0deg;
+  --positionX: 52.5vw;
+  --positionY: 92.5vw;
+}
+
+.cell-header:nth-child(n+372):nth-child(-n+372) {
+  left: 50vw;
+  top: 90vh;
+}
+
+.cell-header:nth-child(n+373):nth-child(-n+373):hover ~ .header {
+  --angleX: -0.0000007371deg;
+  --angleY: 0.0000000092deg;
+  --positionX: 57.5vw;
+  --positionY: 92.5vw;
+}
+
+.cell-header:nth-child(n+373):nth-child(-n+373) {
+  left: 55vw;
+  top: 90vh;
+}
+
+.cell-header:nth-child(n+374):nth-child(-n+374):hover ~ .header {
+  --angleX: -0.0000007371deg;
+  --angleY: 0.0000000184deg;
+  --positionX: 62.5vw;
+  --positionY: 92.5vw;
+}
+
+.cell-header:nth-child(n+374):nth-child(-n+374) {
+  left: 60vw;
+  top: 90vh;
+}
+
+.cell-header:nth-child(n+375):nth-child(-n+375):hover ~ .header {
+  --angleX: -0.0000007371deg;
+  --angleY: 0.0000000276deg;
+  --positionX: 67.5vw;
+  --positionY: 92.5vw;
+}
+
+.cell-header:nth-child(n+375):nth-child(-n+375) {
+  left: 65vw;
+  top: 90vh;
+}
+
+.cell-header:nth-child(n+376):nth-child(-n+376):hover ~ .header {
+  --angleX: -0.0000007371deg;
+  --angleY: 0.0000000369deg;
+  --positionX: 72.5vw;
+  --positionY: 92.5vw;
+}
+
+.cell-header:nth-child(n+376):nth-child(-n+376) {
+  left: 70vw;
+  top: 90vh;
+}
+
+.cell-header:nth-child(n+377):nth-child(-n+377):hover ~ .header {
+  --angleX: -0.0000007371deg;
+  --angleY: 0.0000000461deg;
+  --positionX: 77.5vw;
+  --positionY: 92.5vw;
+}
+
+.cell-header:nth-child(n+377):nth-child(-n+377) {
+  left: 75vw;
+  top: 90vh;
+}
+
+.cell-header:nth-child(n+378):nth-child(-n+378):hover ~ .header {
+  --angleX: -0.0000007371deg;
+  --angleY: 0.0000000553deg;
+  --positionX: 82.5vw;
+  --positionY: 92.5vw;
+}
+
+.cell-header:nth-child(n+378):nth-child(-n+378) {
+  left: 80vw;
+  top: 90vh;
+}
+
+.cell-header:nth-child(n+379):nth-child(-n+379):hover ~ .header {
+  --angleX: -0.0000007371deg;
+  --angleY: 0.0000000645deg;
+  --positionX: 87.5vw;
+  --positionY: 92.5vw;
+}
+
+.cell-header:nth-child(n+379):nth-child(-n+379) {
+  left: 85vw;
+  top: 90vh;
+}
+
+.cell-header:nth-child(n+380):nth-child(-n+380):hover ~ .header {
+  --angleX: -0.0000007371deg;
+  --angleY: 0.0000000737deg;
+  --positionX: 92.5vw;
+  --positionY: 92.5vw;
+}
+
+.cell-header:nth-child(n+380):nth-child(-n+380) {
+  left: 90vw;
+  top: 90vh;
+}
+
+.cell-header:nth-child(n+381):nth-child(-n+381):hover ~ .header {
+  --angleX: -0.0000007371deg;
+  --angleY: 0.0000000829deg;
+  --positionX: 97.5vw;
+  --positionY: 92.5vw;
+}
+
+.cell-header:nth-child(n+381):nth-child(-n+381) {
+  left: 95vw;
+  top: 90vh;
+}
+
+.cell-header:nth-child(n+382):nth-child(-n+382):hover ~ .header {
+  --angleX: -0.0000001231deg;
+  --angleY: -0.0000000145deg;
+  --positionX: 2.5vw;
+  --positionY: 97.5vw;
+}
+
+.cell-header:nth-child(n+382):nth-child(-n+382) {
+  left: 0vw;
+  top: 95vh;
+}
+
+.cell-header:nth-child(n+383):nth-child(-n+383):hover ~ .header {
+  --angleX: -0.0000001231deg;
+  --angleY: -0.000000013deg;
+  --positionX: 7.5vw;
+  --positionY: 97.5vw;
+}
+
+.cell-header:nth-child(n+383):nth-child(-n+383) {
+  left: 5vw;
+  top: 95vh;
+}
+
+.cell-header:nth-child(n+384):nth-child(-n+384):hover ~ .header {
+  --angleX: -0.0000001231deg;
+  --angleY: -0.0000000116deg;
+  --positionX: 12.5vw;
+  --positionY: 97.5vw;
+}
+
+.cell-header:nth-child(n+384):nth-child(-n+384) {
+  left: 10vw;
+  top: 95vh;
+}
+
+.cell-header:nth-child(n+385):nth-child(-n+385):hover ~ .header {
+  --angleX: -0.0000001231deg;
+  --angleY: -0.0000000101deg;
+  --positionX: 17.5vw;
+  --positionY: 97.5vw;
+}
+
+.cell-header:nth-child(n+385):nth-child(-n+385) {
+  left: 15vw;
+  top: 95vh;
+}
+
+.cell-header:nth-child(n+386):nth-child(-n+386):hover ~ .header {
+  --angleX: -0.0000001231deg;
+  --angleY: -0.0000000087deg;
+  --positionX: 22.5vw;
+  --positionY: 97.5vw;
+}
+
+.cell-header:nth-child(n+386):nth-child(-n+386) {
+  left: 20vw;
+  top: 95vh;
+}
+
+.cell-header:nth-child(n+387):nth-child(-n+387):hover ~ .header {
+  --angleX: -0.0000001231deg;
+  --angleY: -0.0000000072deg;
+  --positionX: 27.5vw;
+  --positionY: 97.5vw;
+}
+
+.cell-header:nth-child(n+387):nth-child(-n+387) {
+  left: 25vw;
+  top: 95vh;
+}
+
+.cell-header:nth-child(n+388):nth-child(-n+388):hover ~ .header {
+  --angleX: -0.0000001231deg;
+  --angleY: -0.0000000058deg;
+  --positionX: 32.5vw;
+  --positionY: 97.5vw;
+}
+
+.cell-header:nth-child(n+388):nth-child(-n+388) {
+  left: 30vw;
+  top: 95vh;
+}
+
+.cell-header:nth-child(n+389):nth-child(-n+389):hover ~ .header {
+  --angleX: -0.0000001231deg;
+  --angleY: -0.0000000043deg;
+  --positionX: 37.5vw;
+  --positionY: 97.5vw;
+}
+
+.cell-header:nth-child(n+389):nth-child(-n+389) {
+  left: 35vw;
+  top: 95vh;
+}
+
+.cell-header:nth-child(n+390):nth-child(-n+390):hover ~ .header {
+  --angleX: -0.0000001231deg;
+  --angleY: -0.0000000029deg;
+  --positionX: 42.5vw;
+  --positionY: 97.5vw;
+}
+
+.cell-header:nth-child(n+390):nth-child(-n+390) {
+  left: 40vw;
+  top: 95vh;
+}
+
+.cell-header:nth-child(n+391):nth-child(-n+391):hover ~ .header {
+  --angleX: -0.0000001231deg;
+  --angleY: -0.0000000014deg;
+  --positionX: 47.5vw;
+  --positionY: 97.5vw;
+}
+
+.cell-header:nth-child(n+391):nth-child(-n+391) {
+  left: 45vw;
+  top: 95vh;
+}
+
+.cell-header:nth-child(n+392):nth-child(-n+392):hover ~ .header {
+  --angleX: -0.0000001231deg;
+  --angleY: 0deg;
+  --positionX: 52.5vw;
+  --positionY: 97.5vw;
+}
+
+.cell-header:nth-child(n+392):nth-child(-n+392) {
+  left: 50vw;
+  top: 95vh;
+}
+
+.cell-header:nth-child(n+393):nth-child(-n+393):hover ~ .header {
+  --angleX: -0.0000001231deg;
+  --angleY: 0.0000000014deg;
+  --positionX: 57.5vw;
+  --positionY: 97.5vw;
+}
+
+.cell-header:nth-child(n+393):nth-child(-n+393) {
+  left: 55vw;
+  top: 95vh;
+}
+
+.cell-header:nth-child(n+394):nth-child(-n+394):hover ~ .header {
+  --angleX: -0.0000001231deg;
+  --angleY: 0.0000000029deg;
+  --positionX: 62.5vw;
+  --positionY: 97.5vw;
+}
+
+.cell-header:nth-child(n+394):nth-child(-n+394) {
+  left: 60vw;
+  top: 95vh;
+}
+
+.cell-header:nth-child(n+395):nth-child(-n+395):hover ~ .header {
+  --angleX: -0.0000001231deg;
+  --angleY: 0.0000000043deg;
+  --positionX: 67.5vw;
+  --positionY: 97.5vw;
+}
+
+.cell-header:nth-child(n+395):nth-child(-n+395) {
+  left: 65vw;
+  top: 95vh;
+}
+
+.cell-header:nth-child(n+396):nth-child(-n+396):hover ~ .header {
+  --angleX: -0.0000001231deg;
+  --angleY: 0.0000000058deg;
+  --positionX: 72.5vw;
+  --positionY: 97.5vw;
+}
+
+.cell-header:nth-child(n+396):nth-child(-n+396) {
+  left: 70vw;
+  top: 95vh;
+}
+
+.cell-header:nth-child(n+397):nth-child(-n+397):hover ~ .header {
+  --angleX: -0.0000001231deg;
+  --angleY: 0.0000000072deg;
+  --positionX: 77.5vw;
+  --positionY: 97.5vw;
+}
+
+.cell-header:nth-child(n+397):nth-child(-n+397) {
+  left: 75vw;
+  top: 95vh;
+}
+
+.cell-header:nth-child(n+398):nth-child(-n+398):hover ~ .header {
+  --angleX: -0.0000001231deg;
+  --angleY: 0.0000000087deg;
+  --positionX: 82.5vw;
+  --positionY: 97.5vw;
+}
+
+.cell-header:nth-child(n+398):nth-child(-n+398) {
+  left: 80vw;
+  top: 95vh;
+}
+
+.cell-header:nth-child(n+399):nth-child(-n+399):hover ~ .header {
+  --angleX: -0.0000001231deg;
+  --angleY: 0.0000000101deg;
+  --positionX: 87.5vw;
+  --positionY: 97.5vw;
+}
+
+.cell-header:nth-child(n+399):nth-child(-n+399) {
+  left: 85vw;
+  top: 95vh;
+}
+
+.cell-header:nth-child(n+400):nth-child(-n+400):hover ~ .header {
+  --angleX: -0.0000001231deg;
+  --angleY: 0.0000000116deg;
+  --positionX: 92.5vw;
+  --positionY: 97.5vw;
+}
+
+.cell-header:nth-child(n+400):nth-child(-n+400) {
+  left: 90vw;
+  top: 95vh;
+}
+
+.cell-header:nth-child(n+401):nth-child(-n+401):hover ~ .header {
+  --angleX: -0.0000001231deg;
+  --angleY: 0.000000013deg;
+  --positionX: 97.5vw;
+  --positionY: 97.5vw;
+}
+
+.cell-header:nth-child(n+401):nth-child(-n+401) {
+  left: 95vw;
+  top: 95vh;
+}
+
+.follow {
+  top: var(--positionY);
+  left: var(--positionX);
+  background: white;
+  position: fixed;
+  transition: 0s;
+  width: 10px;
+  height: 10px;
+}
+
+.marius {
+  transform-style: preserve-3d;
+}
+
+.marius_part {
+  transform-style: preserve-3d;
+  position: absolute;
+  width: 110vw;
+  left: -5vw;
+  height: 100vh;
+  background-origin: padding-box;
+  background-position: bottom right;
+  background-size: 177.7777777778vh 100vh;
+  background-repeat: no-repeat;
+}
+
+.senator {
+  transform-style: preserve-3d;
+}
+
+.senator_part {
+  transform-style: preserve-3d;
+  position: absolute;
+  width: 110vw;
+  left: -5vw;
+  height: 100vh;
+  background-origin: padding-box;
+  background-position: bottom right;
+  background-size: 177.7777777778vh 100vh;
+  background-repeat: no-repeat;
+}
+
+.hint {
+  position: absolute;
+  font-size: 17px;
+  right: 10px;
+  bottom: 10px;
+  color: black;
+}
+
+.marius_part:nth-child(n+0):nth-child(-n+0) {
+  transform: scale(1.62) translateZ(-62px);
+  background-image: url("../42747986/uploaded/marius3.png");
+}
+
+.marius_part:nth-child(n+1):nth-child(-n+1) {
+  transform: scale(1.6) translateZ(-60px);
+  background-image: url("../42747986/uploaded/marius4.png");
+}
+
+.marius_part:nth-child(n+2):nth-child(-n+2) {
+  transform: scale(1.58) translateZ(-58px);
+  background-image: url("../42747986/uploaded/marius5.png");
+}
+
+.marius_part:nth-child(n+3):nth-child(-n+3) {
+  transform: scale(1.56) translateZ(-56px);
+  background-image: url("../42747986/uploaded/marius6.png");
+}
+
+.marius_part:nth-child(n+4):nth-child(-n+4) {
+  transform: scale(1.54) translateZ(-54px);
+  background-image: url("../42747986/uploaded/marius7.png");
+}
+
+.marius_part:nth-child(n+5):nth-child(-n+5) {
+  transform: scale(1.52) translateZ(-52px);
+  background-image: url("../42747986/uploaded/marius8.png");
+}
+
+.marius_part:nth-child(n+6):nth-child(-n+6) {
+  transform: scale(1.5) translateZ(-50px);
+  background-image: url("../42747986/uploaded/marius9.png");
+}
+
+.marius_part:nth-child(n+7):nth-child(-n+7) {
+  transform: scale(1.48) translateZ(-48px);
+  background-image: url("../42747986/uploaded/marius10.png");
+}
+
+.marius_part:nth-child(n+8):nth-child(-n+8) {
+  transform: scale(1.46) translateZ(-46px);
+  background-image: url("../42747986/uploaded/marius11.png");
+}
+
+.marius_part:nth-child(n+9):nth-child(-n+9) {
+  transform: scale(1.44) translateZ(-44px);
+  background-image: url("../42747986/uploaded/marius12.png");
+}
+
+.marius_part:nth-child(n+10):nth-child(-n+10) {
+  transform: scale(1.42) translateZ(-42px);
+  background-image: url("../42747986/uploaded/marius13.png");
+}
+
+.marius_part:nth-child(n+11):nth-child(-n+11) {
+  transform: scale(1.4) translateZ(-40px);
+  background-image: url("../42747986/uploaded/marius14.png");
+}
+
+.marius_part:nth-child(n+12):nth-child(-n+12) {
+  transform: scale(1.38) translateZ(-38px);
+  background-image: url("../42747986/uploaded/marius15.png");
+}
+
+.marius_part:nth-child(n+13):nth-child(-n+13) {
+  transform: scale(1.36) translateZ(-36px);
+  background-image: url("../42747986/uploaded/marius16.png");
+}
+
+.marius_part:nth-child(n+14):nth-child(-n+14) {
+  transform: scale(1.34) translateZ(-34px);
+  background-image: url("../42747986/uploaded/marius17.png");
+}
+
+.marius_part:nth-child(n+15):nth-child(-n+15) {
+  transform: scale(1.32) translateZ(-32px);
+  background-image: url("../42747986/uploaded/marius18.png");
+}
+
+.marius_part:nth-child(n+16):nth-child(-n+16) {
+  transform: scale(1.3) translateZ(-30px);
+  background-image: url("../42747986/uploaded/marius19.png");
+}
+
+.marius_part:nth-child(n+17):nth-child(-n+17) {
+  transform: scale(1.28) translateZ(-28px);
+  background-image: url("../42747986/uploaded/marius20.png");
+}
+
+.marius_part:nth-child(n+18):nth-child(-n+18) {
+  transform: scale(1.26) translateZ(-26px);
+  background-image: url("../42747986/uploaded/marius21.png");
+}
+
+.marius_part:nth-child(n+19):nth-child(-n+19) {
+  transform: scale(1.24) translateZ(-24px);
+  background-image: url("../42747986/uploaded/marius22.png");
+}
+
+.marius_part:nth-child(n+20):nth-child(-n+20) {
+  transform: scale(1.22) translateZ(-22px);
+  background-image: url("../42747986/uploaded/marius23.png");
+}
+
+.marius_part:nth-child(n+21):nth-child(-n+21) {
+  transform: scale(1.2) translateZ(-20px);
+  background-image: url("../42747986/uploaded/marius24.png");
+}
+
+.marius_part:nth-child(n+22):nth-child(-n+22) {
+  transform: scale(1.18) translateZ(-18px);
+  background-image: url("../42747986/uploaded/marius25.png");
+}
+
+.marius_part:nth-child(n+23):nth-child(-n+23) {
+  transform: scale(1.16) translateZ(-16px);
+  background-image: url("../42747986/uploaded/marius26.png");
+}
+
+.marius_part:nth-child(n+24):nth-child(-n+24) {
+  transform: scale(1.14) translateZ(-14px);
+  background-image: url("../42747986/uploaded/marius27.png");
+}
+
+.marius_part:nth-child(n+25):nth-child(-n+25) {
+  transform: scale(1.12) translateZ(-12px);
+  background-image: url("../42747986/uploaded/marius28.png");
+}
+
+.marius_part:nth-child(n+26):nth-child(-n+26) {
+  transform: scale(1.1) translateZ(-10px);
+  background-image: url("../42747986/uploaded/marius29.png");
+}
+
+.marius_part:nth-child(n+27):nth-child(-n+27) {
+  transform: scale(1.08) translateZ(-8px);
+  background-image: url("../42747986/uploaded/marius30.png");
+}
+
+.marius_part:nth-child(n+28):nth-child(-n+28) {
+  transform: scale(1.06) translateZ(-6px);
+  background-image: url("../42747986/uploaded/marius31.png");
+}
+
+.marius_part:nth-child(n+29):nth-child(-n+29) {
+  transform: scale(1.04) translateZ(-4px);
+  background-image: url("../42747986/uploaded/marius32.png");
+}
+
+.marius_part:nth-child(n+30):nth-child(-n+30) {
+  transform: scale(1.02) translateZ(-2px);
+  background-image: url("../42747986/uploaded/marius33.png");
+}
+
+.marius_part:nth-child(n+31):nth-child(-n+31) {
+  transform: scale(1) translateZ(0px);
+  background-image: url("../42747986/uploaded/marius34.png");
+}
+
+.senator_part:nth-child(n+0):nth-child(-n+0) {
+  transform: scale(2.19) translateZ(-119px);
+  background-image: url("../42747986/uploaded/EEEEEEE1.png");
+}
+
+.senator_part:nth-child(n+1):nth-child(-n+1) {
+  transform: scale(2.12) translateZ(-112px);
+  background-image: url("../42747986/uploaded/EEEEEEE2.png");
+}
+
+.senator_part:nth-child(n+2):nth-child(-n+2) {
+  transform: scale(2.05) translateZ(-105px);
+  background-image: url("../42747986/uploaded/EEEEEEE3.png");
+}
+
+.senator_part:nth-child(n+3):nth-child(-n+3) {
+  transform: scale(1.98) translateZ(-98px);
+  background-image: url("../42747986/uploaded/EEEEEEE4.png");
+}
+
+.senator_part:nth-child(n+4):nth-child(-n+4) {
+  transform: scale(1.91) translateZ(-91px);
+  background-image: url("../42747986/uploaded/EEEEEEE5.png");
+}
+
+.senator_part:nth-child(n+5):nth-child(-n+5) {
+  transform: scale(1.84) translateZ(-84px);
+  background-image: url("../42747986/uploaded/EEEEEEE6.png");
+}
+
+.senator_part:nth-child(n+6):nth-child(-n+6) {
+  transform: scale(1.77) translateZ(-77px);
+  background-image: url("../42747986/uploaded/EEEEEEE7.png");
+}
+
+.senator_part:nth-child(n+7):nth-child(-n+7) {
+  transform: scale(1.7) translateZ(-70px);
+  background-image: url("../42747986/uploaded/EEEEEEE8.png");
+}
+
+.senator_part:nth-child(n+8):nth-child(-n+8) {
+  transform: scale(1.63) translateZ(-63px);
+  background-image: url("../42747986/uploaded/EEEEEEE9.png");
+}
+
+.senator_part:nth-child(n+9):nth-child(-n+9) {
+  transform: scale(1.56) translateZ(-56px);
+  background-image: url("../42747986/uploaded/EEEEEEE10.png");
+}
+
+.senator_part:nth-child(n+10):nth-child(-n+10) {
+  transform: scale(1.49) translateZ(-49px);
+  background-image: url("../42747986/uploaded/EEEEEEE11.png");
+}
+
+.senator_part:nth-child(n+11):nth-child(-n+11) {
+  transform: scale(1.42) translateZ(-42px);
+  background-image: url("../42747986/uploaded/EEEEEEE12.png");
+}
+
+.senator_part:nth-child(n+12):nth-child(-n+12) {
+  transform: scale(1.35) translateZ(-35px);
+  background-image: url("../42747986/uploaded/EEEEEEE13.png");
+}
+
+.senator_part:nth-child(n+13):nth-child(-n+13) {
+  transform: scale(1.28) translateZ(-28px);
+  background-image: url("../42747986/uploaded/EEEEEEE14.png");
+}
+
+.senator_part:nth-child(n+14):nth-child(-n+14) {
+  transform: scale(1.21) translateZ(-21px);
+  background-image: url("../42747986/uploaded/EEEEEEE15.png");
+}
+
+.senator_part:nth-child(n+15):nth-child(-n+15) {
+  transform: scale(1.14) translateZ(-14px);
+  background-image: url("../42747986/uploaded/EEEEEEE16.png");
+}
+
+.senator_part:nth-child(n+16):nth-child(-n+16) {
+  transform: scale(1.07) translateZ(-7px);
+  background-image: url("../42747986/uploaded/EEEEEEE17.png");
+}
+
+.senator_part:nth-child(n+17):nth-child(-n+17) {
+  transform: scale(1) translateZ(0px);
+  background-image: url("../42747986/uploaded/EEEEEEE18.png");
+}
+
+.marius_bg {
+  transform-style: preserve-3d;
+  position: fixed;
+  width: 110vw;
+  left: -5vw;
+  height: 100vh;
+  top: 0;
+  transform: scale(2) translateZ(-100px);
+  background-origin: padding-box;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("big/marius_bg.jpg");
+}
+
+.marius_bg_filter {
+  transform-style: preserve-3d;
+  position: absolute;
+  width: 110vw;
+  left: -5vw;
+  height: 100vh;
+  transform: scale(4) translateZ(-300px);
+  background-origin: padding-box;
+  background-position: bottom right;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(3px);
+}
+
+.marius_title {
+  position: absolute;
+  color: white;
+  font-size: 100px;
+  line-height: 100px;
+  font-family: JosefinSans-SemiBold;
+  top: 30vh;
+  left: 10vw;
+}
+
+.senator_title {
+  position: absolute;
+  color: white;
+  font-size: 60px;
+  line-height: 60px;
+  font-family: JosefinSans-SemiBold;
+  top: 30vh;
+  left: 10vw;
+}
+
+.senator_number {
+  color: goldenrod;
+  font-size: 100px;
+  line-height: 100px;
+  margin-bottom: 50px;
+  font-family: "Times New Roman";
+}
+
+.creators {
+  position: absolute;
+  color: white;
+  font-family: JosefinSans-ExtraLight;
+  font-size: 25px;
+  line-height: 25px;
+  top: calc(30vh + 300px);
+  left: 10vw;
+}
+
+.annoyingly_long {
+  height: 1000vh;
+}
+
+.preface {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  background: #780000;
+  padding-bottom: 100px;
+  width: 100vw;
+}
+
+.section1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  background: transparent;
+  padding-bottom: 100px;
+  width: 100vw;
+  transform-style: preserve-3d;
+}
+
+.lollipopWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  background: transparent;
+  top: 100vh;
+  width: 100vw;
+  transform-style: preserve-3d;
+}
+
+#embellish1 {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  position: relative;
+  padding-top: 30px;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  animation: dash 12s ease-in-out forwards infinite;
+}
+
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 0;
+    fill-opacity: 50%;
+  }
+  30% {
+    stroke-dashoffset: 1000;
+    fill-opacity: 0;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    fill-opacity: 50%;
+  }
+}
+#embellish2 {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  position: relative;
+  padding-top: 30px;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  animation: dash 12s ease-in-out forwards infinite;
+  transform: scale(-1);
+}
+
+.sectionNumber {
+  position: relative;
+  font-family: "Times New Roman";
+  font-size: 60px;
+  color: goldenrod;
+}
+
+.sectionTitle {
+  font-family: "JosefinSans-SemiBold";
+  font-size: 30px;
+  color: goldenrod;
+}
+
+.sectionTitle:before {
+  position: relative;
+  content: " ";
+  height: 1px;
+  width: 30vw;
+  top: 50%;
+  border-bottom: 1px solid goldenrod;
+  margin-right: 1vw;
+}
+
+.banner {
+  width: 100vw;
+  position: relative;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  backdrop-filter: saturate(0);
+  background: rgba(255, 255, 255, 0.001);
+  display: flex;
+  flex-direction: column;
+  border: solid rgba(255, 255, 255, 0.5) 1px;
+}
+
+.sectionTitle:after {
+  position: relative;
+  content: " ";
+  height: 1px;
+  width: 30vw;
+  top: 50%;
+  margin-left: 1vw;
+  border-bottom: 1px solid goldenrod;
+}
+
+.sectionContent {
+  position: relative;
+  top: 30px;
+  width: 80%;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 30px;
+  margin-bottom: 60px;
+  font-family: JosefinSans-Regular;
+  font-size: 25px;
+  line-height: 31.25px;
+}
+
+.parallax1 {
+  transform-style: preserve-3d;
+  position: fixed;
+  width: 110vw;
+  left: -5vw;
+  height: 150vh;
+  top: 0;
+  transform: scale(1.7) translateZ(-70px);
+  background-origin: padding-box;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("big/PUBLIC DOMAIN YAY.jpg");
+}
+
+.parallax2 {
+  transform-style: preserve-3d;
+  position: fixed;
+  width: 110vw;
+  left: -5vw;
+  height: 130vh;
+  top: 0;
+  transform: scale(1.3) translateZ(-30px);
+  background-origin: padding-box;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("big/publicDomainp2.jpg");
+}
+
+@media (max-width: 768px) {
+  .header {
+    display: none;
+  }
+}
+.twixWrapper {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  width: 100vw;
+  z-index: 2;
+  transform-style: preserve-3d;
+}
+
+.iceCreamWrapper {
+  display: none;
+  flex-direction: column;
+  margin-top: 20px;
+  width: 100vw;
+  z-index: 2;
+  transform-style: preserve-3d;
+}
+
+@media (max-width: 768px) {
+  .twixWrapper {
+    display: none;
+  }
+  .iceCreamWrapper {
+    display: flex;
+  }
+}
+.leftContent {
+  position: relative;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+}
+
+.rightContent {
+  transform-style: preserve-3d;
+  position: relative;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 50%;
+}
+
+.floatingMarius {
+  transform-style: preserve-3d;
+  position: absolute;
+  width: 91.0280373832vh;
+  left: 0;
+  height: 100vh;
+  bottom: -15vh;
+  transform: scale(1.15) translateZ(-15px);
+  background-origin: padding-box;
+  background-position: bottom center;
+  background-size: 91.0280373832vh 100vh;
+  background-repeat: no-repeat;
+  background-image: url("big/PSBS.png");
+}
+
+.section1Divider {
+  height: 250px;
+  width: 100vw;
+  background: #780000;
+}
+
+.bottomBar {
+  height: 60vh;
+  width: 100vw;
+  position: absolute;
+  bottom: -50vh;
+  left: 0;
+  background: #780000;
+}
+
+.imgCredit {
+  position: relative;
+  right: 0;
+  bottom: 0;
+  margin: 10px;
+  font-family: JosefinSans-Regular;
+  font-size: 15px;
+}
+
+.crossed-out {
+  text-decoration-line: line-through;
+}
+
+.scroll-indicator {
+  position: absolute;
+  top: calc(100vh - 70px);
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: JosefinSans-SemiBold;
+  color: white;
+  font-size: 20px;
+}
+
+.scroll-indicator span {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  margin-left: -12px;
+  border-left: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  transform: rotate(-45deg);
+  animation: scroll-animate 1.5s infinite;
+  box-sizing: border-box;
+}
+
+@keyframes scroll-animate {
+  0% {
+    transform: rotate(-45deg) translate(0, 0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(-45deg) translate(-20px, 20px);
+    opacity: 0;
+  }
+}
+.credit {
+  color: rgba(0, 0, 0, 0.3);
+  font-family: JosefinSans-Regular;
+  font-size: 15px;
+}
+
+/*# sourceMappingURL=scss3.css.map */
